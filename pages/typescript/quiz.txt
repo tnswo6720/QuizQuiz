@@ -1,0 +1,13 @@
+2023-11-12
+
+그래프큐엘 셋팅하는 부분에서 코드 빈칸 뚫고 문제 맞추기
+
+Optional-Chaining
+
+
+
+nullish-coalescing
+
+ex: null undefined 같은
+
+조건부 렌더링

@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  height: 152px;
-  background-color: #f5f2fc;
+  height: 50px;
+  background-color: lightgoldenrodyellow;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

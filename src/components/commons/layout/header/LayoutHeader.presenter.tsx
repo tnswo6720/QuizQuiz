@@ -17,15 +17,14 @@ export default function LayoutHeaderUI(props: ILayoutHeaderProps): JSX.Element {
             alt="여행친구"
             style={{ width: "100px", height: "100px" }}
           />{" "}
-          <h2>여행친구</h2>
+          <h2>퀴즈퀴즈</h2>
         </InnerLogo>
 
         <div>
-          <InnerButton onClick={props.onClickMoveToLogin}>Sign In</InnerButton>
-          <InnerButton onClick={props.onClickMoveSignUp}>Sign Up</InnerButton>
+          <InnerButton onClick={props.onClickMoveToLogin}>로그인</InnerButton>
+          <InnerButton onClick={props.onClickMoveSignUp}>회원가입</InnerButton>
         </div>
       </InnerWrapper>
-      <WeatherComponent />
     </Wrapper>
   );
 }
