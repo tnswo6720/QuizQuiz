@@ -5,130 +5,80 @@ const Quiz = () => {
     // 여기에 문제를 추가합니다...
     {
       questionText:
-        "Nest.js에서 특정 id를 가진 post를 가져오는 코드를 작성하려고 합니다. 만약 해당 id를 가진 post가 존재하지 않을 때, NotFoundException을 발생시키려면 어떻게 해야 할까요?",
+        "map 함수를 사용하여 FRUITS 배열의 각 요소를 화면에 출력하는 코드를 완성하세요.",
       code: `
-        @Get(':id')
-        getPost(@Param('id') id: string) {
-          const post = posts.find((post) => post.id === +id);
-          if (______) { // 여기에 무엇을 써야할까요?
-            throw new NotFoundException();
-          }
-          return post;
+        const FRUITS = [
+          { number: 1, title: "레드향" },
+          { number: 2, title: "샤인머스켓" },
+          { number: 3, title: "산청딸기" },
+          { number: 4, title: "한라봉" },
+          { number: 5, title: "사과" },
+          { number: 6, title: "애플망고" },
+          { number: 7, title: "딸기" },
+          { number: 8, title: "천혜향" },
+          { number: 9, title: "과일선물세트" },
+          { number: 10, title: "귤" },
+        ];
+    
+        export default function MapFruitsPage() {
+          const fruits = _______.map((el) => (
+            <div>
+              {el.number} {el.title}
+            </div>
+          ));
+    
+          return (
+            <div>
+              {fruits}
+            </div>
+          );
         }
       `,
-      answerOptions: [
-        "!post",
-        "post === undefined",
-        "post === null",
-        "post === ''",
-      ],
-      answer: "!post",
+      answerOptions: ["FRUITS", "FRUITS.title", "FRUITS.number", "FRUITS.map"],
+      answer: "FRUITS",
       explanation:
-        "JavaScript에서는 null, undefined, NaN, 빈 문자열(''), 0, -0, false 등을 'falsy' 값이라고 합니다. 이런 값들은 불린 연산자를 통해 false로 취급됩니다. 따라서 만약 'post'가 undefined(즉, 찾지 못했다면), '!post'는 true가 되어 이 if문이 실행됩니다.",
-      explanationCode: `
-        @Get(':id')
-        getPost(@Param('id') id: string) {
-          const post = posts.find((post) => post.id === +id);
-          if (!post) { // 'post'가 undefined일 경우, '!post'는 true가 됩니다.
-            throw new NotFoundException();
-          }
-          return post;
-        }
-      `,
+        "map 함수는 배열의 각 요소에 대해 주어진 함수를 호출하고, 그 결과를 모아 새로운 배열을 반환합니다. 이 경우 FRUITS 배열의 각 요소에 대해 JSX를 반환하는 함수를 호출하므로, 'FRUITS'를 사용해야 합니다.",
     },
     {
       questionText:
-        "Nest.js에서 HTTP 요청 본문(body)에서 'author', 'title', 'content'라는 키를 가진 데이터를 각각 `author`, `title`, `content`라는 파라미터에 할당하는 코드를 작성하려고 합니다. 이를 수행하는 코드를 작성하려면 빈 칸에 어떤 것을 입력해야 할까요?",
+        "GraphQL을 이용하여 받아온 데이터를 map을 이용하여 화면에 출력하는 코드를 완성하세요.",
       code: `
-        @Post()
-        postPosts(
-          @(_____)('author') author: string,
-          @(_____)('title') title: string,
-          @(_____)('content') content: string,
-        ) {
-          const post: PostModel = {
-            id: posts[posts.length - 1].id + 1,
-            author,
-            title,
-            content,
-            likeCount: 0,
-            commentCount: 0,
-          };
+        import { useQuery, gql } from "@apollo.client";
     
-          posts = [...posts, post];
-          return post;
+        const FETCH_BOARDS = gql\`
+          query {
+            fetchBoards {
+              number
+              writer
+              title
+              contents
+            }
+          }
+        \`;
+    
+        export default function StaticRoutingMovedPage() {
+          const { data } = useQuery(FETCH_BOARDS);
+    
+          return (
+            <div>
+              {______?.fetchBoards.map((el) => (
+                <div>
+                  <span>
+                    <input type="checkbox" />
+                  </span>
+                  <span style={{ margin: "10px" }}>{el.number}</span>
+                  <span style={{ margin: "10px" }}>{el.title}</span>
+                  <span style={{ margin: "10px" }}>{el.writer}</span>
+                </div>
+              ))}
+            </div>
+          );
         }
       `,
-      answerOptions: ["Request", "Body", "Param", "Query"],
-      answer: "Body",
+      answerOptions: ["data", "FETCH_BOARDS", "useQuery", "gql"],
+      answer: "data",
       explanation:
-        "Nest.js에서 @Body() 데코레이터는 HTTP 요청 본문에서 특정 속성을 가져오는 역할을 합니다. 이를 통해 클라이언트가 보낸 데이터를 쉽게 추출하여 사용할 수 있습니다. 따라서 'author', 'title', 'content'라는 키를 가진 데이터를 각각 `author`, `title`, `content` 파라미터에 할당하기 위해서는 @Body() 데코레이터를 사용해야 합니다.",
-      explanationCode: `
-        @Post()
-        postPosts(
-          @Body('author') author: string,
-          @Body('title') title: string,
-          @Body('content') content: string,
-        ) {
-          const post: PostModel = {
-            id: posts[posts.length - 1].id + 1,
-            author,
-            title,
-            content,
-            likeCount: 0,
-            commentCount: 0,
-          };
-    
-          posts = [...posts, post];
-          return post;
-        }
-      `,
-    },
-
-    {
-      questionText:
-        "@Put 데코레이터와 관련된 설명 중 옳지 않은 것은 무엇인가요?",
-      code: `
-      @Put(':id')
-      putPost(
-        @Param('id') id: string,
-        @Body('author') author?: string,
-        @Body('title') title?: string,
-        @Body('content') content?: string,
-      ) {
-        const post = posts.find((post) => post.id === +id);
-    
-        if (!post) {
-          throw new NotFoundException();
-        }
-    
-        if (author) {
-          post.author = author;
-        }
-    
-        if (title) {
-          post.title = title;
-        }
-    
-        if (content) {
-          post.content = content;
-        }
-    
-        posts = posts.map((prevPost) => (prevPost.id === +id ? post : prevPost));
-    
-        return post;
-      }
-      `,
-      answerOptions: [
-        "@Put 데코레이터는 HTTP PUT 요청을 처리하는 메서드를 정의하는데 사용됩니다.",
-        "HTTP PUT 메서드는 기존 리소스의 전체를 교체하는데 사용됩니다.",
-        "@Put(':id')는 id 파라미터를 사용해 특정 리소스를 식별합니다.",
-        "@Body 데코레이터는 요청 본문에서 특정 프로퍼티를 가져오는데 사용되지 않습니다.",
-      ],
-      answer:
-        "@Body 데코레이터는 요청 본문에서 특정 프로퍼티를 가져오는데 사용되지 않습니다.",
-      explanation:
-        "@Body 데코레이터는 요청 본문에서 특정 프로퍼티를 가져오는데 사용됩니다. 이를 통해 클라이언트가 보낸 데이터를 서버에서 사용할 수 있습니다.",
+        "우리는 useQuery 훅을 이용하여 GraphQL 서버에서 데이터를 요청하고, 이를 data 상수에 할당했습니다. 따라서 화면에 데이터를 출력하기 위해선 'data'를 사용해야 합니다.",
     },
   ];
 
@@ -176,7 +126,7 @@ const Quiz = () => {
 
   const handleSubmit = () => {
     const userAnswers = userAnswer.split(",");
-    const correctAnswers = questions[currentQuestion].answer.split(",");
+    const correctAnswers = String(questions[currentQuestion].answer).split(",");
 
     if (userAnswers.length !== correctAnswers.length) {
       setIsCorrect(false);
@@ -291,9 +241,3 @@ const Quiz = () => {
 };
 
 export default Quiz;
-
-// 기본 문법:
-// 변수와 상수
-// 데이터 타입
-// 연산자
-// 제어문 (if, for, while 등)

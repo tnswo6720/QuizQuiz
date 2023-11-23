@@ -5,130 +5,103 @@ const Quiz = () => {
     // 여기에 문제를 추가합니다...
     {
       questionText:
-        "Nest.js에서 특정 id를 가진 post를 가져오는 코드를 작성하려고 합니다. 만약 해당 id를 가진 post가 존재하지 않을 때, NotFoundException을 발생시키려면 어떻게 해야 할까요?",
+        "다음 중 자바스크립트에서 '상수'를 선언하는 키워드는 무엇일까요?",
       code: `
-        @Get(':id')
-        getPost(@Param('id') id: string) {
-          const post = posts.find((post) => post.id === +id);
-          if (______) { // 여기에 무엇을 써야할까요?
-            throw new NotFoundException();
-          }
-          return post;
-        }
+      _____ PI = 3.141592;
       `,
-      answerOptions: [
-        "!post",
-        "post === undefined",
-        "post === null",
-        "post === ''",
-      ],
-      answer: "!post",
+      answerOptions: ["let", "var", "const", "if"],
+      answer: "const",
       explanation:
-        "JavaScript에서는 null, undefined, NaN, 빈 문자열(''), 0, -0, false 등을 'falsy' 값이라고 합니다. 이런 값들은 불린 연산자를 통해 false로 취급됩니다. 따라서 만약 'post'가 undefined(즉, 찾지 못했다면), '!post'는 true가 되어 이 if문이 실행됩니다.",
-      explanationCode: `
-        @Get(':id')
-        getPost(@Param('id') id: string) {
-          const post = posts.find((post) => post.id === +id);
-          if (!post) { // 'post'가 undefined일 경우, '!post'는 true가 됩니다.
-            throw new NotFoundException();
-          }
-          return post;
-        }
-      `,
-    },
-    {
-      questionText:
-        "Nest.js에서 HTTP 요청 본문(body)에서 'author', 'title', 'content'라는 키를 가진 데이터를 각각 `author`, `title`, `content`라는 파라미터에 할당하는 코드를 작성하려고 합니다. 이를 수행하는 코드를 작성하려면 빈 칸에 어떤 것을 입력해야 할까요?",
-      code: `
-        @Post()
-        postPosts(
-          @(_____)('author') author: string,
-          @(_____)('title') title: string,
-          @(_____)('content') content: string,
-        ) {
-          const post: PostModel = {
-            id: posts[posts.length - 1].id + 1,
-            author,
-            title,
-            content,
-            likeCount: 0,
-            commentCount: 0,
-          };
-    
-          posts = [...posts, post];
-          return post;
-        }
-      `,
-      answerOptions: ["Request", "Body", "Param", "Query"],
-      answer: "Body",
-      explanation:
-        "Nest.js에서 @Body() 데코레이터는 HTTP 요청 본문에서 특정 속성을 가져오는 역할을 합니다. 이를 통해 클라이언트가 보낸 데이터를 쉽게 추출하여 사용할 수 있습니다. 따라서 'author', 'title', 'content'라는 키를 가진 데이터를 각각 `author`, `title`, `content` 파라미터에 할당하기 위해서는 @Body() 데코레이터를 사용해야 합니다.",
-      explanationCode: `
-        @Post()
-        postPosts(
-          @Body('author') author: string,
-          @Body('title') title: string,
-          @Body('content') content: string,
-        ) {
-          const post: PostModel = {
-            id: posts[posts.length - 1].id + 1,
-            author,
-            title,
-            content,
-            likeCount: 0,
-            commentCount: 0,
-          };
-    
-          posts = [...posts, post];
-          return post;
-        }
-      `,
+        "'const'는 상수를 선언하는 키워드입니다. 한번 선언하고 값이 할당된 상수는 재할당을 통해 값을 변경할 수 없습니다.",
     },
 
     {
-      questionText:
-        "@Put 데코레이터와 관련된 설명 중 옳지 않은 것은 무엇인가요?",
+      questionText: "다음 코드의 출력 결과는 무엇일까요?",
       code: `
-      @Put(':id')
-      putPost(
-        @Param('id') id: string,
-        @Body('author') author?: string,
-        @Body('title') title?: string,
-        @Body('content') content?: string,
-      ) {
-        const post = posts.find((post) => post.id === +id);
+      const a = 5;
+      const b = '5';
     
-        if (!post) {
-          throw new NotFoundException();
-        }
-    
-        if (author) {
-          post.author = author;
-        }
-    
-        if (title) {
-          post.title = title;
-        }
-    
-        if (content) {
-          post.content = content;
-        }
-    
-        posts = posts.map((prevPost) => (prevPost.id === +id ? post : prevPost));
-    
-        return post;
+      console.log(a == b);
+      console.log(a === b);
+      `,
+      answerOptions: [
+        "true, true",
+        "true, false",
+        "false, true",
+        "false, false",
+      ],
+      answer: "true, false",
+      explanation:
+        "자바스크립트에서 '==' 연산자는 값만을 비교하므로, 숫자 5와 문자열 '5'는 같다고 판단합니다. 반면 '===' 연산자는 값 뿐만 아니라 타입까지 비교하므로, 숫자 5와 문자열 '5'는 다르다고 판단합니다.",
+    },
+    {
+      questionText: "다음 코드의 출력 결과는 무엇일까요?",
+      code: `
+      for (var i = 0; i < 5; i++) {
+        setTimeout(function() {
+          console.log(i);
+        }, 1000);
       }
       `,
       answerOptions: [
-        "@Put 데코레이터는 HTTP PUT 요청을 처리하는 메서드를 정의하는데 사용됩니다.",
-        "HTTP PUT 메서드는 기존 리소스의 전체를 교체하는데 사용됩니다.",
-        "@Put(':id')는 id 파라미터를 사용해 특정 리소스를 식별합니다.",
-        "@Body 데코레이터는 요청 본문에서 특정 프로퍼티를 가져오는데 사용되지 않습니다.",
+        "0 1 2 3 4",
+        "5 5 5 5 5",
+        "1 2 3 4 5",
+        "undefined undefined undefined undefined undefined",
       ],
-      answer:
-        "@Body 데코레이터는 요청 본문에서 특정 프로퍼티를 가져오는데 사용되지 않습니다.",
+      answer: "5 5 5 5 5",
       explanation:
-        "@Body 데코레이터는 요청 본문에서 특정 프로퍼티를 가져오는데 사용됩니다. 이를 통해 클라이언트가 보낸 데이터를 서버에서 사용할 수 있습니다.",
+        "변수 i는 'var' 키워드로 선언되었으므로, 함수 스코프를 가집니다. 따라서 setTimeout 함수가 실행될 때 i는 이미 5가 되어있어, '5 5 5 5 5'가 출력됩니다.",
+    },
+    {
+      questionText:
+        "다음 중 자바스크립트에서 '배열'을 선언하는 올바른 방법은 무엇일까요?",
+      code: `
+      const arr = _____;
+      `,
+      answerOptions: ["{}", "[]", "()", "||"],
+      answer: "[]",
+      explanation: "자바스크립트에서 배열은 대괄호([])를 사용하여 선언합니다.",
+    },
+    {
+      questionText: "다음 코드의 출력 결과는 무엇일까요?",
+      code: `
+      let x = 10;
+      x += 5;
+      console.log(x);
+      `,
+      answerOptions: ["15", "105", "5", "10"],
+      answer: "15",
+      explanation:
+        "'+=' 연산자는 현재 변수의 값에 주어진 값을 더하고 결과를 해당 변수에 할당하는 역할을 합니다. 따라서, x의 값은 10 + 5인 15가 됩니다.",
+    },
+    {
+      questionText:
+        "다음 중 자바스크립트에서 '객체'의 name 프로퍼티에 접근하는 올바른 방법은 무엇일까요?",
+      code: `
+      const obj = {
+        name: 'John',
+        age: 30
+      };
+    
+      console.log(obj._____);
+      `,
+      answerOptions: ["name", "[name]", "{name}", "(name)"],
+      answer: "name",
+      explanation:
+        "자바스크립트에서 객체의 프로퍼티에 접근하기 위해서는 점 표기법을 사용할 수 있습니다. 따라서 'obj.name'이 올바른 방법입니다.",
+    },
+    {
+      questionText: "다음 코드의 출력 결과는 무엇일까요?",
+      code: `
+      const arr = [1, 2, 3];
+      arr.push(4);
+      console.log(arr);
+      `,
+      answerOptions: ["[1, 2, 3, 4]", "[1, 2, 3]", "[4, 1, 2, 3]", "4"],
+      answer: "[1, 2, 3, 4]",
+      explanation:
+        "'push' 메소드는 배열의 끝에 새 요소를 추가합니다. 따라서, arr 배열은 [1, 2, 3, 4]가 됩니다.",
     },
   ];
 

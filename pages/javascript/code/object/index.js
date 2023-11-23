@@ -5,130 +5,152 @@ const Quiz = () => {
     // 여기에 문제를 추가합니다...
     {
       questionText:
-        "Nest.js에서 특정 id를 가진 post를 가져오는 코드를 작성하려고 합니다. 만약 해당 id를 가진 post가 존재하지 않을 때, NotFoundException을 발생시키려면 어떻게 해야 할까요?",
+        "다음 코드에서 빈 칸에 들어갈 수 있는 객체의 속성은 무엇인가요?",
       code: `
-        @Get(':id')
-        getPost(@Param('id') id: string) {
-          const post = posts.find((post) => post.id === +id);
-          if (______) { // 여기에 무엇을 써야할까요?
-            throw new NotFoundException();
-          }
-          return post;
-        }
-      `,
-      answerOptions: [
-        "!post",
-        "post === undefined",
-        "post === null",
-        "post === ''",
-      ],
-      answer: "!post",
-      explanation:
-        "JavaScript에서는 null, undefined, NaN, 빈 문자열(''), 0, -0, false 등을 'falsy' 값이라고 합니다. 이런 값들은 불린 연산자를 통해 false로 취급됩니다. 따라서 만약 'post'가 undefined(즉, 찾지 못했다면), '!post'는 true가 되어 이 if문이 실행됩니다.",
-      explanationCode: `
-        @Get(':id')
-        getPost(@Param('id') id: string) {
-          const post = posts.find((post) => post.id === +id);
-          if (!post) { // 'post'가 undefined일 경우, '!post'는 true가 됩니다.
-            throw new NotFoundException();
-          }
-          return post;
-        }
-      `,
-    },
-    {
-      questionText:
-        "Nest.js에서 HTTP 요청 본문(body)에서 'author', 'title', 'content'라는 키를 가진 데이터를 각각 `author`, `title`, `content`라는 파라미터에 할당하는 코드를 작성하려고 합니다. 이를 수행하는 코드를 작성하려면 빈 칸에 어떤 것을 입력해야 할까요?",
-      code: `
-        @Post()
-        postPosts(
-          @(_____)('author') author: string,
-          @(_____)('title') title: string,
-          @(_____)('content') content: string,
-        ) {
-          const post: PostModel = {
-            id: posts[posts.length - 1].id + 1,
-            author,
-            title,
-            content,
-            likeCount: 0,
-            commentCount: 0,
-          };
-    
-          posts = [...posts, post];
-          return post;
-        }
-      `,
-      answerOptions: ["Request", "Body", "Param", "Query"],
-      answer: "Body",
-      explanation:
-        "Nest.js에서 @Body() 데코레이터는 HTTP 요청 본문에서 특정 속성을 가져오는 역할을 합니다. 이를 통해 클라이언트가 보낸 데이터를 쉽게 추출하여 사용할 수 있습니다. 따라서 'author', 'title', 'content'라는 키를 가진 데이터를 각각 `author`, `title`, `content` 파라미터에 할당하기 위해서는 @Body() 데코레이터를 사용해야 합니다.",
-      explanationCode: `
-        @Post()
-        postPosts(
-          @Body('author') author: string,
-          @Body('title') title: string,
-          @Body('content') content: string,
-        ) {
-          const post: PostModel = {
-            id: posts[posts.length - 1].id + 1,
-            author,
-            title,
-            content,
-            likeCount: 0,
-            commentCount: 0,
-          };
-    
-          posts = [...posts, post];
-          return post;
-        }
-      `,
-    },
-
-    {
-      questionText:
-        "@Put 데코레이터와 관련된 설명 중 옳지 않은 것은 무엇인가요?",
-      code: `
-      @Put(':id')
-      putPost(
-        @Param('id') id: string,
-        @Body('author') author?: string,
-        @Body('title') title?: string,
-        @Body('content') content?: string,
-      ) {
-        const post = posts.find((post) => post.id === +id);
-    
-        if (!post) {
-          throw new NotFoundException();
-        }
-    
-        if (author) {
-          post.author = author;
-        }
-    
-        if (title) {
-          post.title = title;
-        }
-    
-        if (content) {
-          post.content = content;
-        }
-    
-        posts = posts.map((prevPost) => (prevPost.id === +id ? post : prevPost));
-    
-        return post;
+      const student = {
+        name: 'Kim',
+        age: 20,
+        ______
       }
+    
+      console.log(student.gender);
       `,
       answerOptions: [
-        "@Put 데코레이터는 HTTP PUT 요청을 처리하는 메서드를 정의하는데 사용됩니다.",
-        "HTTP PUT 메서드는 기존 리소스의 전체를 교체하는데 사용됩니다.",
-        "@Put(':id')는 id 파라미터를 사용해 특정 리소스를 식별합니다.",
-        "@Body 데코레이터는 요청 본문에서 특정 프로퍼티를 가져오는데 사용되지 않습니다.",
+        "gender: 'female'",
+        "score: 85",
+        "subject: 'Math'",
+        "grade: 'A'",
       ],
-      answer:
-        "@Body 데코레이터는 요청 본문에서 특정 프로퍼티를 가져오는데 사용되지 않습니다.",
+      answer: "gender: 'female'",
       explanation:
-        "@Body 데코레이터는 요청 본문에서 특정 프로퍼티를 가져오는데 사용됩니다. 이를 통해 클라이언트가 보낸 데이터를 서버에서 사용할 수 있습니다.",
+        "자바스크립트에서 객체의 속성은 '키: 값' 형태로 정의합니다. 여기서는 'gender' 속성을 콘솔에 출력하려 하므로, 'gender: 'female''가 적절한 속성입니다.",
+    },
+    {
+      questionText:
+        "다음 코드에서 빈 칸에 들어갈 수 있는 프로토타입 메서드는 무엇인가요?",
+      code: `
+      function Student(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+    
+      Student.prototype.______ = function() {
+        return this.name;
+      }
+    
+      const student = new Student('Kim', 20);
+      console.log(student.getName());
+      `,
+      answerOptions: ["getName", "name", "getAge", "age"],
+      answer: "getName",
+      explanation:
+        "자바스크립트에서 프로토타입 메서드는 'prototype' 속성을 사용하여 정의합니다. 이 경우, 'getName'이 적절한 메서드 이름입니다.",
+    },
+    {
+      questionText:
+        "다음 코드에서 빈 칸에 들어갈 수 있는 객체의 메서드는 무엇인가요?",
+      code: `
+      const student = {
+        name: 'Kim',
+        greet: ______
+      }
+    
+      student.greet();
+      `,
+      answerOptions: [
+        "'Hello!'",
+        "'greet()'",
+        "function() { console.log('Hello!'); }",
+        "greet: 'Hello!'",
+      ],
+      answer: "function() { console.log('Hello!'); }",
+      explanation:
+        "자바스크립트에서 객체의 메서드는 함수로 정의합니다. 이 경우, 'function() { console.log('Hello!'); }'가 적절한 메서드입니다.",
+    },
+    {
+      questionText: "다음 코드에서 빈 칸에 들어갈 수 있는 메서드는 무엇인가요?",
+      code: `
+      const student = {
+        name: 'Kim',
+        greet: ______
+      }
+    
+      console.log(student.greet());
+      `,
+      answerOptions: [
+        "function() { return 'Hello!'; }",
+        "'Hello!'",
+        "function() { console.log('Hello!'); }",
+        "greet()",
+      ],
+      answer: "function() { return 'Hello!'; }",
+      explanation:
+        "자바스크립트에서 객체의 메서드는 함수로 정의합니다. 여기서는 greet 메서드의 반환 값을 콘솔에 출력하려 하므로, 'function() { return 'Hello!'; }'가 적절한 메서드입니다.",
+    },
+    {
+      questionText:
+        "다음 코드에서 빈 칸에 들어갈 수 있는 프로토타입 메서드는 무엇인가요?",
+      code: `
+      function Student(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+    
+      Student.prototype.______ = function() {
+        return this.name;
+      }
+    
+      const student = new Student('Kim', 20);
+      console.log(student.getName());
+      `,
+      answerOptions: ["getName", "name", "getAge", "age"],
+      answer: "getName",
+      explanation:
+        "자바스크립트에서 프로토타입 메서드는 'prototype' 속성을 사용하여 정의합니다. 여기서는 getName 메서드를 호출하려 하므로, 'getName'이 적절한 메서드 이름입니다.",
+    },
+    {
+      questionText:
+        "다음 코드에서 빈 칸에 들어갈 수 있는 객체의 메서드는 무엇인가요?",
+      code: `
+      const student = {
+        name: 'Kim',
+        greet: ______
+      }
+    
+      student.greet();
+      `,
+      answerOptions: [
+        "'Hello!'",
+        "'greet()'",
+        "function() { console.log('Hello!'); }",
+        "greet: 'Hello!'",
+      ],
+      answer: "function() { console.log('Hello!'); }",
+      explanation:
+        "자바스크립트에서 객체의 메서드는 함수로 정의합니다. 이 경우, 'function() { console.log('Hello!'); }'가 적절한 메서드입니다.",
+    },
+    {
+      questionText:
+        "다음 코드에서 빈 칸에 들어갈 수 있는 객체의 속성을 작성하세요.",
+      code: `
+      const car = {
+        make: 'Toyota',
+        model: 'Camry',
+        year: 2020,
+        ______
+      }
+    
+      console.log(car.color);
+      `,
+      answerOptions: [
+        "color: 'red'",
+        "color: 2020",
+        "Toyota: 'color'",
+        "color: 'Camry'",
+      ],
+      answer: "color: 'red'",
+      explanation:
+        "자바스크립트에서 객체의 속성은 '키: 값' 형태로 정의합니다. 여기서는 'color' 속성을 콘솔에 출력하려 하므로, 'color: 'red''가 적절한 속성입니다.",
     },
   ];
 

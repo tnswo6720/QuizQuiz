@@ -164,6 +164,76 @@ const Quiz = () => {
         }
       `,
     },
+    {
+      questionText:
+        "React에서 백엔드 서버로부터 데이터를 요청하기 위해 어떤 패키지를 사용할 수 있을까요?",
+      code: "",
+      answerOptions: ["axios", "express", "mongoose", "bcrypt"],
+      answer: "axios",
+      explanation:
+        "React에서 백엔드 서버로부터 데이터를 요청하기 위해 axios 패키지를 사용할 수 있습니다. axios는 Promise를 기반으로 하는 HTTP 클라이언트 라이브러리로, 브라우저와 Node.js에서 모두 사용할 수 있습니다.",
+      explanationCode: `
+        import axios from 'axios';
+      
+        axios.get('/posts')
+          .then(response => {
+            console.log(response.data);
+          });
+      `,
+    },
+    {
+      questionText:
+        "React에서 useEffect 훅을 사용하여 백엔드 서버로부터 데이터를 요청하는 방법은 무엇일까요?",
+      code: "",
+      answerOptions: [
+        "useEffect 함수 내부에서 데이터를 요청한다.",
+        "useEffect 함수 외부에서 데이터를 요청한다.",
+        "useEffect 함수를 사용하지 않고 데이터를 요청한다.",
+        "useEffect 함수의 의존성 배열에 데이터를 요청하는 함수를 넣는다.",
+      ],
+      answer: "useEffect 함수 내부에서 데이터를 요청한다.",
+      explanation:
+        "React에서 useEffect 훅을 사용하여 백엔드 서버로부터 데이터를 요청하는 방법은 useEffect 함수 내부에서 데이터를 요청하는 것입니다. 이렇게 하면 컴포넌트가 마운트되거나 업데이트될 때마다 데이터를 요청할 수 있습니다.",
+      explanationCode: `
+        import React, { useEffect } from 'react';
+        import axios from 'axios';
+      
+        function Component() {
+          useEffect(() => {
+            axios.get('/posts')
+              .then(response => {
+                console.log(response.data);
+              });
+          }, []);
+      
+          return <div>Component</div>;
+        }
+      `,
+    },
+    {
+      questionText: "다음 Nest.js 코드의 기능은 무엇인가요?",
+      code: `
+        @Get(':id')
+        getPost(@Param('id') id: string) {
+          return posts.find((post) => post.id === +id);
+        }
+      `,
+      answerOptions: [
+        "id값을 통해 특정 post를 삭제한다.",
+        "id값을 통해 특정 post를 수정한다.",
+        "id값을 통해 특정 post를 가져온다.",
+        "id값을 통해 특정 post를 생성한다.",
+      ],
+      answer: "id값을 통해 특정 post를 가져온다.",
+      explanation:
+        "위 코드는 '@Get' 데코레이터와 함께 사용된 'getPost' 메소드를 정의하고 있습니다. 이 메소드는 URL의 'id' 파라미터를 받아, 이 id에 해당하는 post를 찾아 반환합니다. 여기서 '+id'는 문자열 id를 숫자로 변환한 것입니다. 따라서 이 코드는 id값을 통해 특정 post를 가져오는 기능을 수행합니다.",
+      explanationCode: `
+        @Get(':id')
+        getPost(@Param('id') id: string) {
+          return posts.find((post) => post.id === +id); // id에 해당하는 post를 반환
+        }
+      `,
+    },
 
     // 추가 문제를 넣을 수 있습니다.
   ];
@@ -175,8 +245,15 @@ const Quiz = () => {
   const [isCorrect, setIsCorrect] = useState(null);
 
   useEffect(() => {
-    setQuestions(shuffleArray(initialQuestions));
+    const shuffledQuestions = shuffleArray(initialQuestions).map(
+      (question) => ({
+        ...question,
+        answerOptions: shuffleArray(question.answerOptions),
+      })
+    );
+    setQuestions(shuffledQuestions);
   }, []);
+
   const shuffleArray = (array) => {
     let currentIndex = array.length;
     let temporaryValue;

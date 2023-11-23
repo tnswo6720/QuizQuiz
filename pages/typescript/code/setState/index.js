@@ -5,130 +5,110 @@ const Quiz = () => {
     // 여기에 문제를 추가합니다...
     {
       questionText:
-        "Nest.js에서 특정 id를 가진 post를 가져오는 코드를 작성하려고 합니다. 만약 해당 id를 가진 post가 존재하지 않을 때, NotFoundException을 발생시키려면 어떻게 해야 할까요?",
+        "다음 React 함수형 컴포넌트에서 빈칸에 들어갈 적절한 코드는 무엇일까요? 이 코드는 count 상태값을 1 증가시키는 기능을 합니다.",
       code: `
-        @Get(':id')
-        getPost(@Param('id') id: string) {
-          const post = posts.find((post) => post.id === +id);
-          if (______) { // 여기에 무엇을 써야할까요?
-            throw new NotFoundException();
-          }
-          return post;
+        function Counter() {
+          const [count, setCount] = React.useState(0);
+    
+          const incrementCount = () => {
+            setCount(______);
+          };
+    
+          return (
+            <div>
+              <p>Count: {count}</p>
+              <button onClick={incrementCount}>Increment</button>
+            </div>
+          );
         }
       `,
       answerOptions: [
-        "!post",
-        "post === undefined",
-        "post === null",
-        "post === ''",
+        "count + 1",
+        "++count",
+        "(count) => count + 1",
+        "(count) => ++count",
       ],
-      answer: "!post",
+      answer: "count + 1",
       explanation:
-        "JavaScript에서는 null, undefined, NaN, 빈 문자열(''), 0, -0, false 등을 'falsy' 값이라고 합니다. 이런 값들은 불린 연산자를 통해 false로 취급됩니다. 따라서 만약 'post'가 undefined(즉, 찾지 못했다면), '!post'는 true가 되어 이 if문이 실행됩니다.",
-      explanationCode: `
-        @Get(':id')
-        getPost(@Param('id') id: string) {
-          const post = posts.find((post) => post.id === +id);
-          if (!post) { // 'post'가 undefined일 경우, '!post'는 true가 됩니다.
-            throw new NotFoundException();
-          }
-          return post;
-        }
-      `,
+        "React의 useState 훅에서 상태를 업데이트할 때는 상태 설정 함수(setCount)에 직접 새로운 상태값을 전달합니다. 따라서 'count + 1'이 적절한 코드입니다. 이 코드는 count 상태값을 1 증가시키는 기능을 합니다.",
     },
     {
       questionText:
-        "Nest.js에서 HTTP 요청 본문(body)에서 'author', 'title', 'content'라는 키를 가진 데이터를 각각 `author`, `title`, `content`라는 파라미터에 할당하는 코드를 작성하려고 합니다. 이를 수행하는 코드를 작성하려면 빈 칸에 어떤 것을 입력해야 할까요?",
+        "다음 React 함수형 컴포넌트에서 빈칸에 들어갈 적절한 코드는 무엇일까요? 이 코드는 입력 필드의 값을 상태로 관리하는 기능을 합니다.",
       code: `
-        @Post()
-        postPosts(
-          @(_____)('author') author: string,
-          @(_____)('title') title: string,
-          @(_____)('content') content: string,
-        ) {
-          const post: PostModel = {
-            id: posts[posts.length - 1].id + 1,
-            author,
-            title,
-            content,
-            likeCount: 0,
-            commentCount: 0,
+        function TextInput() {
+          const [text, setText] = React.useState('');
+    
+          const handleChange = (event) => {
+            setText(______);
           };
     
-          posts = [...posts, post];
-          return post;
+          return (
+            <div>
+              <input type="text" value={text} onChange={handleChange} />
+              <p>Text: {text}</p>
+            </div>
+          );
         }
-      `,
-      answerOptions: ["Request", "Body", "Param", "Query"],
-      answer: "Body",
-      explanation:
-        "Nest.js에서 @Body() 데코레이터는 HTTP 요청 본문에서 특정 속성을 가져오는 역할을 합니다. 이를 통해 클라이언트가 보낸 데이터를 쉽게 추출하여 사용할 수 있습니다. 따라서 'author', 'title', 'content'라는 키를 가진 데이터를 각각 `author`, `title`, `content` 파라미터에 할당하기 위해서는 @Body() 데코레이터를 사용해야 합니다.",
-      explanationCode: `
-        @Post()
-        postPosts(
-          @Body('author') author: string,
-          @Body('title') title: string,
-          @Body('content') content: string,
-        ) {
-          const post: PostModel = {
-            id: posts[posts.length - 1].id + 1,
-            author,
-            title,
-            content,
-            likeCount: 0,
-            commentCount: 0,
-          };
-    
-          posts = [...posts, post];
-          return post;
-        }
-      `,
-    },
-
-    {
-      questionText:
-        "@Put 데코레이터와 관련된 설명 중 옳지 않은 것은 무엇인가요?",
-      code: `
-      @Put(':id')
-      putPost(
-        @Param('id') id: string,
-        @Body('author') author?: string,
-        @Body('title') title?: string,
-        @Body('content') content?: string,
-      ) {
-        const post = posts.find((post) => post.id === +id);
-    
-        if (!post) {
-          throw new NotFoundException();
-        }
-    
-        if (author) {
-          post.author = author;
-        }
-    
-        if (title) {
-          post.title = title;
-        }
-    
-        if (content) {
-          post.content = content;
-        }
-    
-        posts = posts.map((prevPost) => (prevPost.id === +id ? post : prevPost));
-    
-        return post;
-      }
       `,
       answerOptions: [
-        "@Put 데코레이터는 HTTP PUT 요청을 처리하는 메서드를 정의하는데 사용됩니다.",
-        "HTTP PUT 메서드는 기존 리소스의 전체를 교체하는데 사용됩니다.",
-        "@Put(':id')는 id 파라미터를 사용해 특정 리소스를 식별합니다.",
-        "@Body 데코레이터는 요청 본문에서 특정 프로퍼티를 가져오는데 사용되지 않습니다.",
+        "event",
+        "event.target",
+        "event.value",
+        "event.target.value",
       ],
-      answer:
-        "@Body 데코레이터는 요청 본문에서 특정 프로퍼티를 가져오는데 사용되지 않습니다.",
+      answer: "event.target.value",
       explanation:
-        "@Body 데코레이터는 요청 본문에서 특정 프로퍼티를 가져오는데 사용됩니다. 이를 통해 클라이언트가 보낸 데이터를 서버에서 사용할 수 있습니다.",
+        "React에서 이벤트 핸들러 내에서 입력 필드의 값을 가져오려면 'event.target.value'를 사용합니다. 따라서 'setText(event.target.value)'가 적절한 코드입니다. 이 코드는 입력 필드의 값을 text 상태로 설정하는 기능을 합니다.",
+    },
+    {
+      questionText:
+        "다음 React 함수형 컴포넌트에서 빈칸에 들어갈 적절한 코드는 무엇일까요? 이 코드는 count 상태값을 2배로 증가시키는 기능을 합니다.",
+      code: `
+        function Counter() {
+          const [count, setCount] = React.useState(1);
+    
+          const doubleCount = () => {
+            setCount(______);
+          };
+    
+          return (
+            <div>
+              <p>Count: {count}</p>
+              <button onClick={doubleCount}>Double</button>
+            </div>
+          );
+        }
+      `,
+      answerOptions: [
+        "count * 2",
+        "count + count",
+        "(count) => count * 2",
+        "(count) => count + count",
+      ],
+      answer: "count * 2",
+      explanation:
+        "React의 useState 훅에서 상태를 업데이트할 때는 상태 설정 함수(setCount)에 직접 새로운 상태값을 전달합니다. 따라서 'count * 2'가 적절한 코드입니다. 이 코드는 count 상태값을 2배로 증가시키는 기능을 합니다.",
+    },
+    {
+      questionText:
+        "다음 스타일드 컴포넌트에서 빈칸에 들어갈 적절한 코드는 무엇일까요? 이 코드는 props의 isActive 값에 따라 버튼의 글씨색을 변경하는 기능을 합니다.",
+      code: `
+        import styled from 'styled-components';
+    
+        export const BlueButton = styled.button\`
+          color: '$'{(props) => ______};
+        \`;
+      `,
+      answerOptions: [
+        '"blue"',
+        'props.isActive ? "blue" : "red"',
+        'props.isActive && "blue"',
+        "props.isActive",
+      ],
+      answer: 'props.isActive ? "blue" : "red"',
+      explanation:
+        "스타일드 컴포넌트에서는 함수를 이용하여 props에 따라 동적으로 CSS 속성값을 결정할 수 있습니다. 따라서 'props.isActive ? \"blue\" : \"red\"'가 적절한 코드입니다. 이 코드는 props의 isActive 값에 따라 버튼의 글씨색을 'blue' 또는 'red'로 변경하는 기능을 합니다.",
     },
   ];
 
@@ -176,7 +156,7 @@ const Quiz = () => {
 
   const handleSubmit = () => {
     const userAnswers = userAnswer.split(",");
-    const correctAnswers = questions[currentQuestion].answer.split(",");
+    const correctAnswers = String(questions[currentQuestion].answer).split(",");
 
     if (userAnswers.length !== correctAnswers.length) {
       setIsCorrect(false);
@@ -291,9 +271,3 @@ const Quiz = () => {
 };
 
 export default Quiz;
-
-// 기본 문법:
-// 변수와 상수
-// 데이터 타입
-// 연산자
-// 제어문 (if, for, while 등)

@@ -1,0 +1,3 @@
+background-repeat
+
+이미지 반복

@@ -20,7 +20,7 @@
     "**/*.ts",
     "**/*.tsx",
     "pages/quiz/index.js",
-    "pages/typescript/code/index.js"
+    "pages/typescript/code/total/index.js"
   ],
   "exclude": ["node_modules"]
 }
