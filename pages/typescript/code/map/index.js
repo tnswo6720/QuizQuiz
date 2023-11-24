@@ -80,6 +80,61 @@ const Quiz = () => {
       explanation:
         "우리는 useQuery 훅을 이용하여 GraphQL 서버에서 데이터를 요청하고, 이를 data 상수에 할당했습니다. 따라서 화면에 데이터를 출력하기 위해선 'data'를 사용해야 합니다.",
     },
+    {
+      questionText:
+        "다음 코드에서 `deleteBoard` 함수는 어떤 역할을 하는지, 그리고 `refetchQueries` 옵션의 역할은 무엇인지 작성하시오.",
+      code: `
+    const onClickDelete = (event) => {
+      ______({
+        variables: {
+          number: Number(event.target.id),
+        },
+        ______: [{ query: FETCH_BOARDS }],
+      });
+    };
+      `,
+      answerOptions: [
+        "deleteBoard",
+        "refetchQueries",
+        "updateBoard",
+        "fetchBoards",
+      ],
+      answer: ["deleteBoard", "refetchQueries"],
+      explanation:
+        "`deleteBoard` 함수는 주어진 게시글 번호에 해당하는 게시글을 삭제하는 역할을 하고, `refetchQueries` 옵션은 삭제 후에 원래의 쿼리를 다시 실행하여 최신 데이터로 UI를 갱신하는 역할을 합니다.",
+    },
+    {
+      questionText:
+        "React에서 `key` 속성의 역할과 중요성을 설명하고, 왜 `index`를 `key`로 사용하는 것이 권장되지 않는지 설명하시오.",
+      code: `
+    {data?.fetchBoards.map((el, index) => (
+      <div key={______}> {/* 이 부분 */}
+        {/* ... */}
+      </div>
+    ))}
+      `,
+      answerOptions: ["el.number", "index", "el.title", "el.contents"],
+      answer: "el.number",
+      explanation:
+        "`key` 속성은 React가 요소를 식별하고 렌더링 성능을 최적화하는 데 사용됩니다. 리스트의 요소가 변경, 추가, 삭제될 때 `key` 속성을 통해 React는 어떤 요소를 변경, 추가, 삭제해야 하는지 쉽게 알 수 있습니다. 그러나 `index`를 `key`로 사용하면 요소의 순서가 변경될 때 `key` 값도 변경되므로, React는 변경된 `key`를 갖는 요소를 새 요소로 간주하고 불필요하게 렌더링을 수행하게 됩니다. 따라서 가능한 한 요소의 내용이나 속성을 기반으로 한 고유한 `key` 값을 사용하는 것이 권장됩니다.",
+    },
+    {
+      questionText:
+        "React의 `Fragment`는 무엇이며, 어떤 상황에서 사용하면 좋은지, 그리고 `Fragment`에 `key`를 부여하는 방법은 무엇인지 설명하시오.",
+      code: `
+    import { ______ } from "react";
+    
+    {data?.fetchBoards.map((el, index) => (
+      <______ key={index}> {/* 이 부분 */}
+        {/* ... */}
+      </______>
+    ))}
+      `,
+      answerOptions: ["Fragment", "div", "Component", "Element"],
+      answer: "Fragment",
+      explanation:
+        "`Fragment`는 여러 요소를 그룹화하고 추가적인 노드를 DOM에 추가하지 않는 React의 기능입니다. 따라서 `<div>`를 사용하여 감싸면서 추가적인 DOM 노드를 생성하고 싶지 않은 경우에 사용하면 좋습니다. `Fragment`에 `key`를 부여하려면 `<Fragment key={value}>`와 같이 사용할 수 있습니다.",
+    },
   ];
 
   const [questions, setQuestions] = useState([]);

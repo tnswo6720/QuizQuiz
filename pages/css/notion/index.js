@@ -329,8 +329,15 @@ const Quiz = () => {
   const [isCorrect, setIsCorrect] = useState(null);
 
   useEffect(() => {
-    setQuestions(shuffleArray(initialQuestions));
+    const shuffledQuestions = shuffleArray(initialQuestions).map(
+      (question) => ({
+        ...question,
+        answerOptions: shuffleArray(question.answerOptions),
+      })
+    );
+    setQuestions(shuffledQuestions);
   }, []);
+
   const shuffleArray = (array) => {
     let currentIndex = array.length;
     let temporaryValue;

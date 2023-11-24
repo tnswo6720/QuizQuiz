@@ -4,32 +4,42 @@ const Quiz = () => {
   const initialQuestions = [
     // 여기에 문제를 추가합니다...
     {
-      questionText: "CSS에서 요소의 배경색을 변경하는 속성은 무엇인가요?",
-      code: `
-      div {
-        ______: red;
-      }
-      `,
+      questionText:
+        "다음 중 자바스크립트에서 'let' 키워드의 특징으로 옳지 않은 것은 무엇인가요?",
+      code: "",
       answerOptions: [
-        "color",
-        "background-color",
-        "border-color",
-        "text-color",
+        "'let'으로 선언된 변수는 재할당이 가능하다.",
+        "'let'으로 선언된 변수는 블록 범위(block scope)를 가진다.",
+        "'let'으로 선언된 변수는 호이스팅(hoisting)에 영향을 받지 않는다.",
+        "'let'으로 선언된 변수는 해당 범위에서만 사용할 수 있다.",
       ],
-      answer: "background-color",
+      answer:
+        "'let'으로 선언된 변수는 호이스팅(hoisting)에 영향을 받지 않는다.",
       explanation:
-        "CSS에서 요소의 배경색을 변경하려면 'background-color' 속성을 사용합니다. 이 속성에 색상 값을 지정하면 해당 요소의 배경색이 변경됩니다.",
+        "'let'으로 선언된 변수는 호이스팅에 영향을 받지만, 초기화 이전에 접근할 수 없는 '임시 사각 지대(TDZ)'가 존재합니다.",
+      explanationCode: `console.log(x); // ReferenceError: x is not defined
+      let x = 5;`,
     },
+
+    // 추가 문제를 넣을 수 있습니다.
   ];
 
   const [questions, setQuestions] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [userAnswer, setUserAnswer] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isCorrect, setIsCorrect] = useState(null);
 
   useEffect(() => {
-    setQuestions(shuffleArray(initialQuestions));
+    const shuffledQuestions = shuffleArray(initialQuestions).map(
+      (question) => ({
+        ...question,
+        answerOptions: shuffleArray(question.answerOptions),
+      })
+    );
+    setQuestions(shuffledQuestions);
   }, []);
+
   const shuffleArray = (array) => {
     let currentIndex = array.length;
     let temporaryValue;
@@ -47,9 +57,9 @@ const Quiz = () => {
   };
 
   const handleSubmit = () => {
+    setIsCorrect(userAnswer === questions[currentQuestion].answer);
     setIsSubmitted(true);
   };
-
   const handleNext = () => {
     setCurrentQuestion(currentQuestion + 1);
     setUserAnswer("");
@@ -78,25 +88,18 @@ const Quiz = () => {
             />
             <button onClick={handleSubmit}>제출</button>
           </div>
-
           {isSubmitted && (
             <div className="explanation-section">
               <h2>정답 설명</h2>
-              <p>
-                {userAnswer === questions[currentQuestion].answer ? (
-                  <>
-                    정답입니다!
-                    <br />
-                    {questions[currentQuestion].explanation}
-                  </>
-                ) : (
-                  <>
-                    틀렸습니다.
-                    <br />
-                    {questions[currentQuestion].explanation}
-                  </>
-                )}
-              </p>
+              <p>{isCorrect ? "정답입니다!" : "틀렸습니다."}</p>
+              {questions[currentQuestion].explanation
+                .split(/(.{20}[^\s]*)\s+/)
+                .filter(Boolean)
+                .map((sentence, index) => (
+                  <p key={index}>{sentence}</p>
+                ))}
+              <pre>{questions[currentQuestion].explanationCode}</pre>{" "}
+              {/* 설명에 대한 예시 코드를 보여줍니다. */}
               {currentQuestion < questions.length - 1 && (
                 <button onClick={handleNext}>다음 문제</button>
               )}
