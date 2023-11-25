@@ -8,6 +8,8 @@ const QuizTypePage = () => {
   const router = useRouter();
   const { topic } = router.query;
 
+  const [currentTopic, setCurrentTopic] = useState(topic); // 모달 내부에서 선택된 주제
+
   const quizSubTypes = [
     {
       name: "빈칸 뚫기",
@@ -26,8 +28,7 @@ const QuizTypePage = () => {
     },
     // ...
   ];
-
-  const [isModalOpen, setIsModalOpen] = useState(false); // 모달 창 열림/닫힘 상태
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -37,15 +38,27 @@ const QuizTypePage = () => {
     setIsModalOpen(false);
   };
 
-  const quizList = [
+  const javascriptQuizList = [
+    // 자바스크립트 퀴즈 리스트
     { id: "array", title: "array", author: "배열 퀴즈" },
     { id: "object", title: "object", author: "오브젝트" },
     { id: "function", title: "function", author: "함수" },
     { id: "event", title: "array", author: "이벤트 처리" },
     { id: "promise", title: "object", author: "동기화와 비동기화" },
     { id: "basic", title: "function", author: "기초 개념" },
-    // ...
   ];
+
+  const typescriptQuizList = [
+    // 타입스크립트 퀴즈 리스트
+    { id: "board", title: "array", author: "게시판 만들기" },
+    { id: "Routing", title: "object", author: "라우팅" },
+    { id: "map", title: "function", author: "맵 함수" },
+    { id: "setState", title: "array", author: "데이터 임시저장" },
+  ];
+
+  // 현재 선택된 주제에 따른 퀴즈 리스트
+  const quizList =
+    currentTopic === "javascript" ? javascriptQuizList : typescriptQuizList;
 
   useEffect(() => {
     const handleEsc = (event) => {
@@ -60,7 +73,6 @@ const QuizTypePage = () => {
       window.removeEventListener("keydown", handleEsc);
     };
   }, []);
-
   return (
     <Styles.QuizTypeContainer>
       <Styles.QuizTypeHeader>{topic} 퀴즈 유형 선택</Styles.QuizTypeHeader>
@@ -82,9 +94,15 @@ const QuizTypePage = () => {
         <>
           <Styles.Overlay onClick={closeModal} />
           <Styles.QuizModal>
+            <button onClick={() => setCurrentTopic("javascript")}>
+              자바스크립트
+            </button>
+            <button onClick={() => setCurrentTopic("typescript")}>
+              타입스크립트
+            </button>
             {quizList.map((quiz) => (
               <div key={quiz.id}>
-                <Link href={`/javascript/code/${quiz.id}`}>
+                <Link href={`/${currentTopic}/code/${quiz.id}`}>
                   <a>
                     <h2>{quiz.title}</h2>
                   </a>
