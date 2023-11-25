@@ -231,25 +231,7 @@ const Quiz = () => {
         router.push('/section05/05-05-dynamic-routing-board-mutation-moved/' + 'result.createBoard.number'); // 새로운 페이지로 이동한다.
       `,
     },
-    {
-      questionText:
-        "다음 중 'useRouter' 훅에 대한 설명으로 옳지 않은 것은 무엇인가요?",
-      code: "",
-      answerOptions: [
-        "'useRouter'는 Next.js의 라우팅을 위한 훅으로, 현재 라우터 객체를 반환한다.",
-        "'useRouter'를 사용하면 라우터의 속성이나 메소드에 접근할 수 있다.",
-        "'useRouter'의 'push' 메소드를 이용하여 프로그래매틱 라우팅을 할 수 있다.",
-        "'useRouter'는 서버 사이드 렌더링(SSR)에서 사용할 수 없다.",
-      ],
-      answer: "'useRouter'는 서버 사이드 렌더링(SSR)에서 사용할 수 없다.",
-      explanation:
-        "'useRouter' 훅은 클라이언트 사이드에서 뿐만 아니라 서버 사이드에서도 사용할 수 있습니다. Next.js는 서버 사이드 렌더링(SSR)을 지원하므로, 'useRouter'는 서버 사이드에서도 현재 라우터 객체에 접근할 수 있게 해줍니다.",
-      explanationCode: `
-        // 이 코드는 실제 실행되지 않으며, 설명을 위한 예시 코드입니다.
-        const router = useRouter(); // useRouter 훅 사용
-        console.log(router.pathname); // 서버 사이드에서도 라우터 객체에 접근 가능
-      `,
-    },
+
     {
       questionText:
         "다음 중 'export'와 'export default'의 차이에 대한 설명으로 옳지 않은 것은 무엇인가요?",

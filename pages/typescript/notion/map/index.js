@@ -104,27 +104,51 @@ const onClickDelete = (event) => {
     },
     {
       questionText:
-        "React의 `Fragment`는 무엇이며, 어떤 상황에서 사용하면 좋은지, 그리고 `Fragment`에 `key`를 부여하는 방법은 무엇인지 설명하시오.",
+        "React의 `Fragment`는 무엇이며, 어떤 상황에서 사용하면 좋은지 설명하시오.",
       code: `
-import { Fragment } from "react";
-
-{data?.fetchBoards.map((el, index) => (
-  <Fragment key={index}> {/* 이 부분 */}
-    {/* ... */}
-  </Fragment>
-))}
+    import { Fragment } from "react";
+    
+    {data?.fetchBoards.map((el, index) => (
+      <Fragment key={index}>
+        {/* ... */}
+      </Fragment>
+    ))}
       `,
       answerOptions: [
-        "`Fragment`는 여러 요소를 그룹화하는데 사용되며, 추가적인 노드를 DOM에 추가하지 않는다. 따라서 리스트나 테이블 등에서 여러 요소를 그룹화할 때 사용하면 좋다. `Fragment`에 `key`를 부여하려면 `<Fragment key={value}>`와 같이 사용한다.",
-        "`Fragment`는 단일 요소를 그룹화하는데 사용되며, 추가적인 노드를 DOM에 추가하지 않는다. 따라서 리스트나 테이블 등에서 단일 요소를 그룹화할 때 사용하면 좋다. `Fragment`에 `key`를 부여하려면 `<Fragment key={value}>`와 같이 사용한다.",
-        "`Fragment`는 여러 요소를 그룹화하는데 사용되며, 추가적인 노드를 DOM에 추가한다. 따라서 리스트나 테이블 등에서 여러 요소를 그룹화할 때 사용하면 좋다. `Fragment`에 `key`를 부여하려면 `<Fragment key={value}>`와 같이 사용한다.",
-        "`Fragment`는 단일 요소를 그룹화하는데 사용되며, 추가적인 노드를 DOM에 추가한다. 따라서 리스트나 테이블 등에서 단일 요소를 그룹화할 때 사용하면 좋다. `Fragment`에 `key`를 부여하려면 `<Fragment key={value}>`와 같이 사용한다.",
+        "`Fragment`는 여러 요소를 그룹화하는데 사용되며, 추가적인 노드를 DOM에 추가하지 않는다. 따라서 리스트나 테이블 등에서 여러 요소를 그룹화할 때 사용하면 좋다.",
+        "`Fragment`는 단일 요소를 그룹화하는데 사용되며, 추가적인 노드를 DOM에 추가하지 않는다. 따라서 리스트나 테이블 등에서 단일 요소를 그룹화할 때 사용하면 좋다.",
+        "`Fragment`는 여러 요소를 그룹화하는데 사용되며, 추가적인 노드를 DOM에 추가한다. 따라서 리스트나 테이블 등에서 여러 요소를 그룹화할 때 사용하면 좋다.",
+        "`Fragment`는 단일 요소를 그룹화하는데 사용되며, 추가적인 노드를 DOM에 추가한다. 따라서 리스트나 테이블 등에서 단일 요소를 그룹화할 때 사용하면 좋다.",
       ],
       answer:
-        "`Fragment`는 여러 요소를 그룹화하는데 사용되며, 추가적인 노드를 DOM에 추가하지 않는다. 따라서 리스트나 테이블 등에서 여러 요소를 그룹화할 때 사용하면 좋다. `Fragment`에 `key`를 부여하려면 `<Fragment key={value}>`와 같이 사용한다.",
+        "`Fragment`는 여러 요소를 그룹화하는데 사용되며, 추가적인 노드를 DOM에 추가하지 않는다. 따라서 리스트나 테이블 등에서 여러 요소를 그룹화할 때 사용하면 좋다.",
       explanation:
-        "`Fragment`는 여러 요소를 그룹화하고 추가적인 노드를 DOM에 추가하지 않는 React의 기능입니다. 따라서 `<div>`를 사용하여 감싸면서 추가적인 DOM 노드를 생성하고 싶지 않은 경우에 사용하면 좋습니다. `Fragment`에 `key`를 부여하려면 `<Fragment key={value}>`와 같이 사용할 수 있습니다.",
+        "`Fragment`는 여러 요소를 그룹화하고 추가적인 노드를 DOM에 추가하지 않는 React의 기능입니다. 따라서 `<div>`를 사용하여 감싸면서 추가적인 DOM 노드를 생성하고 싶지 않은 경우에 사용하면 좋습니다.",
     },
+    {
+      questionText:
+        "React의 `Fragment`에 `key`를 부여하는 방법은 무엇인지 설명하시오.",
+      code: `
+    import { Fragment } from "react";
+    
+    {data?.fetchBoards.map((el, index) => (
+      <Fragment key={index}>
+        {/* ... */}
+      </Fragment>
+    ))}
+      `,
+      answerOptions: [
+        "`Fragment`에 `key`를 부여하려면 `<Fragment key={value}>`와 같이 사용한다.",
+        "`Fragment`에 `key`를 부여하려면 `<Fragment value={key}>`와 같이 사용한다.",
+        "`Fragment`에 `key`를 부여하려면 `<Fragment key={key}>`와 같이 사용한다.",
+        "`Fragment`에 `key`를 부여하려면 `<Fragment value={value}>`와 같이 사용한다.",
+      ],
+      answer:
+        "`Fragment`에 `key`를 부여하려면 `<Fragment key={value}>`와 같이 사용한다.",
+      explanation:
+        "`Fragment`에 `key`를 부여하려면 `<Fragment key={value}>`와 같이 사용할 수 있습니다. `key`는 React가 어떤 항목을 변경, 추가 또는 삭제할지 식별하는 것을 돕습니다.",
+    },
+
     // 기존의 문제들...
   ];
 

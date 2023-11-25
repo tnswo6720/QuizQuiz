@@ -5,103 +5,84 @@ const Quiz = () => {
     // 여기에 문제를 추가합니다...
     {
       questionText:
-        "다음 중 자바스크립트에서 '상수'를 선언하는 키워드는 무엇일까요?",
+        "HTML 문서에서 직접 태그에 스타일을 적용하는 방식은 무엇인가요?",
       code: `
-      _____ PI = 3.141592;
+      <p ______="color: red;">This is a paragraph.</p>
       `,
-      answerOptions: ["let", "var", "const", "if"],
-      answer: "const",
+      answerOptions: ["class", "id", "style", "src"],
+      answer: "style",
       explanation:
-        "'const'는 상수를 선언하는 키워드입니다. 한번 선언하고 값이 할당된 상수는 재할당을 통해 값을 변경할 수 없습니다.",
-    },
-
-    {
-      questionText: "다음 코드의 출력 결과는 무엇일까요?",
-      code: `
-      const a = 5;
-      const b = '5';
-    
-      console.log(a == b);
-      console.log(a === b);
-      `,
-      answerOptions: [
-        "true, true",
-        "true, false",
-        "false, true",
-        "false, false",
-      ],
-      answer: "true, false",
-      explanation:
-        "자바스크립트에서 '==' 연산자는 값만을 비교하므로, 숫자 5와 문자열 '5'는 같다고 판단합니다. 반면 '===' 연산자는 값 뿐만 아니라 타입까지 비교하므로, 숫자 5와 문자열 '5'는 다르다고 판단합니다.",
-    },
-    {
-      questionText: "다음 코드의 출력 결과는 무엇일까요?",
-      code: `
-      for (var i = 0; i < 5; i++) {
-        setTimeout(function() {
-          console.log(i);
-        }, 1000);
-      }
-      `,
-      answerOptions: [
-        "0 1 2 3 4",
-        "5 5 5 5 5",
-        "1 2 3 4 5",
-        "undefined undefined undefined undefined undefined",
-      ],
-      answer: "5 5 5 5 5",
-      explanation:
-        "변수 i는 'var' 키워드로 선언되었으므로, 함수 스코프를 가집니다. 따라서 setTimeout 함수가 실행될 때 i는 이미 5가 되어있어, '5 5 5 5 5'가 출력됩니다.",
+        "HTML 태그에 직접 스타일을 적용하는 방식을 '인라인 스타일'이라고 합니다. 'style' 속성을 사용하면 해당 태그에 직접 CSS 코드를 작성할 수 있습니다.",
     },
     {
       questionText:
-        "다음 중 자바스크립트에서 '배열'을 선언하는 올바른 방법은 무엇일까요?",
+        "HTML 문서의 <head> 부분에 CSS 코드를 작성하는 방식은 무엇인가요?",
       code: `
-      const arr = _____;
+      <head>
+        <______>
+          p {
+            color: blue;
+          }
+        </______>
+      </head>
       `,
-      answerOptions: ["{}", "[]", "()", "||"],
-      answer: "[]",
-      explanation: "자바스크립트에서 배열은 대괄호([])를 사용하여 선언합니다.",
+      answerOptions: ["link", "script", "style", "meta"],
+      answer: "style",
+      explanation:
+        "HTML 문서의 <head> 부분에 <style> 태그를 사용해 CSS 코드를 작성하는 방식을 '내부 스타일 시트'라고 합니다.",
     },
     {
-      questionText: "다음 코드의 출력 결과는 무엇일까요?",
+      questionText: "HTML 문서에서 외부 CSS 파일을 불러오는 방식은 무엇인가요?",
       code: `
-      let x = 10;
-      x += 5;
-      console.log(x);
+      <head>
+        <______ href="styles.css">
+      </head>
       `,
-      answerOptions: ["15", "105", "5", "10"],
-      answer: "15",
+      answerOptions: ["script", "style", "link", "meta"],
+      answer: "link",
       explanation:
-        "'+=' 연산자는 현재 변수의 값에 주어진 값을 더하고 결과를 해당 변수에 할당하는 역할을 합니다. 따라서, x의 값은 10 + 5인 15가 됩니다.",
+        "<link> 태그를 사용하여 외부 CSS 파일을 불러오는 방식을 '외부 스타일 시트'라고 합니다. 'href' 속성에 CSS 파일의 경로를 지정합니다.",
     },
     {
       questionText:
-        "다음 중 자바스크립트에서 '객체'의 name 프로퍼티에 접근하는 올바른 방법은 무엇일까요?",
+        "HTML 문서에서 특정 태그에만 직접 스타일을 적용하는 방식을 무엇이라고 하나요?",
       code: `
-      const obj = {
-        name: 'John',
-        age: 30
-      };
-    
-      console.log(obj._____);
+      <div ______="background: yellow;">This is a div element.</div>
       `,
-      answerOptions: ["name", "[name]", "{name}", "(name)"],
-      answer: "name",
+      answerOptions: ["class", "id", "style", "href"],
+      answer: "style",
       explanation:
-        "자바스크립트에서 객체의 프로퍼티에 접근하기 위해서는 점 표기법을 사용할 수 있습니다. 따라서 'obj.name'이 올바른 방법입니다.",
+        "HTML 태그에 직접 스타일을 적용하는 방식을 '인라인 스타일'이라고 합니다. 'style' 속성을 사용하여 해당 태그에만 CSS 코드를 작성할 수 있습니다.",
     },
     {
-      questionText: "다음 코드의 출력 결과는 무엇일까요?",
+      questionText:
+        "HTML 문서 내에서 <style> 태그를 사용하여 CSS 코드를 작성하는 방식을 무엇이라고 하나요?",
       code: `
-      const arr = [1, 2, 3];
-      arr.push(4);
-      console.log(arr);
+      <head>
+        <______>
+          body {
+            background: blue;
+          }
+        </______>
+      </head>
       `,
-      answerOptions: ["[1, 2, 3, 4]", "[1, 2, 3]", "[4, 1, 2, 3]", "4"],
-      answer: "[1, 2, 3, 4]",
+      answerOptions: ["link", "script", "style", "meta"],
+      answer: "style",
       explanation:
-        "'push' 메소드는 배열의 끝에 새 요소를 추가합니다. 따라서, arr 배열은 [1, 2, 3, 4]가 됩니다.",
+        "HTML 문서의 <head> 부분에 <style> 태그를 사용하여 CSS 코드를 작성하는 방식을 '내부 스타일 시트'라고 합니다.",
+    },
+    {
+      questionText:
+        "HTML 문서에서 외부 CSS 파일을 불러와 스타일을 적용하는 방식을 무엇이라고 하나요?",
+      code: `
+      <head>
+        <______ href="styles.css">
+      </head>
+      `,
+      answerOptions: ["script", "style", "link", "meta"],
+      answer: "link",
+      explanation:
+        "<link> 태그를 사용하여 외부 CSS 파일을 불러오는 방식을 '외부 스타일 시트'라고 합니다. 'href' 속성에 CSS 파일의 경로를 지정합니다.",
     },
   ];
 
