@@ -6,7 +6,7 @@ const QuizPage = () => {
   const router = useRouter();
 
   const allTopics = [
-    { name: "코딩", image: "/coding.jpg" },
+    { name: "coding", image: "/coding.jpg" },
     { name: "역사", image: "/history.jpg" },
     { name: "법률", image: "raw.jpg" },
     // 추가 주제들...
@@ -16,7 +16,7 @@ const QuizPage = () => {
   const [search, setSearch] = useState("");
 
   const goToQuizDetail = (topic) => {
-    router.push(`/quizDetail/${topic.name}`);
+    router.push(`/coding`);
   };
 
   const handleSearch = (e) => {

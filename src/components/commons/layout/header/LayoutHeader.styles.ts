@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   height: 50px;
-  background-color: lightgoldenrodyellow;
+  background-color: #e0f7fa; // 파스텔 톤의 하늘색으로 변경
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -39,6 +39,8 @@ export const InnerLogo = styled.div`
 
 export const InnerButton = styled.span`
   margin: 10px;
-  color: #5729ff;
+  color: white;
   cursor: pointer;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); // 텍스트에 그림자 효과 추가
+  background-color: #e0f7fa; // 파스텔 톤의 하늘색으로 배경색 변경
 `;

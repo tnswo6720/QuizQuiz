@@ -57,7 +57,7 @@ const Quiz = () => {
       answerOptions: ["values", "keys", "entries", "forEach"],
       answer: "values",
       explanation:
-        "배열의 각 요소에 대한 반복자를 생성하는 'values' 메서드가 적절합니다.",
+        "배열의 각 요소에 대한 반복자를 생성하는 'values' 메서드가 적절합니다. 반복자(Iterator)는 '반복 가능한 객체'를 통해 순차적으로 접근하는 패턴입니다",
     },
     {
       questionText:
