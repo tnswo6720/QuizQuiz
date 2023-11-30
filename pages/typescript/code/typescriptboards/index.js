@@ -5,110 +5,149 @@ const Quiz = () => {
     // 여기에 문제를 추가합니다...
     {
       questionText:
-        "다음 React 함수형 컴포넌트에서 빈칸에 들어갈 적절한 코드는 무엇일까요? 이 코드는 count 상태값을 1 증가시키는 기능을 합니다.",
+        "타입스크립트에서, 이벤트 핸들러 함수의 매개변수 타입을 지정하는 방법은 무엇인가요?",
       code: `
-        function Counter() {
-          const [count, setCount] = React.useState(0);
+      import { useState } from "react";
+      import type { ChangeEvent } from "react";
     
-          const incrementCount = () => {
-            setCount(______);
-          };
+      export default function BoardWrite() {
+        const [writer, setWriter] = useState("");
     
-          return (
-            <div>
-              <p>Count: {count}</p>
-              <button onClick={incrementCount}>Increment</button>
-            </div>
-          );
-        }
+        const onChangeWriter = ______ {
+          setWriter(event.target.value);
+        };
+    
+        return (
+          <div>
+            <input onChange={onChangeWriter} />
+          </div>
+        );
+      }
       `,
       answerOptions: [
-        "count + 1",
-        "++count",
-        "(count) => count + 1",
-        "(count) => ++count",
+        "(event) =>",
+        "(event: ChangeEvent<HTMLInputElement>) =>",
+        "(event: Event) =>",
+        "(event: InputEvent) =>",
       ],
-      answer: "count + 1",
+      answer: "(event: ChangeEvent<HTMLInputElement>) =>",
       explanation:
-        "React의 useState 훅에서 상태를 업데이트할 때는 상태 설정 함수(setCount)에 직접 새로운 상태값을 전달합니다. 따라서 'count + 1'이 적절한 코드입니다. 이 코드는 count 상태값을 1 증가시키는 기능을 합니다.",
+        "타입스크립트에서는 이벤트 핸들러 함수의 매개변수에 타입을 지정해야 합니다. 입력 이벤트의 경우 'ChangeEvent<HTMLInputElement>' 타입을 사용합니다.",
     },
     {
       questionText:
-        "다음 React 함수형 컴포넌트에서 빈칸에 들어갈 적절한 코드는 무엇일까요? 이 코드는 입력 필드의 값을 상태로 관리하는 기능을 합니다.",
+        "타입스크립트에서, 함수의 반환 타입을 지정하는 방법은 무엇인가요?",
       code: `
-        function TextInput() {
-          const [text, setText] = React.useState('');
+      import { useMutation } from "@apollo/client";
+      import { 나의그래프큐엘셋팅 } from "./BoardWrite.queries";
+      import { useRouter } from "next/router";
+      import { useState } from "react";
     
-          const handleChange = (event) => {
-            setText(______);
-          };
+      export default function BoardWrite() {
+        const router = useRouter();
+        const [writer, setWriter] = useState("");
+        const [나의함수] = useMutation(나의그래프큐엘셋팅);
     
-          return (
-            <div>
-              <input type="text" value={text} onChange={handleChange} />
-              <p>Text: {text}</p>
-            </div>
-          );
-        }
+        const onClickSubmit = async ______ {
+          const result = await 나의함수({
+            variables: {
+              writer: writer
+            },
+          });
+          router.push(\`/section09/09-04-boards/\${result.data.createBoard.number}\`);
+        };
+    
+        return (
+          <div>
+            <button onClick={onClickSubmit}>Submit</button>
+          </div>
+        );
+      }
       `,
       answerOptions: [
-        "event",
-        "event.target",
-        "event.value",
-        "event.target.value",
+        "(): void =>",
+        "(): Promise<void> =>",
+        "(): Promise<any> =>",
+        "(): any =>",
       ],
-      answer: "event.target.value",
+      answer: "(): Promise<void> =>",
       explanation:
-        "React에서 이벤트 핸들러 내에서 입력 필드의 값을 가져오려면 'event.target.value'를 사용합니다. 따라서 'setText(event.target.value)'가 적절한 코드입니다. 이 코드는 입력 필드의 값을 text 상태로 설정하는 기능을 합니다.",
+        "타입스크립트에서는 함수의 반환 타입을 지정해야 합니다. 비동기 함수의 경우, 반환 타입은 'Promise'이며, 이 함수가 반환값을 가지지 않는 경우 'void'를 사용하여 'Promise<void>' 타입을 지정합니다.",
     },
     {
       questionText:
-        "다음 React 함수형 컴포넌트에서 빈칸에 들어갈 적절한 코드는 무엇일까요? 이 코드는 count 상태값을 2배로 증가시키는 기능을 합니다.",
+        "타입스크립트에서, 변수의 타입을 명시적으로 지정하는 방법은 무엇인가요?",
       code: `
-        function Counter() {
-          const [count, setCount] = React.useState(1);
+      import { useRouter } from "next/router";
+      import type { IMyvariables } from "./BoardWrite.types";
     
-          const doubleCount = () => {
-            setCount(______);
+      export default function BoardWrite() {
+        const router = useRouter();
+    
+        const onClickUpdate = async () => {
+          ______ myvariables = {
+            number: Number(router.query.number),
           };
     
-          return (
-            <div>
-              <p>Count: {count}</p>
-              <button onClick={doubleCount}>Double</button>
-            </div>
-          );
-        }
+          // ... 나머지 코드 ...
+        };
+    
+        // ... 나머지 코드 ...
+      }
       `,
       answerOptions: [
-        "count * 2",
-        "count + count",
-        "(count) => count * 2",
-        "(count) => count + count",
+        "let myvariables: IMyvariables =",
+        "const myvariables: IMyvariables =",
+        "var myvariables: IMyvariables =",
+        "myvariables: IMyvariables =",
       ],
-      answer: "count * 2",
+      answer: "const myvariables: IMyvariables =",
       explanation:
-        "React의 useState 훅에서 상태를 업데이트할 때는 상태 설정 함수(setCount)에 직접 새로운 상태값을 전달합니다. 따라서 'count * 2'가 적절한 코드입니다. 이 코드는 count 상태값을 2배로 증가시키는 기능을 합니다.",
+        "타입스크립트에서는 변수를 선언할 때 그 변수의 타입을 지정할 수 있습니다. 이때, '변수명: 타입 =' 형식을 사용하며, 변경되지 않는 변수는 'const'를 사용하여 선언합니다.",
     },
     {
       questionText:
-        "다음 스타일드 컴포넌트에서 빈칸에 들어갈 적절한 코드는 무엇일까요? 이 코드는 props의 isActive 값에 따라 버튼의 글씨색을 변경하는 기능을 합니다.",
+        "타입스크립트에서, 리액트 컴포넌트의 props의 타입을 지정하는 방법은 무엇인가요?",
       code: `
-        import styled from 'styled-components';
+      import { useState } from "react";
+      import type { IBoardWriteProps } from "./BoardWrite.types";
     
-        export const BlueButton = styled.button\`
-          color: '$'{(props) => ______};
-        \`;
+      export default function BoardWrite(______) {
+        const [writer, setWriter] = useState("");
+    
+        // ... 나머지 코드 ...
+      }
       `,
       answerOptions: [
-        '"blue"',
-        'props.isActive ? "blue" : "red"',
-        'props.isActive && "blue"',
-        "props.isActive",
+        "props: IBoardWriteProps",
+        "props = IBoardWriteProps",
+        "props == IBoardWriteProps",
+        "props === IBoardWriteProps",
       ],
-      answer: 'props.isActive ? "blue" : "red"',
+      answer: "props: IBoardWriteProps",
       explanation:
-        "스타일드 컴포넌트에서는 함수를 이용하여 props에 따라 동적으로 CSS 속성값을 결정할 수 있습니다. 따라서 'props.isActive ? \"blue\" : \"red\"'가 적절한 코드입니다. 이 코드는 props의 isActive 값에 따라 버튼의 글씨색을 'blue' 또는 'red'로 변경하는 기능을 합니다.",
+        "타입스크립트에서는 리액트 컴포넌트의 props의 타입을 지정할 수 있습니다. 이때, 'props: 타입' 형식을 사용합니다.",
+    },
+    {
+      questionText:
+        "타입스크립트에서 타입 별칭을 사용하는 올바른 방법은 무엇인가요?",
+      code: `
+      _____ IMyvariables = {
+        number: number,
+        writer?: string,
+        title?: string,
+        contents?: string,
+      };
+      `,
+      answerOptions: [
+        "alias IMyvariables =",
+        "type IMyvariables =",
+        "let IMyvariables =",
+        "const IMyvariables =",
+      ],
+      answer: "type IMyvariables =",
+      explanation:
+        "타입스크립트에서는 'type' 키워드를 사용하여 타입 별칭을 정의할 수 있습니다. 이 별칭은 새 타입을 만드는 것이 아니라 이미 있는 타입에 다른 이름을 붙이는 것입니다.",
     },
   ];
 
@@ -275,3 +314,25 @@ const Quiz = () => {
 };
 
 export default Quiz;
+
+// 타입스크립트의 개념
+
+// 타입스크립트 만드는 방법
+
+// 타입스크립트 설치 과정(yarn으로 되어 있을 경우)
+// 을 명령어 중심으로
+
+// dependencies와 devDependecies의 차이
+
+// tsconfig.json은 무엇인가?
+
+// nest.js에서 tsconfig.json이 빈칸일 때 감지를 해서 자동적으로 채워지게 하는 방법.
+// 그리고 해당 방법을 실행하기 위해 수행해야할 명령어
+
+// 타입스크립트의 용도는?
+
+// js를 tsx로 바꾸는 과정
+
+// jsx가 무엇인가
+
+// tsx와 ts의 차이점

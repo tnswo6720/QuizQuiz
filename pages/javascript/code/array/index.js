@@ -1,4 +1,13 @@
 import React, { useState, useEffect } from "react";
+import {
+  Wrapper,
+  Section,
+  Button,
+  TextArea,
+  OptionsContainer,
+  Sectionchoice,
+  InputAndButtonContainer,
+} from "./style.js";
 
 const Quiz = () => {
   const initialQuestions = [
@@ -244,37 +253,28 @@ const Quiz = () => {
   };
 
   return (
-    <div className="app">
+    <Wrapper>
       {questions.length > 0 ? (
         <>
-          <div className="question-section">
+          <Section className="question-section">
             <h2>문제</h2>
             <p>{questions[currentQuestion].questionText}</p>
             <pre>{questions[currentQuestion].code}</pre>
-          </div>
+          </Section>
 
-          <div className="answer-section">
-            <h2>선택지</h2>
-            {showHint ? (
-              questions[currentQuestion].answerOptions.map((option, index) => (
-                <p key={index}>{option}</p>
-              ))
-            ) : (
-              <button onClick={handleShowHint}>힌트 보기</button>
-            )}
-            <input
-              type="text"
-              value={userAnswer}
-              onChange={(e) => setUserAnswer(e.target.value)}
-              disabled={isSubmitted}
-            />
-            <button onClick={handleSubmit} disabled={!userAnswer}>
-              제출
-            </button>
-          </div>
+          {isSubmitted && !isCorrect && (
+            <Section className="code-input-section">
+              <h2>코드 입력</h2>
+              <TextArea
+                value={answerCode}
+                onChange={(e) => setAnswerCode(e.target.value)}
+              />
+              <Button onClick={handleNext}>다음 문제</Button>
+            </Section>
+          )}
 
           {isSubmitted && (
-            <div className="explanation-section">
+            <Section className="explanation-section">
               <h2>정답 설명</h2>
               <p>{isCorrect ? "정답입니다!" : "틀렸습니다."}</p>
               {questions[currentQuestion].explanation
@@ -283,26 +283,43 @@ const Quiz = () => {
                 .map((sentence, index) => (
                   <p key={index}>{sentence}</p>
                 ))}
-              {isCorrect && <button onClick={handleNext}>다음 문제</button>}
-            </div>
+              {isCorrect && <Button onClick={handleNext}>다음 문제</Button>}
+            </Section>
           )}
 
-          {isSubmitted && !isCorrect && (
-            <div className="code-input-section">
-              <h2>코드 입력</h2>
-              <textarea
-                value={answerCode}
-                onChange={(e) => setAnswerCode(e.target.value)}
-                style={{ width: "30%", height: "100px" }}
+          <Sectionchoice className="answer-section">
+            <h2>선택지</h2>
+            <OptionsContainer>
+              {showHint ? (
+                <div>
+                  {questions[currentQuestion].answerOptions.map(
+                    (option, index) => (
+                      <p key={index}>{option}</p>
+                    )
+                  )}
+                </div>
+              ) : null}
+              {!showHint ? (
+                <Button onClick={handleShowHint}>힌트 보기</Button>
+              ) : null}
+            </OptionsContainer>
+            <InputAndButtonContainer>
+              <input
+                type="text"
+                value={userAnswer}
+                onChange={(e) => setUserAnswer(e.target.value)}
+                disabled={isSubmitted}
               />
-              <button onClick={handleNext}>다음 문제</button>
-            </div>
-          )}
+              <Button onClick={handleSubmit} disabled={!userAnswer}>
+                제출
+              </Button>
+            </InputAndButtonContainer>
+          </Sectionchoice>
         </>
       ) : (
         <p>Loading...</p>
       )}
-    </div>
+    </Wrapper>
   );
 };
 
@@ -313,3 +330,5 @@ export default Quiz;
 // 데이터 타입
 // 연산자
 // 제어문 (if, for, while 등)
+
+// 반복자가 뭔지

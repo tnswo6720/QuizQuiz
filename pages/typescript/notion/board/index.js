@@ -159,6 +159,67 @@ const Quiz = () => {
       explanation:
         "`onChangeWriter` 함수는 사용자의 입력을 받아 게시글 작성자 정보를 업데이트하는 동작을 수행합니다.",
     },
+    {
+      questionText: "if문이 사용된 이유는 무엇일까요?",
+      code: `
+      const onClickUpdate = async () => {
+        const myvariables = {
+          number: Number(router.query.number),
+        };
+    
+        if (writer) {
+          myvariables.writer = writer;
+        }
+    
+        if (title) {
+          myvariables.title = title;
+        }
+    
+        if (contents) {
+          myvariables.contents = contents;
+        }
+    
+        const result = await updateBoard({
+          variables: myvariables,
+        });
+    
+        router.push(\`/section09/09-04-boards/\${result.data.updateBoard.number}\`);
+      };
+      `,
+      answerOptions: [
+        "모든 필드를 반드시 업데이트 하기 위해서",
+        "필드가 비어있는 경우, 기존의 값을 유지하기 위해서",
+        "오류를 방지하기 위해서",
+        "특별한 이유는 없다",
+      ],
+      answer: "필드가 비어있는 경우, 기존의 값을 유지하기 위해서",
+      explanation:
+        "onClickUpdate 함수에서 if문은 입력값이 있을 경우에만 해당 필드를 업데이트하는 역할을 합니다. 즉, 사용자가 특정 필드를 비워두었다면, 그 필드의 값은 업데이트되지 않고 기존의 값이 유지됩니다. 이렇게 함으로써, 사용자가 일부 필드만 수정하고 싶을 때 다른 필드의 값이 임의로 변경되는 것을 방지할 수 있습니다.",
+      explanationCode: "",
+    },
+
+    {
+      questionText:
+        "defaultValue 프로퍼티를 사용하여 input 필드의 초기 값을 설정할 때, 어떤 데이터를 사용하고 있나요?",
+      code: `
+      작성자:
+      <RedInput
+        type="text"
+        onChange={props.onChangeWriter}
+        defaultValue={props.data?.fetchBoard.writer}
+      />
+      `,
+      answerOptions: [
+        "props.data.writer",
+        "props.data.fetchBoard.writer",
+        "props.fetchBoard.writer",
+        "props.writer",
+      ],
+      answer: "props.data.fetchBoard.writer",
+      explanation:
+        "defaultValue 프로퍼티를 사용하여 input 필드의 초기 값을 설정할 때, props.data?.fetchBoard.writer 데이터를 사용하고 있습니다. 여기서 ?. 연산자는 Optional Chaining 연산자로, props.data가 null 또는 undefined인 경우 에러를 발생시키지 않고 undefined를 반환합니다.",
+      explanationCode: "",
+    },
 
     // 기존의 문제들...
   ];

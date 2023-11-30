@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Wrapper, Section, Button } from "./style.js";
 
 const Quiz = () => {
   const initialQuestions = [
@@ -106,24 +107,7 @@ const Quiz = () => {
       explanation:
         "NestJS에서 @Body() 데코레이터는 HTTP 요청 본문에서 특정 속성을 가져오는 역할을 합니다. 이를 통해 클라이언트가 보낸 데이터를 쉽게 추출하여 사용할 수 있습니다. 예시 코드에서는 'author', 'title', 'content'라는 키를 가진 요청 본문의 데이터를 각각 author, title, content 변수에 할당하고 있습니다.",
       explanationCode: `
-        @Post()
-        postPosts(
-          @Body('author') author: string,
-          @Body('title') title: string,
-          @Body('content') content: string,
-        ) {
-          const post: PostModel = {
-            id: posts[posts.length - 1].id + 1,
-            author,
-            title,
-            content,
-            likeCount: 0,
-            commentCount: 0,
-          };
-    
-          posts = [...posts, post];
-          return post;
-        }
+       
       `,
     },
     {
@@ -160,24 +144,6 @@ const Quiz = () => {
       explanation:
         "위의 코드에서 새로운 글이 게시되는 순서는 다음과 같습니다. 1) 먼저, @Body 데코레이터를 사용하여 전달된 author, title, content 정보를 바탕으로 새로운 PostModel 객체를 생성합니다. 2) 그리고 이 객체를 기존의 posts 배열에 추가합니다. 3) 마지막으로, 새로 생성된 post를 반환하여 사용자에게 응답을 보냅니다.",
       explanationCode: `
-        @Post()
-        postPosts(
-          @Body('author') author: string,
-          @Body('title') title: string,
-          @Body('content') content: string,
-        ) {
-          const post: PostModel = {
-            id: posts[posts.length - 1].id + 1,
-            author,
-            title,
-            content,
-            likeCount: 0,
-            commentCount: 0,
-          };
-    
-          posts = [...posts, post];
-          return post;
-        }
       `,
     },
     {
@@ -213,25 +179,7 @@ const Quiz = () => {
       explanation:
         "NestJS에서 @Post() 데코레이터는 해당 함수가 HTTP POST 요청을 처리하도록 지정합니다. 그리고 @Body() 데코레이터는 HTTP 요청 본문에서 특정 속성을 추출하는 역할을 합니다. 따라서 위 코드에서는 HTTP POST 요청을 처리하고, 요청 본문에서 'author', 'title', 'content'라는 키를 가진 데이터를 추출하여 새로운 포스트를 생성하는 역할을 하게 됩니다.",
       explanationCode: `
-        @Post()
-        postPosts(
-          @Body('author') author: string,
-          @Body('title') title: string,
-          @Body('content') content: string,
-        ) {
-          const post: PostModel = {
-            id: posts[posts.length - 1].id + 1,
-            author,
-            title,
-            content,
-            likeCount: 0,
-            commentCount: 0,
-          };
-    
-          posts = [...posts, post];
-          return post;
-        }
-      `,
+       `,
     },
     {
       questionText:
@@ -349,9 +297,15 @@ const Quiz = () => {
     return array;
   };
   const handleSubmit = () => {
-    setIsCorrect(userAnswer === questions[currentQuestion].answer);
+    const formattedUserAnswer = userAnswer.replace(/\s/g, "").toLowerCase();
+    const formattedCorrectAnswer = questions[currentQuestion].answer
+      .replace(/\s/g, "")
+      .toLowerCase();
+
+    setIsCorrect(formattedUserAnswer === formattedCorrectAnswer);
     setIsSubmitted(true);
   };
+
   const handleNext = () => {
     setCurrentQuestion(currentQuestion + 1);
     setUserAnswer("");
@@ -359,16 +313,33 @@ const Quiz = () => {
   };
 
   return (
-    <div className="app">
+    <Wrapper>
       {questions.length > 0 ? (
         <>
-          <div className="question-section">
+          <Section>
             <h2>문제</h2>
             <p>{questions[currentQuestion].questionText}</p>
             <pre>{questions[currentQuestion].code}</pre>
-          </div>
+          </Section>
 
-          <div className="answer-section">
+          {isSubmitted && (
+            <Section>
+              <h2>정답 설명</h2>
+              <p>{isCorrect ? "정답입니다!" : "틀렸습니다."}</p>
+              {questions[currentQuestion].explanation
+                .split(/(.{20}[^\s]*)\s+/)
+                .filter(Boolean)
+                .map((sentence, index) => (
+                  <p key={index}>{sentence}</p>
+                ))}
+              <pre>{questions[currentQuestion].explanationCode}</pre>
+              {currentQuestion < questions.length - 1 && (
+                <Button onClick={handleNext}>다음 문제</Button>
+              )}
+            </Section>
+          )}
+
+          <Section>
             <h2>선택지</h2>
             {questions[currentQuestion].answerOptions.map((option, index) => (
               <p key={index}>{option}</p>
@@ -378,30 +349,13 @@ const Quiz = () => {
               value={userAnswer}
               onChange={(e) => setUserAnswer(e.target.value)}
             />
-            <button onClick={handleSubmit}>제출</button>
-          </div>
-          {isSubmitted && (
-            <div className="explanation-section">
-              <h2>정답 설명</h2>
-              <p>{isCorrect ? "정답입니다!" : "틀렸습니다."}</p>
-              {questions[currentQuestion].explanation
-                .split(/(.{20}[^\s]*)\s+/)
-                .filter(Boolean)
-                .map((sentence, index) => (
-                  <p key={index}>{sentence}</p>
-                ))}
-              <pre>{questions[currentQuestion].explanationCode}</pre>{" "}
-              {/* 설명에 대한 예시 코드를 보여줍니다. */}
-              {currentQuestion < questions.length - 1 && (
-                <button onClick={handleNext}>다음 문제</button>
-              )}
-            </div>
-          )}
+            <Button onClick={handleSubmit}>제출</Button>
+          </Section>
         </>
       ) : (
         <p>Loading...</p>
       )}
-    </div>
+    </Wrapper>
   );
 };
 

@@ -180,14 +180,18 @@ const Quiz = () => {
   };
 
   const handleSubmit = () => {
-    const userAnswers = userAnswer.split(",");
-    const correctAnswers = String(questions[currentQuestion].answer).split(",");
+    const userAnswers = userAnswer
+      .split(",")
+      .map((ans) => ans.replace(/\s/g, "").toLowerCase()); // 콤마 뒤의 공백 제거 및 소문자로 변환
+    const correctAnswers = String(questions[currentQuestion].answer)
+      .split(",")
+      .map((ans) => ans.replace(/\s/g, "").toLowerCase()); // 콤마 뒤의 공백 제거 및 소문자로 변환
 
     if (userAnswers.length !== correctAnswers.length) {
       setIsCorrect(false);
     } else {
       const isAllCorrect = userAnswers.every((ans, index) => {
-        return ans.trim() === correctAnswers[index].trim();
+        return ans === correctAnswers[index];
       });
 
       setIsCorrect(isAllCorrect);

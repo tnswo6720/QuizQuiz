@@ -1,11 +1,20 @@
 import React, { useState, useEffect } from "react";
+import {
+  Wrapper,
+  Section,
+  Button,
+  TextArea,
+  OptionsContainer,
+  Sectionchoice,
+  InputAndButtonContainer,
+} from "./style.js";
 
 const Quiz = () => {
   const initialQuestions = [
     // 여기에 문제를 추가합니다...
     {
       questionText:
-        "다음 코드의 빈 칸에 들어갈 수 있는 자바스크립트 함수 선언 방법은?",
+        "자바스크립트에서 함수를 선언하는 방법 중 하나를 작성하세요.",
       code: `
       ______ myFunction() {
         console.log("Hello World!");
@@ -17,7 +26,8 @@ const Quiz = () => {
         "자바스크립트에서 함수를 선언하는 방법 중 하나는 'function' 키워드를 사용하는 것입니다.",
     },
     {
-      questionText: "다음 코드의 빈 칸에 들어갈 수 있는 화살표 함수는?",
+      questionText:
+        "자바스크립트에서 화살표 함수의 매개변수가 없을 때 적절한 코드를 작성하세요.",
       code: `
       let myFunction = ______ => console.log("Hello World!");
       `,
@@ -32,7 +42,8 @@ const Quiz = () => {
         "인자가 없는 화살표 함수를 선언할 때는 괄호 '()'를 사용합니다.",
     },
     {
-      questionText: "다음 코드의 빈 칸에 들어갈 수 있는 콜백 함수는?",
+      questionText:
+        "자바스크립트에서 map 함수를 사용할 때, 콜백 함수를 화살표 함수로 작성해보세요.",
       code: `
       let numbers = [1, 2, 3, 4, 5];
       numbers.map(______);
@@ -47,15 +58,13 @@ const Quiz = () => {
       explanation:
         "map 함수의 인자로 콜백 함수를 전달할 수 있고, 이 콜백 함수는 배열의 각 요소에 대해 한 번씩 실행됩니다.",
     },
-
     {
-      questionText:
-        "다음 코드의 빈 칸에 들어갈 수 있는 함수 호출 방법은 무엇인가요?",
+      questionText: "자바스크립트에서 함수를 호출하는 방법을 작성하세요.",
       code: `
       function myFunction() {
         console.log('Hello, World!');
       }
-
+    
       ______;
       `,
       answerOptions: ["myFunction()", "myFunction", "myFunction{}"],
@@ -65,7 +74,7 @@ const Quiz = () => {
     },
     {
       questionText:
-        "다음 코드의 빈 칸에 들어갈 수 있는 콜백 함수의 사용 방법은 무엇인가요?",
+        "콜백 함수를 인자로 받는 함수에서 콜백 함수를 어떻게 호출하는지 작성하세요.",
       code: `
       function myFunction(callback) {
         console.log('Hello, World!');
@@ -80,8 +89,7 @@ const Quiz = () => {
         "콜백 함수는 함수의 인자로 전달되며, 나중에 이벤트가 발생했을 때 실행되는 함수를 말합니다. 콜백 함수는 함수의 이름 뒤에 괄호 '()'를 붙여서 호출합니다. 이 경우, 'callback'은 함수 'myFunction'에 전달된 콜백 함수를 참조하므로 'callback()'으로 호출하면 전달받은 콜백 함수가 실행됩니다.",
     },
     {
-      questionText:
-        "다음 코드의 빈 칸에 들어갈 수 있는 자바스크립트 함수의 반환값은 무엇인가요?",
+      questionText: "자바스크립트에서 함수가 값을 반환하는 방법을 작성하세요.",
       code: `
       function myFunction() {
         let sum = 0;
@@ -100,7 +108,7 @@ const Quiz = () => {
     },
     {
       questionText:
-        "다음 코드의 빈 칸에 들어갈 수 있는 자바스크립트 화살표 함수는 무엇인가요?",
+        "자바스크립트에서 화살표 함수의 매개변수가 두 개일 때 적절한 코드를 작성하세요.",
       code: `
       const subtract = ______ => a - b;
     
@@ -110,6 +118,51 @@ const Quiz = () => {
       answer: "(a, b)",
       explanation:
         "화살표 함수에서 여러 개의 매개변수를 사용하려면, 괄호 안에 매개변수를 쉼표로 구분하여 넣어야 합니다.",
+    },
+    {
+      questionText:
+        "자바스크립트에서 함수 내부에서 다른 함수를 정의하고 호출하는 방법을 작성하세요.",
+      code: `
+      function outerFunction() {
+        ______ innerFunction() {
+          console.log('Hello, Inner Function!');
+        }
+    
+        ______;
+      }
+    
+      outerFunction();
+      `,
+      answerOptions: [
+        "function, innerFunction()",
+        "let, innerFunction",
+        "const, innerFunction()",
+        "var, innerFunction",
+      ],
+      answer: "function, innerFunction()",
+      explanation:
+        "자바스크립트에서 함수 내부에서 다른 함수를 정의하려면 'function' 키워드를 사용하고, 내부 함수를 호출하려면 함수 이름 뒤에 괄호 '()'를 붙여서 호출합니다.",
+    },
+    {
+      questionText:
+        "자바스크립트에서 함수를 객체의 메서드로 정의하는 방법을 작성하세요.",
+      code: `
+      let myObject = {
+        name: 'My Object',
+        ______
+      };
+    
+      myObject.myMethod();
+      `,
+      answerOptions: [
+        "myMethod: function() { console.log(this.name); }",
+        "myMethod() { console.log(this.name); }",
+        "myMethod: () => console.log(this.name)",
+        "myMethod = function() { console.log(this.name); }",
+      ],
+      answer: "myMethod: function() { console.log(this.name); }",
+      explanation:
+        "자바스크립트에서 객체의 메서드를 정의하려면 메서드 이름 뒤에 콜론 ':'을 붙이고 함수를 할당합니다. 이 경우, 'myMethod'는 객체 'myObject'의 메서드로 정의되며, 'this.name'은 'myObject'의 'name' 프로퍼티를 참조합니다.",
     },
   ];
 
@@ -209,37 +262,28 @@ const Quiz = () => {
   };
 
   return (
-    <div className="app">
+    <Wrapper>
       {questions.length > 0 ? (
         <>
-          <div className="question-section">
+          <Section className="question-section">
             <h2>문제</h2>
             <p>{questions[currentQuestion].questionText}</p>
             <pre>{questions[currentQuestion].code}</pre>
-          </div>
+          </Section>
 
-          <div className="answer-section">
-            <h2>선택지</h2>
-            {showHint ? (
-              questions[currentQuestion].answerOptions.map((option, index) => (
-                <p key={index}>{option}</p>
-              ))
-            ) : (
-              <button onClick={handleShowHint}>힌트 보기</button>
-            )}
-            <input
-              type="text"
-              value={userAnswer}
-              onChange={(e) => setUserAnswer(e.target.value)}
-              disabled={isSubmitted}
-            />
-            <button onClick={handleSubmit} disabled={!userAnswer}>
-              제출
-            </button>
-          </div>
+          {isSubmitted && !isCorrect && (
+            <Section className="code-input-section">
+              <h2>코드 입력</h2>
+              <TextArea
+                value={answerCode}
+                onChange={(e) => setAnswerCode(e.target.value)}
+              />
+              <Button onClick={handleNext}>다음 문제</Button>
+            </Section>
+          )}
 
           {isSubmitted && (
-            <div className="explanation-section">
+            <Section className="explanation-section">
               <h2>정답 설명</h2>
               <p>{isCorrect ? "정답입니다!" : "틀렸습니다."}</p>
               {questions[currentQuestion].explanation
@@ -248,26 +292,43 @@ const Quiz = () => {
                 .map((sentence, index) => (
                   <p key={index}>{sentence}</p>
                 ))}
-              {isCorrect && <button onClick={handleNext}>다음 문제</button>}
-            </div>
+              {isCorrect && <Button onClick={handleNext}>다음 문제</Button>}
+            </Section>
           )}
 
-          {isSubmitted && !isCorrect && (
-            <div className="code-input-section">
-              <h2>코드 입력</h2>
-              <textarea
-                value={answerCode}
-                onChange={(e) => setAnswerCode(e.target.value)}
-                style={{ width: "30%", height: "100px" }}
+          <Sectionchoice className="answer-section">
+            <h2>선택지</h2>
+            <OptionsContainer>
+              {showHint ? (
+                <div>
+                  {questions[currentQuestion].answerOptions.map(
+                    (option, index) => (
+                      <p key={index}>{option}</p>
+                    )
+                  )}
+                </div>
+              ) : null}
+              {!showHint ? (
+                <Button onClick={handleShowHint}>힌트 보기</Button>
+              ) : null}
+            </OptionsContainer>
+            <InputAndButtonContainer>
+              <input
+                type="text"
+                value={userAnswer}
+                onChange={(e) => setUserAnswer(e.target.value)}
+                disabled={isSubmitted}
               />
-              <button onClick={handleNext}>다음 문제</button>
-            </div>
-          )}
+              <Button onClick={handleSubmit} disabled={!userAnswer}>
+                제출
+              </Button>
+            </InputAndButtonContainer>
+          </Sectionchoice>
         </>
       ) : (
         <p>Loading...</p>
       )}
-    </div>
+    </Wrapper>
   );
 };
 

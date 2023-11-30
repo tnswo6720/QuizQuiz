@@ -3,112 +3,92 @@ import React, { useState, useEffect } from "react";
 const Quiz = () => {
   const initialQuestions = [
     // 여기에 문제를 추가합니다...
+    // 문제 1
     {
-      questionText:
-        "다음 React 함수형 컴포넌트에서 빈칸에 들어갈 적절한 코드는 무엇일까요? 이 코드는 count 상태값을 1 증가시키는 기능을 합니다.",
+      questionText: "데이터가 왜 초기화되는지 설명한 문장을 완성하세요.",
       code: `
-        function Counter() {
-          const [count, setCount] = React.useState(0);
-    
-          const incrementCount = () => {
-            setCount(______);
-          };
-    
-          return (
-            <div>
-              <p>Count: {count}</p>
-              <button onClick={incrementCount}>Increment</button>
-            </div>
-          );
-        }
-      `,
-      answerOptions: [
-        "count + 1",
-        "++count",
-        "(count) => count + 1",
-        "(count) => ++count",
-      ],
-      answer: "count + 1",
+  "RAM에 올라간 데이터는 프로그램이 ______ 되면 리셋된다"
+  `,
+      answer: "재시작",
       explanation:
-        "React의 useState 훅에서 상태를 업데이트할 때는 상태 설정 함수(setCount)에 직접 새로운 상태값을 전달합니다. 따라서 'count + 1'이 적절한 코드입니다. 이 코드는 count 상태값을 1 증가시키는 기능을 합니다.",
+        "RAM에 저장된 데이터는 전원을 끄거나 프로그램을 재시작하면 초기화됩니다. 이는 RAM이 휘발성 메모리여서 전원을 공급하지 않으면 정보를 유지할 수 없기 때문입니다.",
     },
+
+    // 문제 2
     {
-      questionText:
-        "다음 React 함수형 컴포넌트에서 빈칸에 들어갈 적절한 코드는 무엇일까요? 이 코드는 입력 필드의 값을 상태로 관리하는 기능을 합니다.",
+      questionText: "SQL에 대한 설명을 빈칸을 채워 완성하세요.",
       code: `
-        function TextInput() {
-          const [text, setText] = React.useState('');
-    
-          const handleChange = (event) => {
-            setText(______);
-          };
-    
-          return (
-            <div>
-              <input type="text" value={text} onChange={handleChange} />
-              <p>Text: {text}</p>
-            </div>
-          );
-        }
-      `,
-      answerOptions: [
-        "event",
-        "event.target",
-        "event.value",
-        "event.target.value",
-      ],
-      answer: "event.target.value",
+  "SQL은 ______로 구성되어 있고 정보를 담는 구조이다."
+  `,
+      answer: "테이블",
       explanation:
-        "React에서 이벤트 핸들러 내에서 입력 필드의 값을 가져오려면 'event.target.value'를 사용합니다. 따라서 'setText(event.target.value)'가 적절한 코드입니다. 이 코드는 입력 필드의 값을 text 상태로 설정하는 기능을 합니다.",
+        "SQL은 Structured Query Language의 약자로, 관계형 데이터베이스에서 데이터를 관리하기 위한 언어입니다. SQL에서 데이터는 '테이블'이라는 구조 안에 저장됩니다.",
     },
+
+    // 문제 3
     {
-      questionText:
-        "다음 React 함수형 컴포넌트에서 빈칸에 들어갈 적절한 코드는 무엇일까요? 이 코드는 count 상태값을 2배로 증가시키는 기능을 합니다.",
+      questionText: "UPDATE 문을 완성하세요.",
       code: `
-        function Counter() {
-          const [count, setCount] = React.useState(1);
-    
-          const doubleCount = () => {
-            setCount(______);
-          };
-    
-          return (
-            <div>
-              <p>Count: {count}</p>
-              <button onClick={doubleCount}>Double</button>
-            </div>
-          );
-        }
-      `,
-      answerOptions: [
-        "count * 2",
-        "count + count",
-        "(count) => count * 2",
-        "(count) => count + count",
-      ],
-      answer: "count * 2",
+  "UPDATE {table} SET ______ WHERE {condition}"
+  `,
+      answer: "{column}",
       explanation:
-        "React의 useState 훅에서 상태를 업데이트할 때는 상태 설정 함수(setCount)에 직접 새로운 상태값을 전달합니다. 따라서 'count * 2'가 적절한 코드입니다. 이 코드는 count 상태값을 2배로 증가시키는 기능을 합니다.",
+        "UPDATE 문은 SQL에서 데이터를 수정하는데 사용됩니다. 'SET' 다음에는 수정하고자 하는 컬럼과 그에 대응하는 새로운 값을 지정해야 합니다.",
     },
+
+    // 문제 4
+    {
+      questionText: "INSERT 문을 완성하세요.",
+      code: `
+  "INSERT INTO {table} ______ VALUES {value1, value2...}"
+  `,
+      answer: "{column1, column2 ...}",
+      explanation:
+        "INSERT 문은 SQL에서 새로운 데이터를 추가하는데 사용됩니다. 'INTO' 다음에는 데이터를 추가하려는 테이블을, 'VALUES' 앞에는 그 테이블의 컬럼을 지정해야 합니다.",
+    },
+    // 추가 문제 1
+    {
+      questionText: "RAM을 왜 사용하는지 설명한 문장을 완성하세요.",
+      code: `
+  "프로그램이 종료되더라도 데이터를 유지하려면 ______에 데이터를 작성해야한다."
+  `,
+      answer: "HDD/SSD",
+      explanation:
+        "RAM은 휘발성 메모리로, 전원을 끄면 저장된 모든 정보가 사라집니다. 따라서 프로그램이 종료되더라도 데이터를 유지하려면 비휘발성 메모리인 HDD나 SSD에 데이터를 저장해야 합니다.",
+    },
+
+    // 추가 문제 2
+    {
+      questionText: "DELETE 문을 완성하세요.",
+      code: `
+  "DELETE FROM {table} ______"
+  `,
+      answer: "WHERE {condition}",
+      explanation:
+        "DELETE 문은 SQL에서 특정 데이터를 삭제하는데 사용됩니다. 'FROM {table}' 다음에는 삭제하려는 데이터를 지정하는 조건문 'WHERE {condition}'을 작성해야 합니다.",
+    },
+
+    // 추가 문제 3
+    {
+      questionText: "SELECT 문을 완성하세요.",
+      code: `
+  "SELECT ______ FROM {table}"
+  `,
+      answer: "{column}",
+      explanation:
+        "SELECT 문은 SQL에서 데이터를 조회하는데 사용됩니다. 'SELECT' 다음에는 조회하려는 컬럼을, 'FROM' 다음에는 해당 컬럼이 속한 테이블을 지정해야 합니다.",
+    },
+
+    // 추가 문제 4
     {
       questionText:
-        "다음 스타일드 컴포넌트에서 빈칸에 들어갈 적절한 코드는 무엇일까요? 이 코드는 props의 isActive 값에 따라 버튼의 글씨색을 변경하는 기능을 합니다.",
+        "SELECT 문에서 특정 조건을 만족하는 데이터만 조회하려면 어떻게 해야 하나요?",
       code: `
-        import styled from 'styled-components';
-    
-        export const BlueButton = styled.button\`
-          color: '$'{(props) => ______};
-        \`;
-      `,
-      answerOptions: [
-        '"blue"',
-        'props.isActive ? "blue" : "red"',
-        'props.isActive && "blue"',
-        "props.isActive",
-      ],
-      answer: 'props.isActive ? "blue" : "red"',
+  "SELECT {column} FROM {table} ______"
+  `,
+      answer: "WHERE {condition}",
       explanation:
-        "스타일드 컴포넌트에서는 함수를 이용하여 props에 따라 동적으로 CSS 속성값을 결정할 수 있습니다. 따라서 'props.isActive ? \"blue\" : \"red\"'가 적절한 코드입니다. 이 코드는 props의 isActive 값에 따라 버튼의 글씨색을 'blue' 또는 'red'로 변경하는 기능을 합니다.",
+        "SELECT 문에서 특정 조건을 만족하는 데이터만 조회하려면 WHERE 절을 사용합니다. 'WHERE {condition}'을 통해 조회하려는 데이터가 만족해야 하는 조건을 지정할 수 있습니다.",
     },
   ];
 
@@ -155,18 +135,14 @@ const Quiz = () => {
   };
 
   const handleSubmit = () => {
-    const userAnswers = userAnswer
-      .split(",")
-      .map((ans) => ans.replace(/\s/g, "").toLowerCase()); // 콤마 뒤의 공백 제거 및 소문자로 변환
-    const correctAnswers = String(questions[currentQuestion].answer)
-      .split(",")
-      .map((ans) => ans.replace(/\s/g, "").toLowerCase()); // 콤마 뒤의 공백 제거 및 소문자로 변환
+    const userAnswers = userAnswer.split(",");
+    const correctAnswers = String(questions[currentQuestion].answer).split(",");
 
     if (userAnswers.length !== correctAnswers.length) {
       setIsCorrect(false);
     } else {
       const isAllCorrect = userAnswers.every((ans, index) => {
-        return ans === correctAnswers[index];
+        return ans.trim() === correctAnswers[index].trim();
       });
 
       setIsCorrect(isAllCorrect);
@@ -275,3 +251,38 @@ const Quiz = () => {
 };
 
 export default Quiz;
+
+// 데이터는 왜 초기화되는가?
+
+// HDD/SSD부터 RAM으로
+
+// RAM에 올라간 데이터는 프로그램이 재시작되면 리셋된다
+
+// 램을 왜 사용하는가?
+
+// 프로그램이 종료되더라도 데이터를 유지하려면 HDD/SSD에 데이터를 작성해야한다
+
+// SQL의 약자
+
+// SQL은 테이블로 구성되어 있고 정보를 담는 구조이다
+
+// 테이블의 두 가지 요소인 칼럼과 로우
+
+// Select
+
+// Select {column} From { table}
+
+// Update
+
+// UPDATE {table } SET{ column} WHERE { condition}
+
+// DELETE
+
+// DELETE FROM {table} WHERE {condition}
+
+// Insert
+
+// INSERT INTO {table} {column1, column2 ...}
+// VALUES {value1, value2...}
+
+// SQL 기본 개념에 대해서 내가 메모한 것을 바탕으로 문제를 만들어줘

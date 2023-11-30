@@ -1,4 +1,13 @@
 import React, { useState, useEffect } from "react";
+import {
+  Wrapper,
+  Section,
+  Button,
+  TextArea,
+  OptionsContainer,
+  Sectionchoice,
+  InputAndButtonContainer,
+} from "./style.js";
 
 const Quiz = () => {
   const initialQuestions = [
@@ -23,32 +32,10 @@ const Quiz = () => {
       ],
       answer: "gender: 'female'",
       explanation:
-        "자바스크립트에서 객체의 속성은 '키: 값' 형태로 정의합니다. 여기서는 'gender' 속성을 콘솔에 출력하려 하므로, 'gender: 'female''가 적절한 속성입니다.",
+        "여기서는 'gender' 속성을 콘솔에 출력하려 하므로, 'gender: 'female''가 적절한 속성입니다.",
     },
     {
-      questionText:
-        "다음 코드에서 빈 칸에 들어갈 수 있는 프로토타입 메서드는 무엇인가요?",
-      code: `
-      function Student(name, age) {
-        this.name = name;
-        this.age = age;
-      }
-    
-      Student.prototype.______ = function() {
-        return this.name;
-      }
-    
-      const student = new Student('Kim', 20);
-      console.log(student.getName());
-      `,
-      answerOptions: ["getName", "name", "getAge", "age"],
-      answer: "getName",
-      explanation:
-        "자바스크립트에서 프로토타입 메서드는 'prototype' 속성을 사용하여 정의합니다. 이 경우, 'getName'이 적절한 메서드 이름입니다.",
-    },
-    {
-      questionText:
-        "다음 코드에서 빈 칸에 들어갈 수 있는 객체의 메서드는 무엇인가요?",
+      questionText: "다음 코드에서 빈 칸에 들어갈 수 있는 메서드는 무엇인가요?",
       code: `
       const student = {
         name: 'Kim',
@@ -58,9 +45,9 @@ const Quiz = () => {
       student.greet();
       `,
       answerOptions: [
+        "function() { console.log('Hello!'); }",
         "'Hello!'",
         "'greet()'",
-        "function() { console.log('Hello!'); }",
         "greet: 'Hello!'",
       ],
       answer: "function() { console.log('Hello!'); }",
@@ -85,49 +72,7 @@ const Quiz = () => {
       ],
       answer: "function() { return 'Hello!'; }",
       explanation:
-        "자바스크립트에서 객체의 메서드는 함수로 정의합니다. 여기서는 greet 메서드의 반환 값을 콘솔에 출력하려 하므로, 'function() { return 'Hello!'; }'가 적절한 메서드입니다.",
-    },
-    {
-      questionText:
-        "다음 코드에서 빈 칸에 들어갈 수 있는 프로토타입 메서드는 무엇인가요?",
-      code: `
-      function Student(name, age) {
-        this.name = name;
-        this.age = age;
-      }
-    
-      Student.prototype.______ = function() {
-        return this.name;
-      }
-    
-      const student = new Student('Kim', 20);
-      console.log(student.getName());
-      `,
-      answerOptions: ["getName", "name", "getAge", "age"],
-      answer: "getName",
-      explanation:
-        "자바스크립트에서 프로토타입 메서드는 'prototype' 속성을 사용하여 정의합니다. 여기서는 getName 메서드를 호출하려 하므로, 'getName'이 적절한 메서드 이름입니다.",
-    },
-    {
-      questionText:
-        "다음 코드에서 빈 칸에 들어갈 수 있는 객체의 메서드는 무엇인가요?",
-      code: `
-      const student = {
-        name: 'Kim',
-        greet: ______
-      }
-    
-      student.greet();
-      `,
-      answerOptions: [
-        "'Hello!'",
-        "'greet()'",
-        "function() { console.log('Hello!'); }",
-        "greet: 'Hello!'",
-      ],
-      answer: "function() { console.log('Hello!'); }",
-      explanation:
-        "자바스크립트에서 객체의 메서드는 함수로 정의합니다. 이 경우, 'function() { console.log('Hello!'); }'가 적절한 메서드입니다.",
+        "여기서는 greet 메서드의 반환 값을 콘솔에 출력하려 하므로, 'function() { return 'Hello!'; }'가 적절한 메서드입니다.",
     },
     {
       questionText:
@@ -150,7 +95,73 @@ const Quiz = () => {
       ],
       answer: "color: 'red'",
       explanation:
-        "자바스크립트에서 객체의 속성은 '키: 값' 형태로 정의합니다. 여기서는 'color' 속성을 콘솔에 출력하려 하므로, 'color: 'red''가 적절한 속성입니다.",
+        "여기서는 'color' 속성을 콘솔에 출력하려 하므로, 'color: 'red''가 적절한 속성입니다.",
+    },
+    {
+      questionText:
+        "다음 코드에서 빈 칸에 들어갈 수 있는 프로토타입 메서드는 무엇인가요?",
+      code: `
+      function Student(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+    
+      Student.prototype.______ = function() {
+        return this.name;
+      }
+    
+      const student = new Student('Kim', 20);
+      console.log(student.getName());
+      `,
+      answerOptions: ["getName", "name", "getAge", "age"],
+      answer: "getName",
+      explanation:
+        "여기서는 getName 메서드를 호출하려 하므로, 'getName'이 적절한 메서드 이름입니다.",
+    },
+    {
+      questionText:
+        "다음 코드에서 빈 칸에 들어갈 수 있는 객체의 메서드는 무엇인가요?",
+      code: `
+      const teacher = {
+        name: 'Park',
+        subject: 'Math',
+        ______
+      }
+    
+      teacher.teach();
+      `,
+      answerOptions: [
+        "teach: function() { console.log('Teaching...'); }",
+        "'Teaching...'",
+        "function() { console.log('Teaching...'); }",
+        "teach()",
+      ],
+      answer: "teach: function() { console.log('Teaching...'); }",
+      explanation:
+        "자바스크립트에서 객체의 메서드는 함수로 정의합니다. 이 경우, 'teach: function() { console.log('Teaching...'); }'가 적절한 메서드입니다.",
+    },
+    {
+      questionText:
+        "다음 코드에서 빈 칸에 들어갈 수 있는 객체의 속성은 무엇인가요?",
+      code: `
+      const car = {
+        make: 'Toyota',
+        model: 'Camry',
+        year: 2020,
+        ______
+      }
+    
+      console.log(car.owner);
+      `,
+      answerOptions: [
+        "owner: 'Kim'",
+        "color: 'red'",
+        "Toyota: 'owner'",
+        "owner: 2020",
+      ],
+      answer: "owner: 'Kim'",
+      explanation:
+        "여기서는 'owner' 속성을 콘솔에 출력하려 하므로, 'owner: 'Kim''이 적절한 속성입니다.",
     },
   ];
 
@@ -250,37 +261,28 @@ const Quiz = () => {
   };
 
   return (
-    <div className="app">
+    <Wrapper>
       {questions.length > 0 ? (
         <>
-          <div className="question-section">
+          <Section className="question-section">
             <h2>문제</h2>
             <p>{questions[currentQuestion].questionText}</p>
             <pre>{questions[currentQuestion].code}</pre>
-          </div>
+          </Section>
 
-          <div className="answer-section">
-            <h2>선택지</h2>
-            {showHint ? (
-              questions[currentQuestion].answerOptions.map((option, index) => (
-                <p key={index}>{option}</p>
-              ))
-            ) : (
-              <button onClick={handleShowHint}>힌트 보기</button>
-            )}
-            <input
-              type="text"
-              value={userAnswer}
-              onChange={(e) => setUserAnswer(e.target.value)}
-              disabled={isSubmitted}
-            />
-            <button onClick={handleSubmit} disabled={!userAnswer}>
-              제출
-            </button>
-          </div>
+          {isSubmitted && !isCorrect && (
+            <Section className="code-input-section">
+              <h2>코드 입력</h2>
+              <TextArea
+                value={answerCode}
+                onChange={(e) => setAnswerCode(e.target.value)}
+              />
+              <Button onClick={handleNext}>다음 문제</Button>
+            </Section>
+          )}
 
           {isSubmitted && (
-            <div className="explanation-section">
+            <Section className="explanation-section">
               <h2>정답 설명</h2>
               <p>{isCorrect ? "정답입니다!" : "틀렸습니다."}</p>
               {questions[currentQuestion].explanation
@@ -289,29 +291,45 @@ const Quiz = () => {
                 .map((sentence, index) => (
                   <p key={index}>{sentence}</p>
                 ))}
-              {isCorrect && <button onClick={handleNext}>다음 문제</button>}
-            </div>
+              {isCorrect && <Button onClick={handleNext}>다음 문제</Button>}
+            </Section>
           )}
 
-          {isSubmitted && !isCorrect && (
-            <div className="code-input-section">
-              <h2>코드 입력</h2>
-              <textarea
-                value={answerCode}
-                onChange={(e) => setAnswerCode(e.target.value)}
-                style={{ width: "30%", height: "100px" }}
+          <Sectionchoice className="answer-section">
+            <h2>선택지</h2>
+            <OptionsContainer>
+              {showHint ? (
+                <div>
+                  {questions[currentQuestion].answerOptions.map(
+                    (option, index) => (
+                      <p key={index}>{option}</p>
+                    )
+                  )}
+                </div>
+              ) : null}
+              {!showHint ? (
+                <Button onClick={handleShowHint}>힌트 보기</Button>
+              ) : null}
+            </OptionsContainer>
+            <InputAndButtonContainer>
+              <input
+                type="text"
+                value={userAnswer}
+                onChange={(e) => setUserAnswer(e.target.value)}
+                disabled={isSubmitted}
               />
-              <button onClick={handleNext}>다음 문제</button>
-            </div>
-          )}
+              <Button onClick={handleSubmit} disabled={!userAnswer}>
+                제출
+              </Button>
+            </InputAndButtonContainer>
+          </Sectionchoice>
         </>
       ) : (
         <p>Loading...</p>
       )}
-    </div>
+    </Wrapper>
   );
 };
-
 export default Quiz;
 
 // 기본 문법:

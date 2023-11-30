@@ -148,16 +148,17 @@ const Quiz = () => {
       code: "",
       answerOptions: [
         "'const'로 선언된 변수는 재할당이 가능하다.",
-        "'const'로 선언된 변수는 값이 변경될 수 없다.",
+        "'const'로 선언된 변수는 재할당이 불가능하다.",
         "'const'로 선언된 변수는 값을 초기화하지 않아도 된다.",
         "'const'로 선언된 변수는 블록 범위(block scope)를 가지지 않는다.",
       ],
-      answer: "'const'로 선언된 변수는 값이 변경될 수 없다.",
+      answer: "'const'로 선언된 변수는 재할당이 불가능하다.",
       explanation:
-        "'const'로 선언된 변수는 한 번 할당된 값을 변경할 수 없습니다. 이는 재할당 뿐만 아니라 재선언도 불가능하다는 것을 의미합니다.",
+        "'const'로 선언된 변수는 한 번 할당된 값을 변경할 수 없습니다. 이는 재할당 뿐만 아니라 재선언도 불가능하다는 것을 의미합니다. 하지만, 'const'로 선언된 객체나 배열의 프로퍼티는 수정이 가능합니다. 이는 'const'가 변수 자체에 대한 재할당을 막지만, 객체나 배열의 내용에 대해서는 제한하지 않기 때문입니다.",
       explanationCode: `const x = 10;
       x = 20; // TypeError: Assignment to constant variable.`,
     },
+
     {
       questionText: "다음 코드의 출력 결과는 무엇일까요?",
       code: `console.log(10 > 9);

@@ -9,7 +9,7 @@ export default function LayoutHeader(): JSX.Element {
   };
 
   const onClickMoveToLogin = (): void => {
-    void router.push("/login");
+    void router.push("/coding");
   };
 
   const onClickMoveSignUp = (): void => {

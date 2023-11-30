@@ -54,23 +54,23 @@ const Quiz = () => {
       explanation:
         "HTML 태그에 직접 스타일을 적용하는 방식을 '인라인 스타일'이라고 합니다. 'style' 속성을 사용하여 해당 태그에만 CSS 코드를 작성할 수 있습니다.",
     },
-    {
-      questionText:
-        "HTML 문서 내에서 <style> 태그를 사용하여 CSS 코드를 작성하는 방식을 무엇이라고 하나요?",
-      code: `
-      <head>
-        <______>
-          body {
-            background: blue;
-          }
-        </______>
-      </head>
-      `,
-      answerOptions: ["link", "script", "style", "meta"],
-      answer: "style",
-      explanation:
-        "HTML 문서의 <head> 부분에 <style> 태그를 사용하여 CSS 코드를 작성하는 방식을 '내부 스타일 시트'라고 합니다.",
-    },
+    // {
+    //   questionText:
+    //     "HTML 문서 내에서 <style> 태그를 사용하여 CSS 코드를 작성하는 방식을 무엇이라고 하나요?",
+    //   code: `
+    //   <head>
+    //     <______>
+    //       body {
+    //         background: blue;
+    //       }
+    //     </______>
+    //   </head>
+    //   `,
+    //   answerOptions: ["link", "script", "style", "meta"],
+    //   answer: "내부 스타일 시트",
+    //   explanation:
+    //     "HTML 문서의 <head> 부분에 <style> 태그를 사용하여 CSS 코드를 작성하는 방식을 '내부 스타일 시트'라고 합니다.",
+    // },
     {
       questionText:
         "HTML 문서에서 외부 CSS 파일을 불러와 스타일을 적용하는 방식을 무엇이라고 하나요?",

@@ -83,9 +83,15 @@ const Quiz = () => {
   };
 
   const handleSubmit = () => {
-    setIsCorrect(userAnswer === questions[currentQuestion].answer);
+    const formattedUserAnswer = userAnswer.replace(/\s/g, "").toLowerCase();
+    const formattedCorrectAnswer = questions[currentQuestion].answer
+      .replace(/\s/g, "")
+      .toLowerCase();
+
+    setIsCorrect(formattedUserAnswer === formattedCorrectAnswer);
     setIsSubmitted(true);
   };
+
   const handleNext = () => {
     setCurrentQuestion(currentQuestion + 1);
     setUserAnswer("");

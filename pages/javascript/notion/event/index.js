@@ -3,42 +3,57 @@ import React, { useState, useEffect } from "react";
 const Quiz = () => {
   const initialQuestions = [
     // 여기에 문제를 추가합니다...
-    // 기존 initialQuestions 배열에 이어서 추가합니다.
     {
-      questionText: "CSS에서 텍스트 속성 중에 해당되지 않는 것은 무엇인가요?",
-      code: "",
-      answerOptions: ["color", "font-size", "text-align", "margin"],
-      answer: "margin",
-      explanation:
-        "CSS에서 'color', 'font-size', 'text-align'은 텍스트 속성입니다. 'margin'은 박스 모델의 속성으로, 텍스트 속성에는 해당되지 않습니다.",
-      explanationCode: "p { color: red; font-size: 16px; text-align: center; }",
-    },
-    {
-      questionText: "CSS에서 글꼴 속성 중에 해당되지 않는 것은 무엇인가요?",
-      code: "",
-      answerOptions: ["font-family", "font-size", "font-weight", "width"],
-      answer: "width",
-      explanation:
-        "CSS에서 'font-family', 'font-size', 'font-weight'은 글꼴 속성입니다. 'width'는 레이아웃 속성으로, 글꼴 속성에는 해당되지 않습니다.",
-      explanationCode:
-        "p { font-family: Arial, sans-serif; font-size: 16px; font-weight: bold; }",
-    },
-    {
-      questionText: "웹 글꼴의 장점은 무엇인가요?",
-      code: "",
+      questionText: "자바스크립트에서 이벤트 버블링이란 무엇을 의미하는가요?",
+      code: `
+        const btn = document.querySelector('button');
+        const div = document.querySelector('div');
+    
+        btn.addEventListener('click', function() {
+          console.log('Button clicked!');
+        });
+    
+        div.addEventListener('click', function() {
+          console.log('Div clicked!');
+        });
+      `,
       answerOptions: [
-        "사용자의 기기에 설치된 글꼴에 관계없이 웹사이트에서 동일한 글꼴을 보여줄 수 있다.",
-        "웹 글꼴을 사용하면 웹사이트의 로딩 속도가 빨라진다.",
-        "웹 글꼴을 사용하면 웹사이트의 보안이 강화된다.",
-        "웹 글꼴을 사용하면 웹사이트의 구조가 단순해진다.",
+        "하위 요소에서 발생한 이벤트가 상위 요소로 전파되는 현상",
+        "상위 요소에서 발생한 이벤트가 하위 요소로 전파되는 현상",
+        "이벤트가 동시에 두 개 이상의 요소에서 발생하는 현상",
+        "동일한 이벤트가 두 번 이상 발생하는 현상",
       ],
-      answer:
-        "사용자의 기기에 설치된 글꼴에 관계없이 웹사이트에서 동일한 글꼴을 보여줄 수 있다.",
+      answer: "하위 요소에서 발생한 이벤트가 상위 요소로 전파되는 현상",
       explanation:
-        "웹 글꼴의 가장 큰 장점은 사용자의 기기에 설치된 글꼴에 관계없이 웹사이트에서 동일한 글꼴을 보여줄 수 있다는 것입니다. 이를 통해 디자인의 일관성을 유지할 수 있습니다.",
-      explanationCode:
-        "@font-face { font-family: 'MyWebFont'; src: url('webfont.eot'); }",
+        "이벤트 버블링은 하위 요소에서 발생한 이벤트가 상위 요소로 전파되는 현상을 말합니다.",
     },
+    {
+      questionText: "자바스크립트에서 이벤트 캡쳐링이란 무엇을 의미하는가요?",
+      answerOptions: [
+        "하위 요소에서 발생한 이벤트가 상위 요소로 전파되는 현상",
+        "상위 요소에서 발생한 이벤트가 하위 요소로 전파되는 현상",
+        "이벤트가 동시에 두 개 이상의 요소에서 발생하는 현상",
+        "동일한 이벤트가 두 번 이상 발생하는 현상",
+      ],
+      answer: "상위 요소에서 발생한 이벤트가 하위 요소로 전파되는 현상",
+      explanation:
+        "이벤트 캡쳐링은 상위 요소에서 발생한 이벤트가 하위 요소로 전파되는 현상을 말합니다.",
+    },
+    {
+      questionText:
+        "자바스크립트에서 'addEventListener' 메서드의 세번째 인자로 'true'를 넘긴다면 어떤 현상이 발생하는가요?",
+      answerOptions: [
+        "이벤트 버블링이 발생한다",
+        "이벤트 캡쳐링이 발생한다",
+        "이벤트 전파가 중지된다",
+        "이벤트 핸들러가 여러 번 호출된다",
+      ],
+      answer: "이벤트 캡쳐링이 발생한다",
+      explanation:
+        "'addEventListener' 메서드의 세번째 인자로 'true'를 넘기면, 이벤트 캡쳐링이 발생합니다.",
+    },
+
+    // 추가 문제를 넣을 수 있습니다.
   ];
 
   const [questions, setQuestions] = useState([]);
@@ -72,16 +87,11 @@ const Quiz = () => {
 
     return array;
   };
-  const handleSubmit = () => {
-    const formattedUserAnswer = userAnswer.replace(/\s/g, "").toLowerCase();
-    const formattedCorrectAnswer = questions[currentQuestion].answer
-      .replace(/\s/g, "")
-      .toLowerCase();
 
-    setIsCorrect(formattedUserAnswer === formattedCorrectAnswer);
+  const handleSubmit = () => {
+    setIsCorrect(userAnswer === questions[currentQuestion].answer);
     setIsSubmitted(true);
   };
-
   const handleNext = () => {
     setCurrentQuestion(currentQuestion + 1);
     setUserAnswer("");
