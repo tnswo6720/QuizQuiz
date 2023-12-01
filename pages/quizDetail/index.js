@@ -30,33 +30,39 @@ const QuizPage = () => {
 
   return (
     <Styled.Container>
-      <Styled.Title>원하시는 퀴즈 주제를 선택해주세요!</Styled.Title>
-      <Styled.SearchInput
-        type="text"
-        value={search}
-        onChange={handleSearch}
-        placeholder="퀴즈 주제 검색"
-      />
+      <Styled.Content>
+        <Styled.Title>원하시는 퀴즈 주제를 선택해주세요!</Styled.Title>
+        <Styled.SearchInput
+          type="text"
+          value={search}
+          onChange={handleSearch}
+          placeholder="퀴즈 주제 검색"
+        />
+        {/* 검색창에 원하는 주제로 퀴즈를 검색하면 해당 퀴즈 버튼창이 뜨게 됩니다 */}
 
-      {/* 검색창에 원하는 주제로 퀴즈를 검색하면 해당 퀴즈 버튼창이 뜨게 됩니다 */}
+        <Styled.SubTitle>현재까지 업데이트된 퀴즈 주제들:</Styled.SubTitle>
+        <Styled.TopicList>
+          {allTopics.map((topic, index) => (
+            <Styled.TopicListItem key={index}>
+              {topic.name}
+            </Styled.TopicListItem>
+          ))}
+        </Styled.TopicList>
 
-      <h2>현재까지 업데이트된 퀴즈 주제들:</h2>
-      <ul>
-        {allTopics.map((topic, index) => (
-          <li key={index}>{topic.name}</li>
-        ))}
-      </ul>
-
-      <Styled.TopicContainer>
-        {topics.slice(0, 1).map((topic, index) => (
-          <Styled.TopicButton key={index} onClick={() => goToQuizDetail(topic)}>
-            <div>
-              <img src={topic.image} alt={topic.name} />
-              <p>{topic.name}</p>
-            </div>
-          </Styled.TopicButton>
-        ))}
-      </Styled.TopicContainer>
+        <Styled.TopicContainer>
+          {topics.slice(0, 1).map((topic, index) => (
+            <Styled.TopicButton
+              key={index}
+              onClick={() => goToQuizDetail(topic)}
+            >
+              <div>
+                <img src={topic.image} alt={topic.name} />
+                <p>{topic.name}</p>
+              </div>
+            </Styled.TopicButton>
+          ))}
+        </Styled.TopicContainer>
+      </Styled.Content>
     </Styled.Container>
   );
 };

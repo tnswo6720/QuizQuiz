@@ -4,20 +4,30 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 2rem;
+  height: 100vh;
+  background-color: #e0f7fa;
+`;
+
+export const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: white;
+  padding: 2rem;
+  border-radius: 15px;
+  width: 80%;
+  max-width: 800px;
 `;
 
 export const Title = styled.h1`
   font-size: 2rem;
-  color: #333;
+  color: #87ceeb;
   margin-bottom: 1rem;
+  // text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 `;
-
-// 폰트 크기를 2rem으로 설정,
-// 색상을 #333으로 설정
-// 제목 아래에 마진을 1rem으로 설정
-// 제목 아래의 요소와의 간격
 
 export const SearchInput = styled.input`
   width: 25%;
@@ -27,10 +37,6 @@ export const SearchInput = styled.input`
   border-radius: 4px;
 `;
 
-//  검색창의 너비를 100%로 설정,
-// 패딩과 마진을 적용.
-// 테두리의 색상과 둥근 모서리를 적용
-
 export const TopicContainer = styled.div`
   display: grid;
   width: 300px;
@@ -38,6 +44,8 @@ export const TopicContainer = styled.div`
   gap: 1rem;
   flex-wrap: wrap;
   margin-top: 1rem;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const TopicButton = styled.button`
@@ -48,13 +56,13 @@ export const TopicButton = styled.button`
   margin: 1rem;
   border: none;
   border-radius: 5px;
-  background-color: rgba(243, 229, 171, 0.2); /* 바닐라 색, 투명도 70% */
+  background-color: #b2ebf2;
   color: white;
   cursor: pointer;
 
   &:hover {
-    transform: scale(1.1); /* 스케일 10% 확대 */
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2); /* 그림자 추가 */
+    transform: scale(1.1);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
   }
 
   div {
@@ -81,4 +89,24 @@ export const TopicButton = styled.button`
     font-size: 1.5rem;
     font-weight: bold;
   }
+`;
+
+export const SubTitle = styled.h2`
+  font-size: 1.7rem;
+  color: #87ceeb;
+  margin-bottom: 1rem;
+  // text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+`;
+
+export const TopicList = styled.ul`
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 2rem;
+`;
+
+export const TopicListItem = styled.li`
+  font-size: 1.4rem;
+  color: #87ceeb;
+  // text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+  margin: 0.5rem 0;
 `;

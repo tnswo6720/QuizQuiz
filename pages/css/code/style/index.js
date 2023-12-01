@@ -1,4 +1,13 @@
 import React, { useState, useEffect } from "react";
+import {
+  Wrapper,
+  Section,
+  Button,
+  TextArea,
+  OptionsContainer,
+  Sectionchoice,
+  InputAndButtonContainer,
+} from "./style.js";
 
 const Quiz = () => {
   const initialQuestions = [
@@ -31,18 +40,7 @@ const Quiz = () => {
       explanation:
         "HTML 문서의 <head> 부분에 <style> 태그를 사용해 CSS 코드를 작성하는 방식을 '내부 스타일 시트'라고 합니다.",
     },
-    {
-      questionText: "HTML 문서에서 외부 CSS 파일을 불러오는 방식은 무엇인가요?",
-      code: `
-      <head>
-        <______ href="styles.css">
-      </head>
-      `,
-      answerOptions: ["script", "style", "link", "meta"],
-      answer: "link",
-      explanation:
-        "<link> 태그를 사용하여 외부 CSS 파일을 불러오는 방식을 '외부 스타일 시트'라고 합니다. 'href' 속성에 CSS 파일의 경로를 지정합니다.",
-    },
+
     {
       questionText:
         "HTML 문서에서 특정 태그에만 직접 스타일을 적용하는 방식을 무엇이라고 하나요?",
@@ -54,23 +52,7 @@ const Quiz = () => {
       explanation:
         "HTML 태그에 직접 스타일을 적용하는 방식을 '인라인 스타일'이라고 합니다. 'style' 속성을 사용하여 해당 태그에만 CSS 코드를 작성할 수 있습니다.",
     },
-    // {
-    //   questionText:
-    //     "HTML 문서 내에서 <style> 태그를 사용하여 CSS 코드를 작성하는 방식을 무엇이라고 하나요?",
-    //   code: `
-    //   <head>
-    //     <______>
-    //       body {
-    //         background: blue;
-    //       }
-    //     </______>
-    //   </head>
-    //   `,
-    //   answerOptions: ["link", "script", "style", "meta"],
-    //   answer: "내부 스타일 시트",
-    //   explanation:
-    //     "HTML 문서의 <head> 부분에 <style> 태그를 사용하여 CSS 코드를 작성하는 방식을 '내부 스타일 시트'라고 합니다.",
-    // },
+
     {
       questionText:
         "HTML 문서에서 외부 CSS 파일을 불러와 스타일을 적용하는 방식을 무엇이라고 하나요?",
@@ -136,7 +118,9 @@ const Quiz = () => {
       setIsCorrect(false);
     } else {
       const isAllCorrect = userAnswers.every((ans, index) => {
-        return ans.trim() === correctAnswers[index].trim();
+        return (
+          ans.replace(/\s/g, "") === correctAnswers[index].replace(/\s/g, "")
+        );
       });
 
       setIsCorrect(isAllCorrect);
@@ -182,37 +166,28 @@ const Quiz = () => {
   };
 
   return (
-    <div className="app">
+    <Wrapper>
       {questions.length > 0 ? (
         <>
-          <div className="question-section">
+          <Section className="question-section">
             <h2>문제</h2>
             <p>{questions[currentQuestion].questionText}</p>
             <pre>{questions[currentQuestion].code}</pre>
-          </div>
+          </Section>
 
-          <div className="answer-section">
-            <h2>선택지</h2>
-            {showHint ? (
-              questions[currentQuestion].answerOptions.map((option, index) => (
-                <p key={index}>{option}</p>
-              ))
-            ) : (
-              <button onClick={handleShowHint}>힌트 보기</button>
-            )}
-            <input
-              type="text"
-              value={userAnswer}
-              onChange={(e) => setUserAnswer(e.target.value)}
-              disabled={isSubmitted}
-            />
-            <button onClick={handleSubmit} disabled={!userAnswer}>
-              제출
-            </button>
-          </div>
+          {isSubmitted && !isCorrect && (
+            <Section className="code-input-section">
+              <h2>코드 입력</h2>
+              <TextArea
+                value={answerCode}
+                onChange={(e) => setAnswerCode(e.target.value)}
+              />
+              <Button onClick={handleNext}>다음 문제</Button>
+            </Section>
+          )}
 
           {isSubmitted && (
-            <div className="explanation-section">
+            <Section className="explanation-section">
               <h2>정답 설명</h2>
               <p>{isCorrect ? "정답입니다!" : "틀렸습니다."}</p>
               {questions[currentQuestion].explanation
@@ -221,26 +196,44 @@ const Quiz = () => {
                 .map((sentence, index) => (
                   <p key={index}>{sentence}</p>
                 ))}
-              {isCorrect && <button onClick={handleNext}>다음 문제</button>}
-            </div>
+              {isCorrect && <Button onClick={handleNext}>다음 문제</Button>}
+            </Section>
           )}
 
-          {isSubmitted && !isCorrect && (
-            <div className="code-input-section">
-              <h2>코드 입력</h2>
-              <textarea
-                value={answerCode}
-                onChange={(e) => setAnswerCode(e.target.value)}
-                style={{ width: "30%", height: "100px" }}
+          <Sectionchoice className="answer-section">
+            <h2>선택지</h2>
+            <OptionsContainer>
+              {showHint ? (
+                <div>
+                  {questions[currentQuestion].answerOptions?.map(
+                    (option, index) => (
+                      <p key={index}>{option}</p>
+                    )
+                  )}
+                </div>
+              ) : null}
+
+              {!showHint ? (
+                <Button onClick={handleShowHint}>힌트 보기</Button>
+              ) : null}
+            </OptionsContainer>
+            <InputAndButtonContainer>
+              <input
+                type="text"
+                value={userAnswer}
+                onChange={(e) => setUserAnswer(e.target.value)}
+                disabled={isSubmitted}
               />
-              <button onClick={handleNext}>다음 문제</button>
-            </div>
-          )}
+              <Button onClick={handleSubmit} disabled={!userAnswer}>
+                제출
+              </Button>
+            </InputAndButtonContainer>
+          </Sectionchoice>
         </>
       ) : (
         <p>Loading...</p>
       )}
-    </div>
+    </Wrapper>
   );
 };
 
@@ -251,3 +244,5 @@ export default Quiz;
 // 데이터 타입
 // 연산자
 // 제어문 (if, for, while 등)
+
+// 반복자가 뭔지

@@ -1,4 +1,13 @@
 import React, { useState, useEffect } from "react";
+import {
+  Wrapper,
+  Section,
+  Button,
+  TextArea,
+  OptionsContainer,
+  Sectionchoice,
+  InputAndButtonContainer,
+} from "./style.js";
 
 const Quiz = () => {
   const initialQuestions = [
@@ -43,97 +52,47 @@ const Quiz = () => {
       questionText:
         "GraphQL을 이용하여 받아온 데이터를 map을 이용하여 화면에 출력하는 코드를 완성하세요.",
       code: `
-        import { useQuery, gql } from "@apollo.client";
+      import { useQuery, gql } from "@apollo/client";
     
-        const FETCH_BOARDS = gql\`
-          query {
-            fetchBoards {
-              number
-              writer
-              title
-              contents
-            }
+      const FETCH_BOARDS = gql\`
+        query {
+          fetchBoards {
+            number
+            writer
+            title
+            contents
           }
-        \`;
-    
-        export default function StaticRoutingMovedPage() {
-          const { data } = useQuery(FETCH_BOARDS);
-    
-          return (
-            <div>
-              {______?.fetchBoards.map((el) => (
-                <div>
-                  <span>
-                    <input type="checkbox" />
-                  </span>
-                  <span style={{ margin: "10px" }}>{el.number}</span>
-                  <span style={{ margin: "10px" }}>{el.title}</span>
-                  <span style={{ margin: "10px" }}>{el.writer}</span>
-                </div>
-              ))}
-            </div>
-          );
         }
-      `,
-      answerOptions: ["data", "FETCH_BOARDS", "useQuery", "gql"],
-      answer: "data",
-      explanation:
-        "우리는 useQuery 훅을 이용하여 GraphQL 서버에서 데이터를 요청하고, 이를 data 상수에 할당했습니다. 따라서 화면에 데이터를 출력하기 위해선 'data'를 사용해야 합니다.",
-    },
-    {
-      questionText:
-        "다음 코드에서 `deleteBoard` 함수는 어떤 역할을 하는지, 그리고 `refetchQueries` 옵션의 역할은 무엇인지 작성하시오.",
-      code: `
-    const onClickDelete = (event) => {
-      ______({
-        variables: {
-          number: Number(event.target.id),
-        },
-        ______: [{ query: FETCH_BOARDS }],
-      });
-    };
+      \`;
+    
+      export default function StaticRoutingMovedPage() {
+        const { data } = useQuery(FETCH_BOARDS);
+    
+        return (
+          <div>
+            {______?.______.map((el) => (
+              <div>
+                <span>
+                  <input type="checkbox" />
+                </span>
+                <span style={{ margin: "10px" }}>{el.number}</span>
+                <span style={{ margin: "10px" }}>{el.title}</span>
+                <span style={{ margin: "10px" }}>{el.writer}</span>
+              </div>
+            ))}
+          </div>
+        );
+      }
       `,
       answerOptions: [
-        "deleteBoard",
-        "refetchQueries",
-        "updateBoard",
-        "fetchBoards",
+        "data, fetchBoards",
+        "data, number",
+        "data, writer",
+        "data, title",
       ],
-      answer: ["deleteBoard", "refetchQueries"],
+      answer: "data, fetchBoards",
       explanation:
-        "`deleteBoard` 함수는 주어진 게시글 번호에 해당하는 게시글을 삭제하는 역할을 하고, `refetchQueries` 옵션은 삭제 후에 원래의 쿼리를 다시 실행하여 최신 데이터로 UI를 갱신하는 역할을 합니다.",
-    },
-    {
-      questionText:
-        "React에서 `key` 속성의 역할과 중요성을 설명하고, 왜 `index`를 `key`로 사용하는 것이 권장되지 않는지 설명하시오.",
-      code: `
-    {data?.fetchBoards.map((el, index) => (
-      <div key={______}> {/* 이 부분 */}
-        {/* ... */}
-      </div>
-    ))}
-      `,
-      answerOptions: ["el.number", "index", "el.title", "el.contents"],
-      answer: "el.number",
-      explanation:
-        "`key` 속성은 React가 요소를 식별하고 렌더링 성능을 최적화하는 데 사용됩니다. 리스트의 요소가 변경, 추가, 삭제될 때 `key` 속성을 통해 React는 어떤 요소를 변경, 추가, 삭제해야 하는지 쉽게 알 수 있습니다. 그러나 `index`를 `key`로 사용하면 요소의 순서가 변경될 때 `key` 값도 변경되므로, React는 변경된 `key`를 갖는 요소를 새 요소로 간주하고 불필요하게 렌더링을 수행하게 됩니다. 따라서 가능한 한 요소의 내용이나 속성을 기반으로 한 고유한 `key` 값을 사용하는 것이 권장됩니다.",
-    },
-    {
-      questionText:
-        "React의 `Fragment`는 무엇이며, 어떤 상황에서 사용하면 좋은지, 그리고 `Fragment`에 `key`를 부여하는 방법은 무엇인지 설명하시오.",
-      code: `
-    import { ______ } from "react";
-    
-    {data?.fetchBoards.map((el, index) => (
-      <______ key={index}> {/* 이 부분 */}
-        {/* ... */}
-      </______>
-    ))}
-      `,
-      answerOptions: ["Fragment", "div", "Component", "Element"],
-      answer: "Fragment",
-      explanation:
-        "`Fragment`는 여러 요소를 그룹화하고 추가적인 노드를 DOM에 추가하지 않는 React의 기능입니다. 따라서 `<div>`를 사용하여 감싸면서 추가적인 DOM 노드를 생성하고 싶지 않은 경우에 사용하면 좋습니다. `Fragment`에 `key`를 부여하려면 `<Fragment key={value}>`와 같이 사용할 수 있습니다.",
+        "GraphQL 요청의 결과는 'data'에 저장되며, 요청한 필드는 'data' 객체의 하위 속성으로 접근할 수 있습니다. 따라서 'fetchBoards' 데이터에 접근하려면 'data?.fetchBoards'를 사용해야 합니다.",
     },
   ];
 
@@ -180,18 +139,14 @@ const Quiz = () => {
   };
 
   const handleSubmit = () => {
-    const userAnswers = userAnswer
-      .split(",")
-      .map((ans) => ans.replace(/\s/g, "").toLowerCase()); // 콤마 뒤의 공백 제거 및 소문자로 변환
-    const correctAnswers = String(questions[currentQuestion].answer)
-      .split(",")
-      .map((ans) => ans.replace(/\s/g, "").toLowerCase()); // 콤마 뒤의 공백 제거 및 소문자로 변환
+    const userAnswers = userAnswer.split(",");
+    const correctAnswers = questions[currentQuestion].answer.split(",");
 
     if (userAnswers.length !== correctAnswers.length) {
       setIsCorrect(false);
     } else {
       const isAllCorrect = userAnswers.every((ans, index) => {
-        return ans === correctAnswers[index];
+        return ans.trim() === correctAnswers[index].trim();
       });
 
       setIsCorrect(isAllCorrect);
@@ -237,37 +192,28 @@ const Quiz = () => {
   };
 
   return (
-    <div className="app">
+    <Wrapper>
       {questions.length > 0 ? (
         <>
-          <div className="question-section">
+          <Section className="question-section">
             <h2>문제</h2>
             <p>{questions[currentQuestion].questionText}</p>
             <pre>{questions[currentQuestion].code}</pre>
-          </div>
+          </Section>
 
-          <div className="answer-section">
-            <h2>선택지</h2>
-            {showHint ? (
-              questions[currentQuestion].answerOptions.map((option, index) => (
-                <p key={index}>{option}</p>
-              ))
-            ) : (
-              <button onClick={handleShowHint}>힌트 보기</button>
-            )}
-            <input
-              type="text"
-              value={userAnswer}
-              onChange={(e) => setUserAnswer(e.target.value)}
-              disabled={isSubmitted}
-            />
-            <button onClick={handleSubmit} disabled={!userAnswer}>
-              제출
-            </button>
-          </div>
+          {isSubmitted && !isCorrect && (
+            <Section className="code-input-section">
+              <h2>코드 입력</h2>
+              <TextArea
+                value={answerCode}
+                onChange={(e) => setAnswerCode(e.target.value)}
+              />
+              <Button onClick={handleNext}>다음 문제</Button>
+            </Section>
+          )}
 
           {isSubmitted && (
-            <div className="explanation-section">
+            <Section className="explanation-section">
               <h2>정답 설명</h2>
               <p>{isCorrect ? "정답입니다!" : "틀렸습니다."}</p>
               {questions[currentQuestion].explanation
@@ -276,27 +222,52 @@ const Quiz = () => {
                 .map((sentence, index) => (
                   <p key={index}>{sentence}</p>
                 ))}
-              {isCorrect && <button onClick={handleNext}>다음 문제</button>}
-            </div>
+              {isCorrect && <Button onClick={handleNext}>다음 문제</Button>}
+            </Section>
           )}
 
-          {isSubmitted && !isCorrect && (
-            <div className="code-input-section">
-              <h2>코드 입력</h2>
-              <textarea
-                value={answerCode}
-                onChange={(e) => setAnswerCode(e.target.value)}
-                style={{ width: "30%", height: "100px" }}
+          <Sectionchoice className="answer-section">
+            <h2>선택지</h2>
+            <OptionsContainer>
+              {showHint ? (
+                <div>
+                  {questions[currentQuestion].answerOptions.map(
+                    (option, index) => (
+                      <p key={index}>{option}</p>
+                    )
+                  )}
+                </div>
+              ) : null}
+              {!showHint ? (
+                <Button onClick={handleShowHint}>힌트 보기</Button>
+              ) : null}
+            </OptionsContainer>
+            <InputAndButtonContainer>
+              <input
+                type="text"
+                value={userAnswer}
+                onChange={(e) => setUserAnswer(e.target.value)}
+                disabled={isSubmitted}
               />
-              <button onClick={handleNext}>다음 문제</button>
-            </div>
-          )}
+              <Button onClick={handleSubmit} disabled={!userAnswer}>
+                제출
+              </Button>
+            </InputAndButtonContainer>
+          </Sectionchoice>
         </>
       ) : (
         <p>Loading...</p>
       )}
-    </div>
+    </Wrapper>
   );
 };
 
 export default Quiz;
+
+// 기본 문법:
+// 변수와 상수
+// 데이터 타입
+// 연산자
+// 제어문 (if, for, while 등)
+
+// 반복자가 뭔지

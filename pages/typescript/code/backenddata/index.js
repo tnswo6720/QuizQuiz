@@ -14,84 +14,75 @@ const Quiz = () => {
     // 여기에 문제를 추가합니다...
     {
       questionText:
-        "CSS에서 아래 코드에서 'myId'라는 아이디를 가진 요소를 선택하는 데 필요한 선택자는 무엇일까요?",
+        "다음 코드에서 빈 칸에 들어갈 수 있는 TypeScript의 구문은 무엇인가요? 이 구문은 GraphQL mutation을 수행하고 그 결과를 타입으로 지정합니다.",
       code: `
-      ______myId .item {
-        color: red;
-      }
+      import { useMutation, gql } from "@apollo/client";
+      import {
+        IMutation,
+        IMutationCreateBoardArgs,
+      } from "../../../src/commons/types/generated/types";
+    
+      const 나의그래프큐엘셋팅 = gql\`
+        mutation createBoard($writer: String, $title: String, $contents: String) {
+          createBoard(writer: $writer, title: $title, contents: $contents) {
+            _id
+            number
+            message
+          }
+        }
+      \`;
+    
+      const [나의함수] = useMutation<______, ______>(나의그래프큐엘셋팅);
       `,
-      answerOptions: ["#", ".", "*", "div"],
-      answer: "#",
+      answerOptions: [
+        "IMutation, IMutationCreateBoardArgs",
+        "IQuery, IQueryFetchBoardArgs",
+        "FetchAPI, RequestInit",
+        "AxiosResponse, AxiosRequestConfig",
+      ],
+      answer: "IMutation, IMutationCreateBoardArgs",
       explanation:
-        "'#'은 아이디 선택자를 의미합니다. 아이디 선택자는 HTML 문서 내에서 유일하게 존재해야하며, 한 요소에만 적용됩니다.",
-    },
-
-    {
-      questionText:
-        "CSS에서 아래 코드에서 div 요소의 자식 요소인 p를 선택하는 데 필요한 결합자는 무엇일까요?",
-      code: `
-      div ______ p {
-        color: blue;
-      }
-      `,
-      answerOptions: [">", "+", "~", " "],
-      answer: ">",
-      explanation:
-        "'>'는 자식 결합자를 의미합니다. 이 결합자는 부모 요소 바로 아래에 있는 자식 요소에만 스타일을 적용합니다.",
-    },
-
-    {
-      questionText:
-        "CSS에서 전체 페이지의 배경색을 변경하기 위해 아래 코드의 빈칸에 들어갈 적절한 선택자는 무엇일까요?",
-      code: `
-      ______ {
-        background-color: yellow;
-      }
-      `,
-      answerOptions: ["body", "div", "p", "a"],
-      answer: "body",
-      explanation:
-        "'body'는 HTML 문서의 본문을 선택하는 선택자입니다. 이 선택자를 이용하면 전체 페이지의 배경색을 변경할 수 있습니다.",
+        "useMutation은 첫 번째 제네릭 인수로 mutation의 결과 타입(IMutation)을, 두 번째 제네릭 인수로 mutation에 필요한 변수의 타입(IMutationCreateBoardArgs)을 받습니다.",
     },
     {
       questionText:
-        "CSS에서 아래 코드에서 h1 요소 바로 다음에 오는 형제 요소인 p를 선택하는 데 필요한 결합자는 무엇일까요?",
+        "다음 코드에서 빈 칸에 들어갈 수 있는 TypeScript의 구문은 무엇인가요? 이 구문은 GraphQL query를 수행하고 그 결과를 타입으로 지정합니다.",
       code: `
-      h1 ______ p {
-        font-size: 20px;
-      }
+      import { useQuery, gql } from "@apollo/client";
+      import {
+        IQuery,
+        IQueryFetchBoardArgs,
+      } from "../../../src/commons/types/generated/types";
+    
+      const FETCH_BOARD = gql\`
+        query fetchBoard($number: Int) {
+          fetchBoard(number: $number) {
+            number
+            writer
+            title
+            contents
+          }
+        }
+      \`;
+    
+      const { data } = useQuery<______, ______>(
+        FETCH_BOARD,
+        {
+          variables: {
+            number: Number(router.query.qqq),
+          },
+        }
+      );
       `,
-      answerOptions: [">", "+", "~", " "],
-      answer: "+",
+      answerOptions: [
+        "IMutation, IMutationCreateBoardArgs",
+        "IQuery, IQueryFetchBoardArgs",
+        "FetchAPI, RequestInit",
+        "AxiosResponse, AxiosRequestConfig",
+      ],
+      answer: "IQuery, IQueryFetchBoardArgs",
       explanation:
-        "'+'는 인접 형제 결합자를 의미합니다. 이 결합자는 첫 번째 요소 바로 다음에 있는 형제 요소에만 스타일을 적용합니다.",
-    },
-
-    {
-      questionText:
-        "CSS에서 아래 코드에서 h1 요소 이후에 오는 모든 형제 요소인 p에 스타일을 적용하려면 빈칸에 어떤 결합자를 써야 할까요?",
-      code: `
-      h1 ______ p {
-        font-size: 20px;
-      }
-      `,
-      answerOptions: [">", "+", "~", " "],
-      answer: "~",
-      explanation:
-        "'~'는 일반 형제 결합자를 의미합니다. 이 결합자는 첫 번째 요소 이후에 오는 모든 형제 요소에 스타일을 적용합니다.",
-    },
-    {
-      questionText:
-        "CSS에서 아래 코드에서 'myClass'라는 클래스를 가진 모든 요소의 배경색을 파란색으로 변경하려면 어떻게 써야 할까요?",
-      code: `
-      ______ {
-        background-color: blue;
-      }
-      `,
-      answerOptions: ["#myClass", ".myClass", "myClass", "class(myClass)"],
-      answer: ".myClass",
-      explanation:
-        "'.'은 클래스 선택자를 의미합니다. 클래스 선택자는 HTML 문서 내에서 여러 요소에 적용될 수 있습니다.",
+        "useQuery는 첫 번째 제네릭 인수로 query의 결과 타입(IQuery)을, 두 번째 제네릭 인수로 query에 필요한 변수의 타입(IQueryFetchBoardArgs)을 받습니다.",
     },
   ];
 
@@ -145,9 +136,7 @@ const Quiz = () => {
       setIsCorrect(false);
     } else {
       const isAllCorrect = userAnswers.every((ans, index) => {
-        return (
-          ans.replace(/\s/g, "") === correctAnswers[index].replace(/\s/g, "")
-        );
+        return ans.trim() === correctAnswers[index].trim();
       });
 
       setIsCorrect(isAllCorrect);
@@ -232,14 +221,13 @@ const Quiz = () => {
             <OptionsContainer>
               {showHint ? (
                 <div>
-                  {questions[currentQuestion].answerOptions?.map(
+                  {questions[currentQuestion].answerOptions.map(
                     (option, index) => (
                       <p key={index}>{option}</p>
                     )
                   )}
                 </div>
               ) : null}
-
               {!showHint ? (
                 <Button onClick={handleShowHint}>힌트 보기</Button>
               ) : null}

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { Wrapper, Section, Button } from "./style.js";
 
 const Quiz = () => {
   const initialQuestions = [
     // 여기에 문제를 추가합니다...
-    // 기존 initialQuestions 배열에 이어서 추가합니다.
     {
       questionText:
         "CSS에서 이미지 크기를 조절하려면 어떤 속성을 사용해야 하나요?",
@@ -87,6 +87,8 @@ const Quiz = () => {
       }
       `,
     },
+
+    // 추가 문제를 넣을 수 있습니다.
   ];
 
   const [questions, setQuestions] = useState([]);
@@ -130,7 +132,6 @@ const Quiz = () => {
     setIsCorrect(formattedUserAnswer === formattedCorrectAnswer);
     setIsSubmitted(true);
   };
-
   const handleNext = () => {
     setCurrentQuestion(currentQuestion + 1);
     setUserAnswer("");
@@ -138,16 +139,33 @@ const Quiz = () => {
   };
 
   return (
-    <div className="app">
+    <Wrapper>
       {questions.length > 0 ? (
         <>
-          <div className="question-section">
+          <Section>
             <h2>문제</h2>
             <p>{questions[currentQuestion].questionText}</p>
             <pre>{questions[currentQuestion].code}</pre>
-          </div>
+          </Section>
 
-          <div className="answer-section">
+          {isSubmitted && (
+            <Section>
+              <h2>정답 설명</h2>
+              <p>{isCorrect ? "정답입니다!" : "틀렸습니다."}</p>
+              {questions[currentQuestion].explanation
+                .split(/(.{20}[^\s]*)\s+/)
+                .filter(Boolean)
+                .map((sentence, index) => (
+                  <p key={index}>{sentence}</p>
+                ))}
+              <pre>{questions[currentQuestion].explanationCode}</pre>
+              {currentQuestion < questions.length - 1 && (
+                <Button onClick={handleNext}>다음 문제</Button>
+              )}
+            </Section>
+          )}
+
+          <Section>
             <h2>선택지</h2>
             {questions[currentQuestion].answerOptions.map((option, index) => (
               <p key={index}>{option}</p>
@@ -157,30 +175,13 @@ const Quiz = () => {
               value={userAnswer}
               onChange={(e) => setUserAnswer(e.target.value)}
             />
-            <button onClick={handleSubmit}>제출</button>
-          </div>
-          {isSubmitted && (
-            <div className="explanation-section">
-              <h2>정답 설명</h2>
-              <p>{isCorrect ? "정답입니다!" : "틀렸습니다."}</p>
-              {questions[currentQuestion].explanation
-                .split(/(.{20}[^\s]*)\s+/)
-                .filter(Boolean)
-                .map((sentence, index) => (
-                  <p key={index}>{sentence}</p>
-                ))}
-              <pre>{questions[currentQuestion].explanationCode}</pre>{" "}
-              {/* 설명에 대한 예시 코드를 보여줍니다. */}
-              {currentQuestion < questions.length - 1 && (
-                <button onClick={handleNext}>다음 문제</button>
-              )}
-            </div>
-          )}
+            <Button onClick={handleSubmit}>제출</Button>
+          </Section>
         </>
       ) : (
         <p>Loading...</p>
       )}
-    </div>
+    </Wrapper>
   );
 };
 
