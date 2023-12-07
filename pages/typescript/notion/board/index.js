@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Wrapper, Section, Button, CodeBlock } from "./style.js";
 
 const Quiz = () => {
   const initialQuestions = [
@@ -221,10 +222,8 @@ const Quiz = () => {
       explanationCode: "",
     },
 
-    // 기존의 문제들...
+    // 추가 문제를 넣을 수 있습니다.
   ];
-
-  // 추가 문제를 넣을 수 있습니다.
 
   const [questions, setQuestions] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -259,7 +258,12 @@ const Quiz = () => {
   };
 
   const handleSubmit = () => {
-    setIsCorrect(userAnswer === questions[currentQuestion].answer);
+    const formattedUserAnswer = userAnswer.replace(/\s/g, "").toLowerCase();
+    const formattedCorrectAnswer = questions[currentQuestion].answer
+      .replace(/\s/g, "")
+      .toLowerCase();
+
+    setIsCorrect(formattedUserAnswer === formattedCorrectAnswer);
     setIsSubmitted(true);
   };
   const handleNext = () => {
@@ -269,16 +273,33 @@ const Quiz = () => {
   };
 
   return (
-    <div className="app">
+    <Wrapper>
       {questions.length > 0 ? (
         <>
-          <div className="question-section">
+          <Section>
             <h2>문제</h2>
             <p>{questions[currentQuestion].questionText}</p>
-            <pre>{questions[currentQuestion].code}</pre>
-          </div>
+            <CodeBlock>{questions[currentQuestion].code}</CodeBlock>
+          </Section>
 
-          <div className="answer-section">
+          {isSubmitted && (
+            <Section>
+              <h2>정답 설명</h2>
+              <p>{isCorrect ? "정답입니다!" : "틀렸습니다."}</p>
+              {questions[currentQuestion].explanation
+                .split(/(.{20}[^\s]*)\s+/)
+                .filter(Boolean)
+                .map((sentence, index) => (
+                  <p key={index}>{sentence}</p>
+                ))}
+              <pre>{questions[currentQuestion].explanationCode}</pre>
+              {currentQuestion < questions.length - 1 && (
+                <Button onClick={handleNext}>다음 문제</Button>
+              )}
+            </Section>
+          )}
+
+          <Section>
             <h2>선택지</h2>
             {questions[currentQuestion].answerOptions.map((option, index) => (
               <p key={index}>{option}</p>
@@ -288,39 +309,14 @@ const Quiz = () => {
               value={userAnswer}
               onChange={(e) => setUserAnswer(e.target.value)}
             />
-            <button onClick={handleSubmit}>제출</button>
-          </div>
-          {isSubmitted && (
-            <div className="explanation-section">
-              <h2>정답 설명</h2>
-              <p>{isCorrect ? "정답입니다!" : "틀렸습니다."}</p>
-              {questions[currentQuestion].explanation
-                .split(/(.{20}[^\s]*)\s+/)
-                .filter(Boolean)
-                .map((sentence, index) => (
-                  <p key={index}>{sentence}</p>
-                ))}
-              <pre>{questions[currentQuestion].explanationCode}</pre>{" "}
-              {/* 설명에 대한 예시 코드를 보여줍니다. */}
-              {currentQuestion < questions.length - 1 && (
-                <button onClick={handleNext}>다음 문제</button>
-              )}
-            </div>
-          )}
+            <Button onClick={handleSubmit}>제출</Button>
+          </Section>
         </>
       ) : (
         <p>Loading...</p>
       )}
-    </div>
+    </Wrapper>
   );
 };
 
 export default Quiz;
-
-// 보드에서 삭제를 하고 화면을 다시 그리는 것과
-// 게시글에 키를 주는 것,
-// index는 게시글을 삭제할 때, 다음 게시글이 올라오면서 기존 index와 동일한 값을 갖게 됨
-// 즉 유일하지 않음
-// 리액트에는 프래그먼트라는게 있음
-// 특별한 이유가 없으면 Fragment로 감싸자 <div />는 1개 더 그려야되서 조금 느려짐
-// 프래그먼트에 key를 입력하는 방법? <Fragment key= {1} />

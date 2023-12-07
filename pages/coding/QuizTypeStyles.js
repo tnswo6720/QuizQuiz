@@ -52,6 +52,13 @@ export const QuizTypeButton = styled.button`
   }
 `;
 
+export const QuizItemsContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  // justify-content: space-between;
+  gap: 20px;
+`;
+
 export const QuizSubTypesContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -64,8 +71,8 @@ export const QuizModal = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 40%;
-  height: 80%;
+  width: 70%;
+  height: 90%;
   max-height: 80%;
   overflow: auto;
   background-color: #ffffff; // 모달 배경색을 하얀색으로 변경
@@ -84,4 +91,37 @@ export const Overlay = styled.div`
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 999;
+`;
+
+export const QuizItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 0 10px 20px; // 가로 마진을 10px, 세로 마진을 20px로 설정
+  padding: 20px;
+  border: 1px solid #00acc1; // 청록색 테두리
+  border-radius: 10px;
+  background-color: #e0f7fa; // 하늘색 배경
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: calc(150% - 20px); // 50%에서 가로 마진의 두 배 값을 빼줌
+  box-sizing: border-box; // 추가된 부분
+  // max-width: calc(50% - 20px); // 최대 너비 지정
+`;
+
+export const QuizTitle = styled.h2`
+  font-size: 1.1em;
+  color: #00acc1; // 청록색 텍스트
+  margin-bottom: 10px;
+  text-decoration: none; // 추가된 부분
+`;
+
+export const QuizAuthor = styled.p`
+  font-size: 1em;
+  color: #00796b; // 진한 청록색 텍스트
+`;
+
+export const QuizItemLink = styled.a`
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
 `;

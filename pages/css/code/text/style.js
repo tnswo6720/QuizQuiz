@@ -4,9 +4,12 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 2rem;
   background-color: #f9f9f9;
+  min-height: calc(100vh - 50px);
+  height: 100%;
+  overflow: auto;
 `;
 
 export const Section = styled.div`
@@ -19,6 +22,16 @@ export const Section = styled.div`
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 `;
 
+export const Button = styled.button`
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+`;
+
 export const Sectionchoice = styled.div`
   margin-bottom: 2rem;
   padding: 1rem;
@@ -28,16 +41,6 @@ export const Sectionchoice = styled.div`
   border-radius: 8px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   height: auto;
-`;
-
-export const Button = styled.button`
-  padding: 0.15rem 1rem;
-  font-size: 1rem;
-  color: white;
-  background-color: #80deea;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
 `;
 
 export const ButtonContainer = styled.div`

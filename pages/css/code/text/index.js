@@ -223,16 +223,6 @@ const Quiz = () => {
 
     return arr;
   };
-  const createAnswerCode = (code, answer) => {
-    const answers = answer.split(",");
-    let updatedCode = code;
-
-    answers.forEach((ans) => {
-      updatedCode = updatedCode.replace(/______/, ans.trim());
-    });
-
-    return updatedCode;
-  };
 
   const handleSubmit = () => {
     const userAnswers = userAnswer.split(",");
@@ -253,22 +243,29 @@ const Quiz = () => {
     setIsSubmitted(true);
   };
 
-  const formatCode = (code) => {
-    return code.replace(/\s/g, ""); // 모든 공백 제거
+  const createAnswerCode = (code, answer) => {
+    let updatedCode = code;
+    while (updatedCode.includes("______")) {
+      updatedCode = updatedCode.replace("______", answer);
+    }
+    return updatedCode;
   };
 
   const handleNext = () => {
     if (!isCorrect) {
-      const correctCode = formatCode(
-        createAnswerCode(
-          questions[currentQuestion].code,
-          questions[currentQuestion].answer
-        )
-      );
+      const correctCode = createAnswerCode(
+        questions[currentQuestion].code,
+        questions[currentQuestion].answer
+      ).replace(/\s/g, "");
 
-      if (formatCode(answerCode) !== correctCode) {
+      if (answerCode.replace(/\s/g, "") !== correctCode) {
         alert("Please enter the correct code.");
         console.log("Correct Code:", correctCode);
+        return;
+      }
+
+      if (answerCode.includes("______")) {
+        alert("Please fill in all the blanks.");
         return;
       }
     }

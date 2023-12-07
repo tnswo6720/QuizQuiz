@@ -1,4 +1,3 @@
-import WeatherComponent from "../../../../../pages/Weather";
 import {
   InnerButton,
   InnerLogo,

@@ -3,12 +3,16 @@ import LayoutHeader from "./header/LayoutHeader.container";
 // import LayoutNavigation from "./navigation/LayoutNavigation.container";
 import styled from "@emotion/styled";
 
-const Body = styled.div`
-  height: 1000px;
-  width: 1600px;
-
+const Wrapper = styled.div`
+  display: flex;
   flex-direction: column;
-  align-items: center;
+  height: 100vh;
+  min-height: auto;
+  overflow-y: auto;
+`;
+
+const Body = styled.div`
+  width: 100%;
 `;
 
 interface ILayoutProps {
@@ -16,10 +20,9 @@ interface ILayoutProps {
 }
 export default function Layout(props: ILayoutProps): JSX.Element {
   return (
-    <>
+    <Wrapper>
       <LayoutHeader />
-
       <Body>{props.children}</Body>
-    </>
+    </Wrapper>
   );
 }

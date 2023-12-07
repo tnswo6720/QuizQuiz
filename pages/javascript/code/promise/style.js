@@ -4,9 +4,12 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 2rem;
   background-color: #f9f9f9;
+  min-height: calc(100vh - 50px);
+  height: 100%;
+  overflow: auto;
 `;
 
 export const Section = styled.div`
@@ -19,6 +22,16 @@ export const Section = styled.div`
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 `;
 
+export const Button = styled.button`
+  padding: 0.15rem 1rem;
+  font-size: 1rem;
+  color: white;
+  background-color: #80deea;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+`;
+
 export const Sectionchoice = styled.div`
   margin-bottom: 2rem;
   padding: 1rem;
@@ -28,16 +41,6 @@ export const Sectionchoice = styled.div`
   border-radius: 8px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   height: auto;
-`;
-
-export const Button = styled.button`
-  padding: 0.15rem 1rem;
-  font-size: 1rem;
-  color: white;
-  background-color: #007bff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
 `;
 
 export const ButtonContainer = styled.div`
@@ -62,7 +65,7 @@ export const OptionsContainer = styled.div`
   align-items: center;
   flex-wrap: wrap;
   height: 100px; // 원하는 높이로 조절
-  overflow: auto; // 내용이 더 많아져서 섹션의 높이를 초과할 경우 스크롤이 생기도록 설정
+  // overflow: auto; // 내용이 더 많아져서 섹션의 높이를 초과할 경우 스크롤이 생기도록 설정
 `;
 
 export const InputAndButtonContainer = styled.div`
@@ -70,7 +73,7 @@ export const InputAndButtonContainer = styled.div`
   justify-content: flex-start; // 왼쪽 정렬
   flex-direction: row; // 가로 배치
   align-items: center; // 세로 중앙 정렬
-  margin-top: 20px;
+  margin-top: 50px;
   width: 100%; // 컨테이너의 너비를 100%로 설정
 
   input {

@@ -88,6 +88,88 @@ const Quiz = () => {
         "CSS에서 'Grid'는 CSS Grid Layout 모델을 의미하며, 이차원(행과 열) 레이아웃을 위한 방법을 제공합니다.",
       explanationCode: "div { display: grid; }",
     },
+    {
+      questionText: "CSS에서 'z-index' 속성은 어떤 용도로 사용되나요?",
+      code: `
+      div {
+        position: absolute;
+        ______: 1;
+      }
+      `,
+      answerOptions: [
+        "요소의 크기를 결정한다.",
+        "요소의 위치를 결정한다.",
+        "요소의 적용 순서를 결정한다.",
+        "요소의 색상을 결정한다.",
+      ],
+      answer: "요소의 적용 순서를 결정한다.",
+      explanation:
+        "'z-index' 속성은 요소의 적용 순서를 결정합니다. 숫자가 클수록, 요소가 다른 요소들 위에 나타납니다.",
+      explanationCode: "div { position: absolute; z-index: 1; }",
+    },
+    {
+      questionText:
+        "CSS 레이아웃에서 블록 요소의 가로 폭을 자동으로 설정하는 방법은 무엇인가요?",
+      code: "",
+      answerOptions: [
+        "float를 사용한다.",
+        "position을 사용한다.",
+        "width 속성을 auto로 설정한다.",
+        "display 속성을 none으로 설정한다.",
+      ],
+      answer: "width 속성을 auto로 설정한다.",
+      explanation:
+        "width 속성을 auto로 설정하면, 블록 요소의 가로 폭은 부모 요소의 가로 폭에 맞춰 자동으로 설정됩니다.",
+      explanationCode: "div { width: auto; }",
+    },
+    {
+      questionText:
+        "CSS 레이아웃에서 요소를 수평 중앙에 배치하는 방법은 무엇인가요?",
+      code: "",
+      answerOptions: [
+        "margin을 auto로 설정한다.",
+        "padding을 auto로 설정한다.",
+        "border를 auto로 설정한다.",
+        "position을 auto로 설정한다.",
+      ],
+      answer: "margin을 auto로 설정한다.",
+      explanation:
+        "요소의 좌우 마진을 auto로 설정하면, 브라우저는 가능한 한 요소를 수평 중앙에 배치하려고 합니다.",
+      explanationCode: "div { margin: auto; }",
+    },
+    {
+      questionText:
+        "CSS 레이아웃에서 요소를 수직 중앙에 배치하는 속성은 무엇인가요?",
+      code: "",
+      answerOptions: [
+        "align-items",
+        "justify-content",
+        "align-content",
+        "justify-items",
+      ],
+      answer: "align-items",
+      explanation:
+        "CSS Flexbox 또는 Grid 레이아웃에서 align-items 속성은 요소를 수직 방향으로 중앙에 배치하는 데 사용됩니다.",
+      explanationCode: "div { display: flex; align-items: center; }",
+    },
+    {
+      questionText:
+        "CSS Flexbox에서 'align-items'와 'align-content'의 차이점은 무엇인가요?",
+      code: "",
+      answerOptions: [
+        "'align-items'는 각 항목의 정렬을 제어하고, 'align-content'는 항목 그룹의 정렬을 제어한다.",
+        "'align-items'는 항목 그룹의 정렬을 제어하고, 'align-content'는 각 항목의 정렬을 제어한다.",
+        "'align-items'와 'align-content'는 동일한 역할을 한다.",
+        "'align-items'는 수직 정렬을 제어하고, 'align-content'는 수평 정렬을 제어한다.",
+      ],
+      answer:
+        "'align-items'는 각 항목의 정렬을 제어하고, 'align-content'는 항목 그룹의 정렬을 제어한다.",
+      explanation:
+        "CSS Flexbox에서 'align-items'는 각 항목의 수직 정렬을 제어하는 반면, 'align-content'는 여러 줄의 항목 그룹의 수직 정렬을 제어합니다.",
+      explanationCode:
+        "div { display: flex; align-items: center; align-content: space-between; }",
+    },
+
     // 추가 문제를 넣을 수 있습니다.
   ];
 

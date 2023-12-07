@@ -7,6 +7,8 @@ export const Wrapper = styled.div`
   justify-content: center;
   padding: 2rem;
   background-color: #f9f9f9;
+  /* 뷰포트의 높이로 설정 */
+  height: 100vh;
 `;
 
 export const Section = styled.div`
