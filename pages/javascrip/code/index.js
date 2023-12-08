@@ -141,17 +141,39 @@ const Quiz5 = () => {
   const handleQuizTypeChange = (e) => {
     setCurrentQuizType(e.target.value);
     setCurrentQuestion(0);
+    setUserAnswer("");
+    setAnswerCode("");
     setIsSubmitted(false);
     setIsCorrect(false); // false로 초기화
+    setShowOptions(false); // 선택지 펼치기 상태 초기화
   };
 
   // 하위 주제 변경 핸들러
   const handleSubSubjectChange = (e) => {
     setCurrentSubSubject(e.target.value);
     setCurrentQuestion(0);
+    setUserAnswer("");
+    setAnswerCode("");
     setIsSubmitted(false);
     setIsCorrect(false); // false로 초기화
+    setShowOptions(false); // 선택지 펼치기 상태 초기화
   };
+
+  // // 상위 주제 변경 핸들러
+  // const handleQuizTypeChange = (e) => {
+  //   setCurrentQuizType(e.target.value);
+  //   setCurrentQuestion(0);
+  //   setIsSubmitted(false);
+  //   setIsCorrect(false); // false로 초기화
+  // };
+
+  // // 하위 주제 변경 핸들러
+  // const handleSubSubjectChange = (e) => {
+  //   setCurrentSubSubject(e.target.value);
+  //   setCurrentQuestion(0);
+  //   setIsSubmitted(false);
+  //   setIsCorrect(false); // false로 초기화
+  // };
 
   // 상위 주제 또는 하위 주제가 변경될 때 문제 배열 섞기
   useEffect(() => {

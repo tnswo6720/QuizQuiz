@@ -1,0 +1,68 @@
+CSS 소개
+CSS란?
+CSS의 역사
+CSS의 중요성
+
+CSS 기본 문법
+선택자 (Selector)
+기본 선택자: 태그, 클래스, 아이디 선택자
+결합자: 자손, 자식, 인접, 일반 형제 선택자
+
+속성 선택자
+가상 클래스 선택자 (:link, :visited, :hover, :focus, :active 등)
+가상 요소 선택자 (::before, ::after 등)
+
+//selector
+
+속성 (Property)
+값 (Value)
+
+//propery-value
+
+CSS 적용 방법
+인라인 스타일
+내부 스타일 시트
+외부 스타일 시트
+
+CSS 박스 모델
+콘텐츠 (Content)
+패딩 (Padding)
+경계 (Border)
+마진 (Margin)
+박스 크기 조정 (box-sizing)
+
+CSS 위치 및 레이아웃
+정적 위치 (Static)
+상대 위치 (Relative)
+절대 위치 (Absolute)
+고정 위치 (Fixed)
+스티키 위치 (Sticky)
+플렉스 (Flex)
+그리드 (Grid)
+
+CSS 색상과 배경
+색상 코드: HEX, RGB, RGBA, HSL, HSLA
+배경 색상
+배경 이미지
+배경 속성: 배경 반복, 배경 위치, 배경 크기
+
+CSS 텍스트와 글꼴
+텍스트 속성: 색상, 크기, 줄 간격, 텍스트 정렬, 텍스트 변형, 텍스트 장식 등
+글꼴 속성: 글꼴 가족, 글꼴 크기, 글꼴 스타일, 글꼴 두께 등
+웹 글꼴: @font-face
+C
+SS 반응형 디자인
+미디어 쿼리
+반응형 이미지
+반응형 테이블
+
+CSS3의 신기능
+변환 (Transform)
+전환 (Transition)
+애니메이션 (Animation)
+그림자 (Box Shadow, Text Shadow)
+그라디언트 (Gradient)
+
+CSS 전처리기
+SCSS
+LESS

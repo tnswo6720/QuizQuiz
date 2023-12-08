@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
   justify-content: center;
   padding: 2rem;
   background-color: #f9f9f9;
+  min-height: calc(100vh - 50px);
 `;
 
 export const Section = styled.div`

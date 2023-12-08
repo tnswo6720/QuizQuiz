@@ -71,9 +71,9 @@ export const QuizModal = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 70%;
-  height: 90%;
-  max-height: 80%;
+  width: 80%;
+  height: 100%;
+  max-height: 100%;
   overflow: auto;
   background-color: #ffffff; // 모달 배경색을 하얀색으로 변경
   padding: 20px;

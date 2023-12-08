@@ -71,7 +71,9 @@ const Quiz6 = () => {
     const isUserAnswerCorrect = shuffledQuestions[
       currentQuestion
     ].answerOptions.some(
-      (option) => option.text.trim() === userAnswer.trim() && option.isCorrect
+      (option) =>
+        option.text.replace(/\s/g, "").toLowerCase() ===
+          userAnswer.replace(/\s/g, "").toLowerCase() && option.isCorrect
     );
 
     setIsCorrect(isUserAnswerCorrect);

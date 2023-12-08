@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
   /* 뷰포트의 높이로 설정 */
   min-height: calc(100vh - 50px);
   height: 100%;
-  overflow: hidden;
+  overflow: auto;
 `;
 
 export const Section = styled.div`
