@@ -75,4 +75,42 @@ export const javascriptCodeEvent = [
     subSubject: "event",
     quizType: "coding",
   },
+  {
+    type: "fill-in-the-blank",
+    questionText:
+      "자바스크립트에서 이벤트 객체의 타입을 확인하는 속성은 무엇인가요?",
+    code: `
+      const btn = document.querySelector('button');
+  
+      btn.addEventListener('click', function(event) {
+        console.log(event.______);
+      });
+    `,
+    answerOptions: ["type", "target", "currentTarget", "detail"],
+    answer: "type",
+    explanation:
+      "이벤트 객체의 'type' 속성은 발생한 이벤트의 타입을 나타냅니다. 이 경우 'click'이 출력됩니다.",
+    subject: "javascript",
+    subSubject: "event",
+    quizType: "coding",
+  },
+  {
+    type: "fill-in-the-blank",
+    questionText:
+      "자바스크립트에서 이벤트가 발생한 대상 요소를 확인하는 속성은 무엇인가요?",
+    code: `
+      const btn = document.querySelector('button');
+  
+      btn.addEventListener('click', function(event) {
+        console.log(event.______);
+      });
+    `,
+    answerOptions: ["type", "target", "currentTarget", "detail"],
+    answer: "target",
+    explanation:
+      "이벤트 객체의 'target' 속성은 이벤트가 발생한 대상 요소를 나타냅니다. 이 경우 'button' 요소가 출력됩니다.",
+    subject: "javascript",
+    subSubject: "event",
+    quizType: "coding",
+  },
 ];

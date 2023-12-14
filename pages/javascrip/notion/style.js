@@ -40,4 +40,37 @@ export const CodeBlock = styled.pre`
   word-wrap: break-word;
 `;
 
+export const QuizImage = styled.div`
+  width: 100%;
+  max-width: 600px;
+  height: 200px; // 높이 제한
+  background-image: url(${(props) => props.image});
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+`;
+
+export const SelectBox = styled.select`
+  width: 200px; // 너비 설정
+  height: 35px; // 높이 설정
+  margin: 10px; // 주변 여백 설정
+  padding: 5px; // 내부 여백 설정
+  border: 1px solid #ccc; // 테두리 설정
+  border-radius: 5px; // 테두리 둥글게 설정
+  background-color: #fff; // 배경색 설정
+  font-size: 16px; // 글자 크기 설정
+`;
+
+export const IndexWrapper = styled.div`
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+  margin-right: 10px;
+  background-color: paleturquoise;
+  color: #333;
+  font-size: 1em;
+  border-radius: 50%;
+`;
 // Quiz 컴포넌트...

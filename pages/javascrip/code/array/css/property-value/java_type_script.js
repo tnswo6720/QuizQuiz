@@ -8,7 +8,7 @@ export const cssCodePropertyValue = [
       "CSS에서 요소의 배경색을 변경하려면 어떤 속성을 사용해야 하나요?",
     code: `
       div {
-        ____: red;
+        ______: red;
       }
     `,
     answerOptions: [
@@ -27,32 +27,10 @@ export const cssCodePropertyValue = [
   {
     type: "fill-in-the-blank",
     questionText:
-      "CSS에서 요소의 텍스트 정렬 방식을 변경하려면 어떤 속성을 사용하고, 그 속성에 어떤 값을 지정해야 하나요?",
-    code: `
-      p {
-        ____: ____;
-      }
-    `,
-    answerOptions: [
-      ["text-align", "center"],
-      ["font-align", "middle"],
-      ["text-align", "middle"],
-      ["font-align", "center"],
-    ],
-    answer: ["text-align", "center"],
-    explanation:
-      "CSS에서 요소의 텍스트 정렬 방식을 변경하려면 'text-align' 속성을 사용하고, 그 값으로 'center'를 지정하면 텍스트를 가운데 정렬할 수 있습니다. 'text-align: center;'로 표현하면, 해당 요소의 텍스트를 가운데 정렬합니다.",
-    subject: "css",
-    subSubject: "property-value",
-    quizType: "coding",
-  },
-  {
-    type: "fill-in-the-blank",
-    questionText:
-      "CSS에서 요소의 폰트 크기를 변경하려면 어떤 속성을 사용하고, 그 속성에 어떤 값을 지정해야 하나요?",
+      "1CSS에서 요소의 폰트 크기를 변경하려면 어떤 속성을 사용하고, 그 속성에 어떤 값을 지정해야 하나요?",
     code: `
       h1 {
-        ____: ____;
+        ______: ______;
       }
     `,
     answerOptions: [
@@ -61,20 +39,44 @@ export const cssCodePropertyValue = [
       ["font-size", "20pt"],
       ["text-size", "20px"],
     ],
-    answer: ["font-size", "20px"],
+    answer: "font-size 20px",
     explanation:
       "CSS에서 요소의 폰트 크기를 변경하려면 'font-size' 속성을 사용하고, 그 값으로 픽셀(px) 단위의 숫자를 지정합니다. 'font-size: 20px;'로 표현하면, 해당 요소의 폰트 크기를 20픽셀로 설정합니다.",
     subject: "css",
     subSubject: "property-value",
     quizType: "coding",
   },
+
+  {
+    type: "fill-in-the-blank",
+    questionText:
+      "CSS에서 요소의 폰트 크기를 변경하려면 어떤 속성을 사용하고, 그 속성에 어떤 값을 지정해야 하나요?",
+    code: `
+      h1 {
+        ______: ______;
+      }
+    `,
+    answerOptions: [
+      ["font-size", "20px"],
+      ["text-size", "20pt"],
+      ["font-size", "20pt"],
+      ["text-size", "20px"],
+    ],
+    answer: "font-size 20px",
+    explanation:
+      "CSS에서 요소의 폰트 크기를 변경하려면 'font-size' 속성을 사용하고, 그 값으로 픽셀(px) 단위의 숫자를 지정합니다. 'font-size: 20px;'로 표현하면, 해당 요소의 폰트 크기를 20픽셀로 설정합니다.",
+    subject: "css",
+    subSubject: "property-value",
+    quizType: "coding",
+  },
+
   {
     type: "fill-in-the-blank",
     questionText:
       "CSS에서 요소의 테두리 두께를 변경하려면 어떤 속성을 사용하고, 그 속성에 어떤 값을 지정해야 하나요?",
     code: `
       div {
-        ____: ____;
+        ______: ______;
       }
     `,
     answerOptions: [
@@ -96,7 +98,7 @@ export const cssCodePropertyValue = [
       "CSS에서 요소의 테두리 색상을 변경하려면 어떤 속성을 사용하고, 그 속성에 어떤 값을 지정해야 하나요?",
     code: `
       div {
-        ____: ____;
+        ______: ______;
       }
     `,
     answerOptions: [
@@ -118,7 +120,7 @@ export const cssCodePropertyValue = [
       "CSS에서 요소의 너비를 변경하려면 어떤 속성을 사용하고, 그 속성에 어떤 값을 지정해야 하나요?",
     code: `
       img {
-        ____: ____;
+        ______: ______;
       }
     `,
     answerOptions: [

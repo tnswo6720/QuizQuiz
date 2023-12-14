@@ -7,7 +7,7 @@ export const cssCodeBasic = [
     questionText:
       "CSS에서 아이디 선택자를 사용하여 스타일을 적용하려면 어떤 기호를 사용해야 하나요?",
     code: `
-      ____myId {
+      _______myId {
         color: red;
       }
     `,
@@ -24,7 +24,7 @@ export const cssCodeBasic = [
     questionText:
       "CSS에서 클래스 선택자를 사용하여 스타일을 적용하려면 어떤 기호를 사용해야 하나요?",
     code: `
-      ____myClass {
+      ______myClass {
         color: blue;
       }
     `,
@@ -40,7 +40,7 @@ export const cssCodeBasic = [
     type: "fill-in-the-blank",
     questionText: "CSS에서 자식 요소를 선택하는 결합자는 무엇인가요?",
     code: `
-      parent ____ child {
+      parent ______ child {
         color: green;
       }
     `,
@@ -57,7 +57,7 @@ export const cssCodeBasic = [
     questionText:
       "CSS에서 태그 선택자를 사용하여 스타일을 적용하려면 어떻게 해야 하나요?",
     code: `
-      ____ {
+      ______ {
         color: red;
       }
     `,
@@ -74,7 +74,7 @@ export const cssCodeBasic = [
     questionText:
       "CSS에서 인접 형제 선택자를 사용하려면 어떤 기호를 사용해야 하나요?",
     code: `
-      h1 ____ p {
+      h1 ______ p {
         color: blue;
       }
     `,
@@ -89,9 +89,9 @@ export const cssCodeBasic = [
   {
     type: "fill-in-the-blank",
     questionText:
-      "CSS에서 일반 형제 선택자를 사용하려면 어떤 기호를 사용해야 하나요?",
+      "CSS에서 'h1' 요소를 뒤따르는 모든 'p' 요소를 선택하기 위해 어떤 기호를 사용해야 하나요?",
     code: `
-      h1 ____ p {
+      h1 ______ p {
         color: green;
       }
     `,

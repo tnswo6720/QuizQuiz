@@ -39,39 +39,50 @@ const Quiz5 = () => {
   const [currentSubSubject, setCurrentSubSubject] = useState("");
 
   // 정답 코드 생성 함수
-  const createAnswerCode = (code, answer) => {
-    const answers = answer.split(",");
-    let updatedCode = code;
+  // 정답 코드 생성 함수
+  // 정답 코드 생성 함수
+  const createAnswerCode = (codeTemplate, answer) => {
+    let answerCode = codeTemplate;
 
-    answers.forEach((ans) => {
-      updatedCode = updatedCode.replace(/______/, ans.trim());
-    });
+    // 'answer'가 배열인지 문자열인지 확인합니다.
+    if (Array.isArray(answer)) {
+      // 배열인 경우, ',' 기준으로 분리하여 각 부분을 빈칸에 채워 넣습니다.
+      const answerParts = answer[0].split(",");
+      answerParts.forEach((answerPart) => {
+        answerCode = answerCode.replace(/______/, answerPart.trim());
+      });
+    } else {
+      // 문자열인 경우, 직접 빈칸에 채워 넣습니다.
+      answerCode = answerCode.replace(/______/, answer.trim());
+    }
 
-    return updatedCode;
+    return answerCode;
   };
-
   // 제출 버튼 클릭 시
   const handleSubmit = () => {
     let isUserAnswerCorrect = false;
-    if (shuffledQuestions[currentQuestion].answerOptions) {
-      isUserAnswerCorrect = shuffledQuestions[
-        currentQuestion
-      ].answerOptions.some((option) => option === userAnswer.trim());
+    const formattedUserAnswer = userAnswer.replace(/\s+/g, ""); // 띄어쓰기 제거
+
+    // 'answer' 필드가 배열인지 문자열인지 확인합니다.
+    if (Array.isArray(shuffledQuestions[currentQuestion].answer)) {
+      // 배열인 경우, ',' 기준으로 분리하여 사용자의 답안과 비교합니다.
+      const userAnswerArray = formattedUserAnswer.split(",");
+      isUserAnswerCorrect = shuffledQuestions[currentQuestion].answer[0]
+        .replace(/\s+/g, "")
+        .split(", ")
+        .every((val, idx) => val.trim() === userAnswerArray[idx].trim());
     } else {
+      // 문자열인 경우, 직접 사용자의 답안과 비교합니다.
       isUserAnswerCorrect =
-        shuffledQuestions[currentQuestion].answer === userAnswer.trim();
+        shuffledQuestions[currentQuestion].answer.replace(/\s+/g, "") ===
+        formattedUserAnswer;
     }
 
+    // 채점 결과를 표시합니다.
     setIsCorrect(isUserAnswerCorrect);
     setIsSubmitted(true);
   };
 
-  // 코드 형식화 함수
-  const formatCode = (code) => {
-    return code.replace(/\s/g, ""); // 모든 공백 제거
-  };
-
-  // 다음 버튼 클릭 시
   const handleNext = () => {
     if (!isCorrect) {
       const correctCode = formatCode(
@@ -95,9 +106,30 @@ const Quiz5 = () => {
       setIsCorrect(false); // false로 초기화
       setShowHint(false);
     } else {
-      alert("Quiz finished!");
+      if (
+        formatCode(answerCode) ===
+        formatCode(
+          createAnswerCode(
+            shuffledQuestions[currentQuestion].code,
+            shuffledQuestions[currentQuestion].answer
+          )
+        )
+      ) {
+        alert("Quiz finished!");
+      } else {
+        alert("Please enter the correct code for the last question.");
+      }
     }
   };
+
+  // 코드 형식화 함수
+  const formatCode = (code) => {
+    return code.replace(/\s/g, ""); // 모든 공백 제거
+  };
+
+  // 다음 버튼 클릭 시
+  // 다음 버튼 클릭 시
+  // 다음 버튼 클릭 시
 
   useEffect(() => {
     const subjects = Array.from(new Set(Questions2.map((q) => q.subject)));
@@ -159,27 +191,19 @@ const Quiz5 = () => {
     setShowOptions(false); // 선택지 펼치기 상태 초기화
   };
 
-  // // 상위 주제 변경 핸들러
-  // const handleQuizTypeChange = (e) => {
-  //   setCurrentQuizType(e.target.value);
-  //   setCurrentQuestion(0);
-  //   setIsSubmitted(false);
-  //   setIsCorrect(false); // false로 초기화
-  // };
-
-  // // 하위 주제 변경 핸들러
-  // const handleSubSubjectChange = (e) => {
-  //   setCurrentSubSubject(e.target.value);
-  //   setCurrentQuestion(0);
-  //   setIsSubmitted(false);
-  //   setIsCorrect(false); // false로 초기화
-  // };
-
   // 상위 주제 또는 하위 주제가 변경될 때 문제 배열 섞기
   useEffect(() => {
     let filteredQuestions = Questions2.filter(
       (q) => q.subject === currentQuizType && q.subSubject === currentSubSubject
     );
+
+    // 각 문제의 선택지를 섞는 과정 추가
+    filteredQuestions.forEach((question) => {
+      if (question.answerOptions) {
+        question.answerOptions = shuffleArray(question.answerOptions);
+      }
+    });
+
     filteredQuestions = shuffleArray(filteredQuestions); // 문제 배열 섞기
     setShuffledQuestions(filteredQuestions);
   }, [currentQuizType, currentSubSubject]);
@@ -258,7 +282,7 @@ const Quiz5 = () => {
               shuffledQuestions[currentQuestion].answerOptions.map(
                 (option, index) => (
                   <div key={index}>
-                    <p>{option}</p>
+                    <p>{Array.isArray(option) ? option.join(" ") : option}</p>
                   </div>
                 )
               )}

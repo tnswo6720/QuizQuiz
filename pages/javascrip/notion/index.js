@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Wrapper, Section, Button, CodeBlock } from "./style.js";
+import {
+  Wrapper,
+  Section,
+  Button,
+  CodeBlock,
+  QuizImage,
+  SelectBox,
+  IndexWrapper,
+} from "./style.js";
 import { Questions1 } from "./array/index.js";
 
 const Quiz6 = () => {
@@ -68,15 +76,16 @@ const Quiz6 = () => {
   }, [currentSubSubject]);
 
   const handleSubmit = () => {
-    const isUserAnswerCorrect = shuffledQuestions[
-      currentQuestion
-    ].answerOptions.some(
-      (option) =>
-        option.text.replace(/\s/g, "").toLowerCase() ===
-          userAnswer.replace(/\s/g, "").toLowerCase() && option.isCorrect
-    );
-
-    setIsCorrect(isUserAnswerCorrect);
+    const userAnswerText = userAnswer.trim(); // 공백을 제거합니다.
+    if (
+      shuffledQuestions[currentQuestion].answerOptions.find(
+        (option) => option.text === userAnswerText
+      )?.isCorrect
+    ) {
+      setIsCorrect(true);
+    } else {
+      setIsCorrect(false);
+    }
     setIsSubmitted(true);
   };
 
@@ -112,10 +121,19 @@ const Quiz6 = () => {
   };
 
   return (
-    <Wrapper>
+    <Wrapper
+      style={{
+        backgroundImage: shuffledQuestions[currentQuestion]?.backgroundImage
+          ? `url(${shuffledQuestions[currentQuestion].backgroundImage})`
+          : "",
+        backgroundColor: "#f9f9f9",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
       {shuffledQuestions.length > 0 ? (
         <>
-          <select value={currentSubject} onChange={handleSubjectChange}>
+          <SelectBox value={currentSubject} onChange={handleSubjectChange}>
             {Array.from(new Set(Questions1.map((q) => q.subject))).map(
               (subject, index) => (
                 <option key={index} value={subject}>
@@ -123,19 +141,29 @@ const Quiz6 = () => {
                 </option>
               )
             )}
-          </select>
-          <select value={currentSubSubject} onChange={handleSubSubjectChange}>
+          </SelectBox>
+          <SelectBox
+            value={currentSubSubject}
+            onChange={handleSubSubjectChange}
+          >
             {subSubjects.map((subSubject, index) => (
               <option key={index} value={subSubject}>
                 {subSubject}
               </option>
             ))}
-          </select>
+          </SelectBox>
+
           <Section>
             <h2>문제</h2>
             <p>{shuffledQuestions[currentQuestion].questionText}</p>
+            {shuffledQuestions[currentQuestion].questionImage && (
+              <QuizImage
+                image={shuffledQuestions[currentQuestion].questionImage}
+              />
+            )}
             <CodeBlock>{shuffledQuestions[currentQuestion].code}</CodeBlock>
           </Section>
+
           {isSubmitted && (
             <Section>
               <h2>정답 설명</h2>
@@ -159,10 +187,12 @@ const Quiz6 = () => {
             {shuffledQuestions[currentQuestion].answerOptions.map(
               (option, index) => (
                 <div key={index}>
+                  <IndexWrapper>{index + 1}</IndexWrapper>
                   <label htmlFor={`option-${index}`}>{option.text}</label>
                 </div>
               )
             )}
+
             <input
               type="text"
               value={userAnswer}

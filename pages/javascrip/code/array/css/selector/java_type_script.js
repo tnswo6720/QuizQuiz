@@ -7,7 +7,7 @@ export const cssCodeSelector = [
     questionText:
       "CSS에서 속성 선택자를 사용하여 스타일을 적용하려면 어떻게 해야 하나요?",
     code: `
-      ____ {
+      ______ {
         color: red;
       }
     `,
@@ -25,7 +25,7 @@ export const cssCodeSelector = [
     questionText:
       "CSS에서 가상 클래스 선택자를 사용하여 링크에 마우스 오버(hover)했을 때 스타일을 적용하려면 어떻게 해야 하나요?",
     code: `
-      a:____ {
+      a:______ {
         color: blue;
       }
     `,
@@ -42,7 +42,7 @@ export const cssCodeSelector = [
     questionText:
       "CSS에서 가상 요소 선택자를 사용하여 요소의 내용 앞에 내용을 삽입하려면 어떻게 해야 하나요?",
     code: `
-      p::____ {
+      p::______ {
         content: 'Hello ';
       }
     `,
@@ -58,9 +58,9 @@ export const cssCodeSelector = [
   {
     type: "fill-in-the-blank",
     questionText:
-      "CSS에서 속성 선택자를 사용하여 특정 속성 값이 있는 요소를 선택하려면 어떻게 해야 하나요?",
+      "CSS에서 'type' 속성 값이 'text'인 'input' 태그를 선택하기 위해 어떤 형태의 속성 선택자를 사용해야 하나요?",
     code: `
-      ____ {
+      ______ {
         color: blue;
       }
     `,
@@ -77,12 +77,13 @@ export const cssCodeSelector = [
     subSubject: "selector",
     quizType: "coding",
   },
+
   {
     type: "fill-in-the-blank",
     questionText:
       "CSS에서 요소의 첫번째 자식을 선택하는 가상 클래스 선택자는 무엇인가요?",
     code: `
-      p:____ {
+      p:______ {
         color: green;
       }
     `,
@@ -99,7 +100,7 @@ export const cssCodeSelector = [
     questionText:
       "CSS에서 요소의 내용 뒤에 내용을 삽입하려면 어떤 가상 요소 선택자를 사용해야 하나요?",
     code: `
-      p::____ {
+      p::______ {
         content: ' Bye';
       }
     `,
