@@ -39,7 +39,7 @@ export const cssCodePropertyValue = [
       ["font-size", "20pt"],
       ["text-size", "20px"],
     ],
-    answer: "font-size 20px",
+    answer: ["font-size, 20px"],
     explanation:
       "CSS에서 요소의 폰트 크기를 변경하려면 'font-size' 속성을 사용하고, 그 값으로 픽셀(px) 단위의 숫자를 지정합니다. 'font-size: 20px;'로 표현하면, 해당 요소의 폰트 크기를 20픽셀로 설정합니다.",
     subject: "css",
@@ -62,7 +62,7 @@ export const cssCodePropertyValue = [
       ["font-size", "20pt"],
       ["text-size", "20px"],
     ],
-    answer: "font-size 20px",
+    answer: ["font-size, 20px"],
     explanation:
       "CSS에서 요소의 폰트 크기를 변경하려면 'font-size' 속성을 사용하고, 그 값으로 픽셀(px) 단위의 숫자를 지정합니다. 'font-size: 20px;'로 표현하면, 해당 요소의 폰트 크기를 20픽셀로 설정합니다.",
     subject: "css",

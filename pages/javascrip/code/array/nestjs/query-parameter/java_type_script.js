@@ -106,4 +106,45 @@ export const nestjsCodeQueryParameter = [
     subSubject: "query-parameter",
     quizType: "coding",
   },
+  {
+    type: "fill-in-the-blank",
+    questionText:
+      "Nest.js에서 `GET /posts` 라우트를 구현하는 코드를 작성하려고 합니다. 모든 포스트를 반환하는 코드를 작성해 보세요.",
+    code: `
+      @Get()
+      getPosts() {
+        return _______; // 여기에 무엇을 써야할까요?
+      }
+    `,
+    answerOptions: [
+      "posts",
+      "this.postsService.findAll()",
+      "this.postsService.getPosts()",
+      "this.postsService.getPosts().findAll()",
+    ],
+    answer: "posts",
+    explanation:
+      "이 경우, 모든 포스트를 반환하는 코드는 'return posts;' 입니다. 'posts'는 위에서 선언한 배열로, 모든 포스트 데이터를 가지고 있습니다. 따라서 'return posts;'를 통해 모든 포스트를 반환할 수 있습니다.",
+    subject: "nestjs",
+    subSubject: "query-parameter",
+    quizType: "coding",
+  },
+  {
+    type: "fill-in-the-blank",
+    questionText:
+      "Nest.js에서 `GET /posts` 라우트를 구현하는 데코레이터를 작성해 보세요.",
+    code: `
+      ______
+      getPosts() {
+        return posts;
+      }
+    `,
+    answerOptions: ["@Get()", "@Post()", "@Put()", "@Delete()"],
+    answer: "@Get()",
+    explanation:
+      "`@Get()` 데코레이터는 Nest.js에서 HTTP GET 요청을 처리하는 데 사용됩니다. 따라서 `GET /posts` 라우트를 구현하려면 `@Get()` 데코레이터를 사용해야 합니다.",
+    subject: "nestjs",
+    subSubject: "query-parameter",
+    quizType: "coding",
+  },
 ];

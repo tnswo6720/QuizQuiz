@@ -3,6 +3,7 @@ import * as Styles from "./QuizTypeStyles.js";
 import Quiz5 from "../javascrip/code/index.js";
 import Quiz6 from "../javascrip/notion/index.js";
 import { Questions } from "../javascrip/code/array/index.js";
+import Quiz8 from "../javascrip/Q&A/index.js";
 
 const getQuizComponent = (quizType, filteredQuestions) => {
   try {
@@ -11,6 +12,8 @@ const getQuizComponent = (quizType, filteredQuestions) => {
         return <Quiz6 questions={filteredQuestions} />;
       case "fill-in-the-blank":
         return <Quiz5 questions={filteredQuestions} />;
+      case "Focused Q&A":
+        return <Quiz8 questions={filteredQuestions} />;
       default:
         return null;
     }
@@ -76,6 +79,13 @@ const QuizTypePage = () => {
             onClick={() => openModal("fill-in-the-blank", Questions)}
           >
             Fill in the Blank
+          </Styles.QuizTypeButton>
+        </Styles.QuizTypeItem>
+        <Styles.QuizTypeItem>
+          <Styles.QuizTypeButton
+            onClick={() => openModal("Focused Q&A", Questions)}
+          >
+            Focused Q&A
           </Styles.QuizTypeButton>
         </Styles.QuizTypeItem>
       </Styles.QuizSubTypesContainer>

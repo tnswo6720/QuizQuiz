@@ -22,6 +22,11 @@ import { javascriptNotionDom } from "./javascript/Dom";
 import { javascriptNotionAJAX } from "./javascript/AJAX";
 import { javascriptNotionError } from "./javascript/error";
 import { javascriptNotionESM } from "./javascript/ESM";
+import { typescriptNotionPagination } from "./typescript/pagination";
+import { exam1 } from "./exam1";
+import { nestjsNotionQueryParameter } from "./nestjs/query_parameter";
+import { CommonNotionGit } from "./common/git";
+import { cssNotionErrorSolution } from "./css/errorsolution";
 
 export const Questions1 = [
   // 질문 데이터...
@@ -45,12 +50,17 @@ export const Questions1 = [
   ...nestjsNotionTypeorm,
   ...nestjsNotionDocker,
   ...nestjsNotionNotion,
+  ...nestjsNotionQueryParameter,
   ...typescriptNotionLibrary,
   ...typescriptNotionBasic,
   ...typescriptNotionBoard,
+  ...typescriptNotionPagination,
   ...CommonNotionBackend,
+  ...CommonNotionGit,
   ...cssNotionselector,
+  ...cssNotionErrorSolution,
   ...Notiontest,
+  ...exam1,
 ];
 
 // typescript typescript typescript

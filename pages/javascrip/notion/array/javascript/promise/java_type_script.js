@@ -357,7 +357,7 @@ export const javascriptNotionPromise = [
     answer:
       "Promise.race 메소드는 여러 개의 프로미스 중에서 가장 먼저 이행 또는 거부되는 프로미스의 결과 또는 실패 이유를 반환합니다.",
     explanation:
-      "Promise.race 메소드는 프로미스의 배열을 인자로 받아, 가장 먼저 이행 또는 거부 상태가 된 프로미스의 결과값을 반환하는 새로운 프로미스를 생성합니다. 이 메소드는 여러 개의 비동기 작업 중 가장 먼저 완료되는 작업의 결과만 필요할 때 유용합니다.",
+      "Promise.race 메소드는 프로미스의 배열을 인자로 받아, 가장 먼저 이행 또는 거부 상태가 된 프로미스의 결과값을 반환하는 새로운 프로미스를 생성합니다. 이 메소드는 여러 개의 비동기 작업 중 가장 먼저 완료되는 작업의 결과만 필요할 때 유용합니다.  promise1은 500ms 후에 resolve되고, promise2는 100ms 후에 resolve됩니다. 따라서 promise2가 먼저 완료되므로, Promise.race([promise1, promise2])의 결과는 promise2의 결과값인 'two'가 됩니다.따라서, console.log(value)의 출력 결과는 'two'가 됩니다.",
     subject: "javascript",
     subSubject: "promise",
     quizType: "coding",
@@ -514,6 +514,38 @@ export const javascriptNotionPromise = [
       "await 키워드는 async로 선언된 함수 내에서만 사용할 수 있습니다. 이외의 곳에서 await 키워드를 사용하면 문법 오류가 발생합니다. await 키워드는 Promise의 이행 값을 반환하기 위해 비동기 함수의 실행을 일시 중지하는 역할을 합니다.",
     subject: "javascript",
     subSubject: "async-await",
+    quizType: "coding",
+  },
+  {
+    type: "multiple-choice",
+    questionText:
+      "자바스크립트에서 Promise.resolve 메서드는 어떤 기능을 하는가?",
+    code: `
+    const resolvedPromise = Promise.resolve('Resolved!');
+    `,
+    answerOptions: [
+      {
+        text: "주어진 값으로 rejected 상태의 Promise 객체를 반환한다.",
+        isCorrect: false,
+      },
+      {
+        text: "주어진 값으로 fulfilled 상태의 Promise 객체를 반환한다.",
+        isCorrect: true,
+      },
+      {
+        text: "주어진 값으로 pending 상태의 Promise 객체를 반환한다.",
+        isCorrect: false,
+      },
+      {
+        text: "주어진 Promise가 이행된 후에 새로운 Promise를 반환한다.",
+        isCorrect: false,
+      },
+    ],
+    answer: "주어진 값으로 fulfilled 상태의 Promise 객체를 반환한다.",
+    explanation:
+      "자바스크립트의 Promise.resolve 메서드는 주어진 값으로 즉시 이행된 Promise 객체를 반환합니다. 이 메서드는 이미 이행된 값을 비동기 작업의 결과처럼 다루고 싶을 때 유용합니다.",
+    subject: "javascript",
+    subSubject: "promise",
     quizType: "coding",
   },
 

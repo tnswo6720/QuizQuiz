@@ -81,39 +81,7 @@ export const javascriptNotionDom = [
     subSubject: "dom manipulation",
     quizType: "coding",
   },
-  {
-    type: "multiple-choice",
-    questionText: "아래의 JavaScript 코드를 실행하면, 어떤 결과가 출력됩니까?",
-    code: `
-      fetch('https://api.example.com/data')
-        .then(response => response.json())
-        .then(data => console.log(data));
-    `,
-    answerOptions: [
-      {
-        text: "'https://api.example.com/data'에서 반환된 JSON 데이터",
-        isCorrect: true,
-      },
-      {
-        text: "undefined",
-        isCorrect: false,
-      },
-      {
-        text: "null",
-        isCorrect: false,
-      },
-      {
-        text: "Error",
-        isCorrect: false,
-      },
-    ],
-    answer: "'https://api.example.com/data'에서 반환된 JSON 데이터",
-    explanation:
-      "이 코드는 웹 API의 Fetch API를 사용하여 'https://api.example.com/data' 주소로 HTTP GET 요청을 보내고, 응답을 JSON으로 파싱한 후 콘솔에 출력합니다.",
-    subject: "javascript",
-    subSubject: "web api",
-    quizType: "coding",
-  },
+
   {
     type: "multiple-choice",
     questionText: "아래의 JavaScript 코드를 실행하면, 어떤 결과가 출력됩니까?",

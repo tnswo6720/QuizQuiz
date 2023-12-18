@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Wrapper, Section, Button, CodeBlock, TextArea } from "./style.js";
+import {
+  Wrapper,
+  Section,
+  Button,
+  CodeBlock,
+  TextArea,
+  SelectBox,
+} from "./style.js";
 import { Questions2 } from "./array/index.js";
+import { StyledTextarea } from "../Q&A/style.js";
 
 const Quiz5 = () => {
   // 배열 섞기 함수
@@ -225,7 +233,7 @@ const Quiz5 = () => {
     <Wrapper>
       {shuffledQuestions && shuffledQuestions.length > 0 ? (
         <>
-          <select value={currentQuizType} onChange={handleQuizTypeChange}>
+          <SelectBox value={currentQuizType} onChange={handleQuizTypeChange}>
             {Array.from(new Set(Questions2.map((q) => q.subject))).map(
               (quizType, index) => (
                 <option key={index} value={quizType}>
@@ -233,14 +241,17 @@ const Quiz5 = () => {
                 </option>
               )
             )}
-          </select>
-          <select value={currentSubSubject} onChange={handleSubSubjectChange}>
+          </SelectBox>
+          <SelectBox
+            value={currentSubSubject}
+            onChange={handleSubSubjectChange}
+          >
             {subSubjects.map((subSubject, index) => (
               <option key={index} value={subSubject}>
                 {subSubject}
               </option>
             ))}
-          </select>
+          </SelectBox>
 
           <Section>
             <h2>문제</h2>
@@ -288,15 +299,17 @@ const Quiz5 = () => {
               )}
           </Section>
 
-          <Section>
-            <h2>답 입력</h2>
-            <input
-              type="text"
-              value={userAnswer}
-              onChange={(e) => setUserAnswer(e.target.value)}
-            />
-            <Button onClick={handleSubmit}>제출</Button>
-          </Section>
+          {!isSubmitted || isCorrect ? (
+            <Section>
+              <h2>답 입력</h2>
+              <StyledTextarea
+                type="text"
+                value={userAnswer}
+                onChange={(e) => setUserAnswer(e.target.value)}
+              />
+              <Button onClick={handleSubmit}>제출</Button>
+            </Section>
+          ) : null}
         </>
       ) : (
         <p>Loading...</p>

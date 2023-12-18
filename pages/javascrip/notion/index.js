@@ -9,6 +9,7 @@ import {
   IndexWrapper,
 } from "./style.js";
 import { Questions1 } from "./array/index.js";
+import { StyledInput, StyledTextarea } from "../Q&A/style.js";
 
 const Quiz6 = () => {
   // 배열 섞기 함수
@@ -76,10 +77,10 @@ const Quiz6 = () => {
   }, [currentSubSubject]);
 
   const handleSubmit = () => {
-    const userAnswerText = userAnswer.trim(); // 공백을 제거합니다.
+    const userAnswerText = userAnswer.replace(/\s/g, ""); // 모든 공백을 제거합니다.
     if (
       shuffledQuestions[currentQuestion].answerOptions.find(
-        (option) => option.text === userAnswerText
+        (option) => option.text.replace(/\s/g, "") === userAnswerText // 정답의 모든 공백도 제거하여 비교합니다.
       )?.isCorrect
     ) {
       setIsCorrect(true);
@@ -163,7 +164,6 @@ const Quiz6 = () => {
             )}
             <CodeBlock>{shuffledQuestions[currentQuestion].code}</CodeBlock>
           </Section>
-
           {isSubmitted && (
             <Section>
               <h2>정답 설명</h2>
@@ -177,11 +177,13 @@ const Quiz6 = () => {
               <CodeBlock>
                 {shuffledQuestions[currentQuestion].explanationCode}
               </CodeBlock>
-              {currentQuestion < shuffledQuestions.length - 1 && (
-                <Button onClick={handleNext}>다음 문제</Button>
-              )}
+              {isCorrect &&
+                currentQuestion < shuffledQuestions.length - 1 && ( // isCorrect 조건 추가
+                  <Button onClick={handleNext}>다음 문제</Button>
+                )}
             </Section>
           )}
+
           <Section>
             <h2>선택지</h2>
             {shuffledQuestions[currentQuestion].answerOptions.map(
@@ -193,7 +195,7 @@ const Quiz6 = () => {
               )
             )}
 
-            <input
+            <StyledTextarea
               type="text"
               value={userAnswer}
               onChange={(e) => setUserAnswer(e.target.value)}

@@ -8,6 +8,8 @@ export const Wrapper = styled.div`
   padding: 2rem;
   background-color: #f9f9f9;
   min-height: calc(100vh - 50px);
+
+  overflow: auto;
 `;
 
 export const Section = styled.div`
@@ -90,6 +92,17 @@ export const CodeBlock = styled.pre`
   code {
     font-family: "Courier New", Courier, monospace;
   }
+`;
+
+export const SelectBox = styled.select`
+  width: 200px; // 너비 설정
+  height: 35px; // 높이 설정
+  margin: 10px; // 주변 여백 설정
+  padding: 5px; // 내부 여백 설정
+  border: 1px solid #ccc; // 테두리 설정
+  border-radius: 5px; // 테두리 둥글게 설정
+  background-color: #fff; // 배경색 설정
+  font-size: 16px; // 글자 크기 설정
 `;
 
 // Quiz 컴포넌트...

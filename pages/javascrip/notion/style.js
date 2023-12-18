@@ -9,9 +9,19 @@ export const Wrapper = styled.div`
   background-color: #f9f9f9;
   /* 뷰포트의 높이로 설정 */
   min-height: calc(100vh - 50px);
-  height: 100%;
+  // height: 100%;
   overflow: auto;
 `;
+
+// export const Wrapper = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+//   padding: 2rem;
+//   background-color: #f9f9f9;
+//   min-height: calc(100vh - 50px);
+// `;
 
 export const Section = styled.div`
   margin-bottom: 2rem;

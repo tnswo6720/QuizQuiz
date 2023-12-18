@@ -33,44 +33,6 @@ export const javascriptNotionAJAX = [
 
   {
     type: "multiple-choice",
-    questionText: "아래의 JavaScript 코드를 실행하면, 어떤 결과가 출력됩니까?",
-    code: `
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'https://api.example.com/data', true);
-        xhr.onreadystatechange = function () {
-          if (xhr.readyState == 4 && xhr.status == 200)
-            console.log(xhr.responseText);
-        };
-        xhr.send();
-      `,
-    answerOptions: [
-      {
-        text: "'https://api.example.com/data'에서 반환된 데이터",
-        isCorrect: true,
-      },
-      {
-        text: "undefined",
-        isCorrect: false,
-      },
-      {
-        text: "null",
-        isCorrect: false,
-      },
-      {
-        text: "Error",
-        isCorrect: false,
-      },
-    ],
-    answer: "'https://api.example.com/data'에서 반환된 데이터",
-    explanation:
-      "이 코드는 AJAX를 사용하여 'https://api.example.com/data' 주소로 비동기 HTTP GET 요청을 보내고, 응답 상태가 200(성공)인 경우 응답 텍스트를 콘솔에 출력합니다.",
-    subject: "javascript",
-    subSubject: "ajax",
-    quizType: "coding",
-  },
-
-  {
-    type: "multiple-choice",
     questionText:
       "AJAX를 사용할 때, 서버로부터 응답을 받지 못한 경우 어떤 상태 코드를 반환하나요?",
     answerOptions: [
@@ -98,45 +60,7 @@ export const javascriptNotionAJAX = [
     subSubject: "ajax",
     quizType: "coding",
   },
-  {
-    type: "multiple-choice",
-    questionText: "아래의 JavaScript 코드를 실행하면, 어떤 결과가 출력됩니까?",
-    code: `
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'https://api.example.com/data', true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState == 4 && xhr.status == 200)
-        console.log(xhr.responseText);
-    };
-    xhr.send(JSON.stringify({key: 'value'}));
-  `,
-    answerOptions: [
-      {
-        text: "'https://api.example.com/data'로 POST 요청을 보낸 후 반환된 데이터",
-        isCorrect: true,
-      },
-      {
-        text: "undefined",
-        isCorrect: false,
-      },
-      {
-        text: "null",
-        isCorrect: false,
-      },
-      {
-        text: "Error",
-        isCorrect: false,
-      },
-    ],
-    answer:
-      "'https://api.example.com/data'로 POST 요청을 보낸 후 반환된 데이터",
-    explanation:
-      "이 코드는 AJAX를 사용하여 'https://api.example.com/data' 주소로 비동기 HTTP POST 요청을 보내고, 응답 상태가 200(성공)인 경우 응답 텍스트를 콘솔에 출력합니다.",
-    subject: "javascript",
-    subSubject: "ajax",
-    quizType: "coding",
-  },
+
   {
     type: "multiple-choice",
     questionText: "AJAX를 사용하는 주된 이유는 무엇인가요?",
@@ -332,6 +256,84 @@ export const javascriptNotionAJAX = [
     answer: "'https://api.example.com/data'에서 반환된 모든 응답 헤더",
     explanation:
       "이 코드는 AJAX를 사용하여 'https://api.example.com/data' 주소로 비동기 HTTP GET 요청을 보내고, 요청 상태가 4(요청 완료)이며 응답 상태가 200(성공)인 경우 모든 응답 헤더를 콘솔에 출력합니다.",
+    subject: "javascript",
+    subSubject: "ajax",
+    quizType: "coding",
+  },
+  {
+    type: "multiple-choice",
+    questionText:
+      "위 코드에서 XMLHttpRequest 객체의 `open` 메서드는 무엇을 하는데 사용되었나요?",
+    code: `
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'https://api.example.com/data', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4 && xhr.status == 200)
+        console.log(xhr.responseText);
+    };
+    xhr.send(JSON.stringify({key: 'value'}));
+    `,
+    answerOptions: [
+      {
+        text: "서버로의 요청을 보내는 역할",
+        isCorrect: false,
+      },
+      {
+        text: "요청을 초기화하는 역할",
+        isCorrect: true,
+      },
+      {
+        text: "서버로부터 응답을 받는 역할",
+        isCorrect: false,
+      },
+      {
+        text: "JSON 데이터를 변환하는 역할",
+        isCorrect: false,
+      },
+    ],
+    answer: "요청을 초기화하는 역할",
+    explanation:
+      "`open` 메서드는 XMLHttpRequest 객체의 요청을 초기화하는 역할을 합니다. 첫 번째 인자는 HTTP 메서드를, 두 번째 인자는 요청을 보낼 URL을, 세 번째 인자는 요청이 비동기적으로 실행될지 여부를 결정합니다.",
+    subject: "javascript",
+    subSubject: "ajax",
+    quizType: "coding",
+  },
+  {
+    type: "multiple-choice",
+    questionText:
+      "위 코드에서 XMLHttpRequest 객체의 `onreadystatechange` 프로퍼티는 무엇을 하는데 사용되었나요?",
+    code: `
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'https://api.example.com/data', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4 && xhr.status == 200)
+        console.log(xhr.responseText);
+    };
+    xhr.send(JSON.stringify({key: 'value'}));
+    `,
+    answerOptions: [
+      {
+        text: "서버로의 요청을 보내는 역할",
+        isCorrect: false,
+      },
+      {
+        text: "요청의 상태 변화를 감지하고 처리하는 역할",
+        isCorrect: true,
+      },
+      {
+        text: "서버로부터 응답을 받는 역할",
+        isCorrect: false,
+      },
+      {
+        text: "JSON 데이터를 변환하는 역할",
+        isCorrect: false,
+      },
+    ],
+    answer: "요청의 상태 변화를 감지하고 처리하는 역할",
+    explanation:
+      "`onreadystatechange`는 요청의 상태가 변할 때마다 호출되는 이벤트 핸들러입니다. `readyState` 속성의 값이 변경될 때마다 이 함수가 호출되며, 이를 통해 우리는 요청의 상태를 추적하고 적절한 동작을 수행할 수 있습니다.",
     subject: "javascript",
     subSubject: "ajax",
     quizType: "coding",

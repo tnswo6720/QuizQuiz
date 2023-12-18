@@ -378,7 +378,7 @@ export const javascriptNotionEvent = [
     ],
     answer: "'Parent Div Clicked!'",
     explanation:
-      "이벤트 캡처 때문에, 'Parent Div Clicked!' alert가 먼저 표시되고, 그 다음에 'Child Button Clicked!' alert가 표시됩니다.",
+      "이벤트 캡처 때문에, 'Parent Div Clicked!' alert가 먼저 표시되고, 그 다음에 'Child Button Clicked!' alert가 표시됩니다. 이벤트 캡처는 이벤트가 가장 상위의 부모 요소에서 시작하여 이벤트의 대상인 요소까지 내려가는 단계를 의미합니다. 여기서 'parent' 요소의 이벤트 리스너는 세 번째 인자가 `true`이므로 캡처링 단계에서 동작하게 됩니다.",
     subject: "javascript",
     subSubject: "event",
     quizType: "coding",

@@ -191,4 +191,122 @@ export const javascriptCodeBasic = [
     subSubject: "basic",
     quizType: "coding",
   },
+  {
+    type: "fill-in-the-blank",
+    questionText:
+      "다음 JavaScript 코드에서 'name' 변수에 할당될 문자열, 'maxAge' 상수에 할당될 수, 그리고 if문에서 출력될 메시지를 적절하게 채워주세요. 단, 'age'는 'maxAge'보다 커야 합니다.",
+    code: `
+      // 변수 선언
+      let name = ______;
+  
+      // 상수 선언
+      const maxAge = ______;
+  
+      // 데이터 타입: 숫자
+      let age = 18;
+  
+      // 연산자 사용
+      age = age + 2;
+  
+      // 제어문: if
+      if (age > maxAge) {
+        console.log(______);
+      } else {
+        console.log(______);
+      }
+    `,
+    answerOptions: [
+      [
+        "'John'",
+        "19",
+        "'You are over the max age.'",
+        "'You are under the max age.'",
+      ],
+      ["'Jane'", "20", "'You are an adult.'", "'You are a minor.'"],
+      ["'Doe'", "16", "'You are older.'", "'You are younger.'"],
+      ["'Smith'", "17", "'You are overage.'", "'You are underage.'"],
+    ],
+    answer: [
+      "'John'",
+      "19",
+      "'You are over the max age.'",
+      "'You are under the max age.'",
+    ],
+    explanation:
+      "JavaScript에서는 'let' 키워드를 사용해 변수를 선언하고, 'const' 키워드를 사용해 상수를 선언합니다. 숫자 데이터 타입은 숫자 값을 저장하는 데 사용하고, 연산자는 값에 대한 수학적 연산을 수행하는 데 사용합니다. 'if' 제어문은 조건에 따라 코드의 실행 흐름을 제어합니다.",
+    subject: "JavaScript",
+    subSubject: "Basic",
+    quizType: "coding",
+  },
+  {
+    type: "fill-in-the-blank",
+    questionText:
+      "다음 JavaScript 코드에서 'count' 변수를 조건문 내에서 증가시키는 부분을 적절한 연산자로 채워주세요.",
+    code: `
+      // 변수 선언
+      let count = 0;
+  
+      // 제어문: for
+      for (let i = 0; i < 10; i++) {
+        // 연산자 사용
+        count ______;
+      }
+    `,
+    answerOptions: [["++"], ["--"], ["**"], ["//"]],
+    answer: ["++"],
+    explanation:
+      "JavaScript에서 '++' 연산자는 변수의 값을 1 증가시키는 데 사용됩니다. 따라서, 'count++'는 'count' 변수의 값을 1 증가시킵니다.",
+    subject: "javascript",
+    subSubject: "basic",
+    quizType: "coding",
+  },
+  {
+    type: "fill-in-the-blank",
+    questionText:
+      "다음 JavaScript 코드에서 빈칸을 채워, 'number' 변수에 저장된 값이 10보다 크면 'greater' 문자열을 출력하고, 그렇지 않으면 'less' 문자열을 출력하는 코드를 완성해 보세요.",
+    code: `
+      // 변수 선언
+      let number = 15;
+  
+      // 제어문: if
+      if (number ______ 10) {
+        console.log(______);
+      } else {
+        console.log('less');
+      }
+    `,
+    answerOptions: [
+      [">", "'greater'"],
+      ["<", "'less'"],
+      ["==", "'equal'"],
+      ["!=", "'not equal'"],
+    ],
+    answer: [">", "'greater'"],
+    explanation:
+      "JavaScript에서 '>' 연산자는 왼쪽 피연산자가 오른쪽 피연산자보다 큰 경우 true를 반환합니다. 따라서, 'number > 10'은 number 값이 10보다 큰 경우 true를 반환하므로, 이 경우 'greater'가 출력됩니다.",
+    subject: "javascript",
+    subSubject: "basic",
+    quizType: "coding",
+  },
+  {
+    type: "fill-in-the-blank",
+    questionText:
+      "JavaScript에서 변수를 선언하고 초기화하는 방법 중 하나는 'let' 키워드를 사용하는 것입니다. 아래의 코드에서 빈칸을 채워 'let' 키워드를 사용하여 'greeting' 변수를 선언하고, 'Hello, World!' 문자열을 초기화해 보세요.",
+    code: `
+      ______ greeting = ______;
+      console.log(greeting);
+    `,
+    answerOptions: [
+      ["let", "'Hello, World!'"],
+      ["var", "'Hello, World!'"],
+      ["const", "'Hello, World!'"],
+      ["let", "Hello, World!"],
+    ],
+    answer: ["let", "'Hello, World!'"],
+    explanation:
+      "JavaScript에서 'let' 키워드를 사용하여 변수를 선언하고 초기화할 수 있습니다. 문자열을 초기화할 때는 따옴표('') 또는 쌍따옴표(\")를 사용해야 합니다.",
+    subject: "javascript",
+    subSubject: "basic",
+    quizType: "coding",
+  },
 ];
