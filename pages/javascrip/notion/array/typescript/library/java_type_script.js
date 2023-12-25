@@ -201,7 +201,7 @@ export const typescriptNotionLibrary = [
       },
       {
         text: "모달창이 열렸을 때, handleOk 함수를 호출하면 모달창이 더욱 확대됩니다.",
-        isCorrect: false,
+        isCorrect: true,
       },
     ],
 
@@ -267,64 +267,6 @@ export const typescriptNotionLibrary = [
       "'모달 종료 방식 - 1'은 모달창을 삭제하는 것이 아니라, isOpen 상태를 변경하여 모달창을 표시하거나 숨기는 방식입니다.",
     subject: "typescript",
     subSubject: "library",
-    quizType: "coding",
-  },
-
-  {
-    type: "multiple-choice",
-    questionText:
-      "아래의 코드에서, '모달 종료 방식 - 2'에 대한 설명 중 옳지 않은 것은 무엇인가요?",
-    code: `
-      export default function ModalAlertPage(): JSX.Element {
-        const [isOpen, setIsOpen] = useState(false);
-    
-        const showModal = (): void => {
-          setIsOpen(true);
-        };
-    
-        const handleOk = (): void => {
-          setIsOpen(false);
-        };
-    
-        const handleCancel = (): void => {
-          setIsOpen(false);
-        };
-    
-        return (
-          <>
-            <button onClick={showModal}>모달창 열기</button>
-            {isOpen && (
-              <Modal open={true} onOk={handleOk} onCancel={handleCancel}>
-                <DaumPostcodeEmbed onComplete={handleComplete} />
-              </Modal>
-            )}
-          </>
-        );
-      }
-    `,
-    answerOptions: [
-      {
-        text: "'모달 종료 방식 - 2'는 isOpen 상태에 따라 모달창 컴포넌트 자체를 생성하거나 제거하는 방식입니다.",
-        isCorrect: false,
-      },
-      {
-        text: "isOpen 값이 true일 때만 Modal 컴포넌트가 생성되고, false일 때는 Modal 컴포넌트가 사라집니다.",
-        isCorrect: false,
-      },
-      {
-        text: "이 방식은 모달창 내의 정보가 민감한 정보(예, 신용카드 정보, 비밀번호 등)이며, 모달창이 닫히면 그 정보를 완전히 삭제해야 하는 경우에 사용합니다.",
-        isCorrect: false,
-      },
-      {
-        text: "'모달 종료 방식 - 2'는 모달창을 숨기는 방식입니다.",
-        isCorrect: true,
-      },
-    ],
-    answer: "'모달 종료 방식 - 2'는 모달창을 숨기는 방식입니다.",
-    explanation:
-      "'모달 종료 방식 - 2'는 모달창을 숨기는 것이 아니라, isOpen 상태에 따라 모달창 컴포넌트 자체를 생성하거나 제거하는 방식입니다.",
-    subject: "typescript",
-    subSubject: "librar",
     quizType: "coding",
   },
 

@@ -223,4 +223,57 @@ export const nestjsNotionNotion = [
     subSubject: "HTTP Server",
     quizType: "coding",
   },
+  {
+    type: "multiple-choice",
+    questionText:
+      "NestJS에서 서비스 계층과 컨트롤러 계층을 분리하여 구현할 때의 주된 장점은 무엇인가요? 아래의 코드 예시를 참고하여 선택하십시오.",
+    code: `
+      import { Controller, Get } from '@nestjs/common';
+      import { CatsService } from './cats.service';
+  
+      @Controller('cats')
+      export class CatsController {
+        constructor(private catsService: CatsService) {}
+  
+        @Get()
+        findAll() {
+          return this.catsService.findAll();
+        }
+      }
+  
+      import { Injectable } from '@nestjs/common';
+  
+      @Injectable()
+      export class CatsService {
+        findAll() {
+          return 'This action returns all cats';
+        }
+      }
+    `,
+    answerOptions: [
+      {
+        text: "HTTP 요청 처리와 비즈니스 로직이 혼재되어, 코드의 가독성이 향상됩니다.",
+        isCorrect: false,
+      },
+      {
+        text: "컨트롤러만으로 모든 비즈니스 로직을 처리할 수 있어, 서비스 계층의 필요성이 없어집니다.",
+        isCorrect: false,
+      },
+      {
+        text: "관심사의 분리(Separation of Concerns) 원칙에 따라, 각 계층이 자신의 역할에만 집중할 수 있게 하여 코드의 유지보수성이 향상됩니다.",
+        isCorrect: true,
+      },
+      {
+        text: "서비스와 컨트롤러의 분리는 코드의 복잡성을 증가시켜, 애플리케이션의 실행 속도를 느리게 합니다.",
+        isCorrect: false,
+      },
+    ],
+    answer:
+      "관심사의 분리(Separation of Concerns) 원칙에 따라, 각 계층이 자신의 역할에만 집중할 수 있게 하여 코드의 유지보수성이 향상됩니다.",
+    explanation:
+      "NestJS에서 서비스 계층과 컨트롤러 계층을 분리하는 구조는 관심사의 분리(Separation of Concerns) 원칙을 따릅니다. 이로 인해 서비스 계층은 데이터 관리와 비즈니스 로직에, 컨트롤러 계층은 라우팅과 요청/응답 처리에 집중할 수 있습니다. 이 분리는 코드의 유지보수성을 높이고, 각 부분이 더 명확하고 관리하기 쉬운 형태로 구성될 수 있도록 돕습니다. 또한, 테스트가 용이해지고, 기능 확장과 리팩토링이 간단해집니다.",
+    subject: "nestjs",
+    subSubject: "notion",
+    quizType: "coding",
+  },
 ];

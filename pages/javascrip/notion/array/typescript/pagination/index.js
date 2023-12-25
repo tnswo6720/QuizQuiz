@@ -543,7 +543,7 @@ export default function PaginationPage(): JSX.Element {
     answer: "여러 컴포넌트가 동일한 상태를 공유하도록 함",
     explanation:
       "리프팅 스테이트(Lifting State Up) 패턴의 주요 목적은 여러 컴포넌트가 동일한 상태를 공유하도록 하는 것입니다. 이 패턴을 통해, 상태 변경이 한 컴포넌트의 동작에 다른 컴포넌트의 렌더링을 트리거할 수 있습니다.",
-    subject: "react",
+    subject: "typescript",
     subSubject: "pagination",
     quizType: "coding",
   },

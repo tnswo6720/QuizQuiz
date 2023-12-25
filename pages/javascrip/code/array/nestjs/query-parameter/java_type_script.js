@@ -66,7 +66,7 @@ export const nestjsCodeQueryParameter = [
   {
     type: "fill-in-the-blank",
     questionText:
-      "@Put 데코레이터와 관련된 설명 중 옳지 않은 것을 찾아서 해당 빈칸을 채워주세요.",
+      "@Put 데코레이터와 관련된 설명 중 옳은 것을 찾아서 해당 빈칸을 채워주세요.",
     code: `
       @Put(':id')
       putPost(

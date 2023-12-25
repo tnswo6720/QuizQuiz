@@ -108,10 +108,22 @@ export const typescriptNotionLayout = [
       }
     `,
     answerOptions: [
-      "props.children",
-      "LayoutNavigation",
-      "LayoutFooter",
-      "LayoutHeader",
+      {
+        text: "props.children",
+        isCorrect: true,
+      },
+      {
+        text: "LayoutNavigation",
+        isCorrect: false,
+      },
+      {
+        text: "LayoutFooter",
+        isCorrect: false,
+      },
+      {
+        text: "LayoutHeader",
+        isCorrect: false,
+      },
     ],
     answer: "props.children",
     explanation:

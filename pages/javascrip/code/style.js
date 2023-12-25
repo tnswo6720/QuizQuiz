@@ -105,4 +105,10 @@ export const SelectBox = styled.select`
   font-size: 16px; // 글자 크기 설정
 `;
 
+export const ExplanationImage = styled.img`
+  width: 100%; // 이미지의 너비를 섹션창의 너비에 맞게 조절
+  max-width: 100%; // 이미지의 최대 너비를 섹션창의 너비로 제한
+  height: auto; // 이미지의 높이를 원래의 비율에 맞게 자동으로 조절
+`;
+
 // Quiz 컴포넌트...

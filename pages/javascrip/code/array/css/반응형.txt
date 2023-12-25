@@ -1,0 +1,27 @@
+반응형 웹 디자인(Responsive Web Design) 이해
+반응형 웹 디자인의 정의 및 필요성
+반응형 웹과 적응형 웹(Adaptive Web)의 차이점
+뷰포트(Viewport) 설정
+뷰포트의 개념 및 설정 방법
+미디어 쿼리(Media Query) 기본
+미디어 쿼리의 개념 및 작성 방법
+미디어 타입(Media Type) 및 미디어 피처(Media Feature) 이해
+레이아웃 설계를 위한 CSS 속성 이해
+Flexbox
+CSS Grid
+반응형 이미지(Responsive Image)
+반응형 이미지 처리 방법
+이미지 최적화 방법
+반응형 타이포그래피(Responsive Typography)
+가변 글꼴 크기 설정 방법
+반응형 웹에서의 타이포그래피 관리 전략
+반응형 웹 디자인 패턴
+주요 반응형 웹 디자인 패턴 이해 (ex. Mostly Fluid, Column Drop 등)
+퍼포먼스 최적화
+반응형 웹에서의 성능 이슈
+성능 최적화 방법
+접근성 및 사용성
+반응형 웹에서의 접근성과 사용성 고려 사항
+실제 프로젝트를 통한 실습
+모바일 우선(Mobile First) 디자인과 데스크탑 우선(Desktop First) 디자인 비교
+실제 사이트를 반응형으로 리디자인하기

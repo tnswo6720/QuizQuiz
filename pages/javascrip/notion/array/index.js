@@ -27,6 +27,15 @@ import { exam1 } from "./exam1";
 import { nestjsNotionQueryParameter } from "./nestjs/query_parameter";
 import { CommonNotionGit } from "./common/git";
 import { cssNotionErrorSolution } from "./css/errorsolution";
+import { typescriptNotionInfiniteScroller } from "./typescript/infinitescroller";
+import { typescriptNotionErrorSolution } from "./typescript/errorsolution/java_type_script";
+import { cssNotionbasic } from "./css/basic";
+import { cssNotionFont } from "./css/font";
+import { cssNotionpropertyvalue } from "./css/property-value";
+import { cssNotionStyle } from "./css/style";
+import { typescriptNotionClass } from "./typescript/클래스와오픈API/java_type_script";
+import { nestjsNotionModule } from "./nestjs/모듈과제어의역전";
+import { cssNotionResponsive } from "./css/반응형";
 
 export const Questions1 = [
   // 질문 데이터...
@@ -51,14 +60,23 @@ export const Questions1 = [
   ...nestjsNotionDocker,
   ...nestjsNotionNotion,
   ...nestjsNotionQueryParameter,
+  ...nestjsNotionModule,
   ...typescriptNotionLibrary,
   ...typescriptNotionBasic,
   ...typescriptNotionBoard,
   ...typescriptNotionPagination,
+  ...typescriptNotionInfiniteScroller,
+  ...typescriptNotionErrorSolution,
+  ...typescriptNotionClass,
   ...CommonNotionBackend,
   ...CommonNotionGit,
   ...cssNotionselector,
   ...cssNotionErrorSolution,
+  ...cssNotionbasic,
+  ...cssNotionpropertyvalue,
+  ...cssNotionStyle,
+  ...cssNotionFont,
+  ...cssNotionResponsive,
   ...Notiontest,
   ...exam1,
 ];

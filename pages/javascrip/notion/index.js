@@ -66,7 +66,8 @@ const Quiz6 = () => {
   useEffect(() => {
     if (currentSubSubject) {
       const quizQuestions = Questions1.filter(
-        (q) => q.subSubject === currentSubSubject
+        (q) =>
+          q.subSubject === currentSubSubject && q.subject === currentSubject // subject 조건 추가
       );
       const shuffledQuestions = shuffleArray([...quizQuestions]).map((q) => ({
         ...q,
@@ -74,7 +75,7 @@ const Quiz6 = () => {
       }));
       setShuffledQuestions(shuffledQuestions);
     }
-  }, [currentSubSubject]);
+  }, [currentSubSubject, currentSubject]); // currentSubject 의존성 추가
 
   const handleSubmit = () => {
     const userAnswerText = userAnswer.replace(/\s/g, ""); // 모든 공백을 제거합니다.

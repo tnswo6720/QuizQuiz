@@ -61,16 +61,17 @@ export const javascriptNotionFunction = [
       },
       {
         text: "let greet = (name) => {'Hello, ' + name + '!'};",
-        isCorrect: true,
+        isCorrect: false,
       },
     ],
     answer: "let greet = (name) => return 'Hello, ' + name + '!';",
     explanation:
-      "화살표 함수에서는 중괄호와 'return' 키워드 없이 표현식을 바로 반환할 수 있습니다. 따라서 'let greet = (name) => return 'Hello, ' + name + '!';'는 잘못된 코드입니다.",
+      "화살표 함수에서는 중괄호를 사용하지 않을 경우 'return' 키워드를 생략해야 합니다. 따라서 'let greet = (name) => return 'Hello, ' + name + '!';'는 잘못된 코드입니다.",
     subject: "javascript",
     subSubject: "Function",
     quizType: "coding",
   },
+
   {
     type: "multiple-choice",
     questionText:

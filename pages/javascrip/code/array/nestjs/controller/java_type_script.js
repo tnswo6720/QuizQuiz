@@ -72,13 +72,13 @@ export const nestjsCodeController = [
     questionText:
       "Nest.js를 사용하여 특정 id를 가진 post를 가져오는 함수를 작성하려고 합니다. 이 때, HTTP 요청 메소드를 처리하는 데코레이터로서 빈칸에 적합한 코드는 무엇일까요?",
     code: `
-      @______(':id')
+      ______(':id')
       getPost(@Param('id') id: string) {
         return posts.find((post) => post.id === +id);
       }
     `,
-    answerOptions: ["@Post()", "@Get()", "@Put()", "@Delete()"],
-    answer: "@Get()",
+    answerOptions: ["@Post", "@Get", "@Put", "@Delete"],
+    answer: "@Get",
     explanation:
       "특정 id를 가진 post를 가져오는 작업은 보통 HTTP GET 요청을 통해 이루어집니다. 따라서 '@Get()'이 적합한 코드입니다.",
     subject: "nestjs",
@@ -95,7 +95,7 @@ export const nestjsCodeController = [
         return posts.find((post) => post.id === +id);
       }
     `,
-    answerOptions: ["@Body()", "@Param()", "@Query()", "@Headers()"],
+    answerOptions: ["@Body('id')", "@Param('id')", "@Query('id')", "@Headers('id')"],
     answer: "@Param('id')",
     explanation:
       "URL의 파라미터를 가져오는 작업은 '@Param()' 데코레이터를 통해 이루어집니다.",

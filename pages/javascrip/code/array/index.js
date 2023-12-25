@@ -1,5 +1,6 @@
 import { cssCodeBasic } from "./css/basic/java_type_script";
 import { cssCodeBoxmodel } from "./css/boxmodel/java_type_script";
+import { cssCodelayout } from "./css/layout/index.js";
 import { cssCodePropertyValue } from "./css/property-value/java_type_script";
 import { cssCodeSelector } from "./css/selector/java_type_script";
 import { javascriptCodeArray } from "./javascript/array/java_type_script";
@@ -17,6 +18,7 @@ import { typescriptCodeRouting } from "./typescript/routing";
 import { typescriptCodeSetState } from "./typescript/setState";
 import { typescriptCodeTypescriptBoard } from "./typescript/typescriptboard";
 import { typescriptCodeUtilitytype } from "./typescript/utilitytype";
+import { typescriptCodeClass } from "./typescript/클래스와오픈API/index.js";
 
 export const Questions2 = [
   ...javascriptCodeEvent,
@@ -32,8 +34,10 @@ export const Questions2 = [
   ...typescriptCodeMap,
   ...typescriptCodeTypescriptBoard,
   ...typescriptCodePagination,
+  ...typescriptCodeClass,
 
   ...nestjsCodeTypeorm,
+  ...cssCodelayout,
   ...cssCodeBasic,
   ...cssCodeSelector,
   ...cssCodePropertyValue,

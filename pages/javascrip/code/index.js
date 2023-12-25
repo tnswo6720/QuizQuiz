@@ -6,6 +6,7 @@ import {
   CodeBlock,
   TextArea,
   SelectBox,
+  ExplanationImage,
 } from "./style.js";
 import { Questions2 } from "./array/index.js";
 import { StyledTextarea } from "../Q&A/style.js";
@@ -67,6 +68,7 @@ const Quiz5 = () => {
     return answerCode;
   };
   // 제출 버튼 클릭 시
+  // 제출 버튼 클릭 시
   const handleSubmit = () => {
     let isUserAnswerCorrect = false;
     const formattedUserAnswer = userAnswer.replace(/\s+/g, ""); // 띄어쓰기 제거
@@ -77,7 +79,7 @@ const Quiz5 = () => {
       const userAnswerArray = formattedUserAnswer.split(",");
       isUserAnswerCorrect = shuffledQuestions[currentQuestion].answer[0]
         .replace(/\s+/g, "")
-        .split(", ")
+        .split(",")
         .every((val, idx) => val.trim() === userAnswerArray[idx].trim());
     } else {
       // 문자열인 경우, 직접 사용자의 답안과 비교합니다.
@@ -277,6 +279,14 @@ const Quiz5 = () => {
                 .map((sentence, index) => (
                   <p key={index}>{sentence}</p>
                 ))}
+
+              {/* 이미지 추가 부분 */}
+              {shuffledQuestions[currentQuestion].explanationImage && (
+                <ExplanationImage
+                  src={shuffledQuestions[currentQuestion].explanationImage}
+                  alt="Explanation"
+                />
+              )}
 
               {currentQuestion < shuffledQuestions.length - 1 && (
                 <Button onClick={handleNext}>다음 문제</Button>

@@ -384,6 +384,50 @@ export const javascriptNotionError = [
     subSubject: "error",
     quizType: "coding",
   },
+  {
+    type: "multiple-choice",
+    questionText:
+      "퀴즈 프로젝트에서 발생한 오류 상황입니다. 아래의 코드에서 발생하는 문제와 그 해결 방법에 대해 가장 정확하게 설명한 것은 무엇인가요?",
+    code: `
+    useEffect(() => {
+      if (currentSubSubject) {
+        const quizQuestions = Questions1.filter(
+          (q) => q.subSubject === currentSubSubject
+        );
+        const shuffledQuestions = shuffleArray([...quizQuestions]).map((q) => ({
+          ...q,
+          answerOptions: shuffleArray([...q.answerOptions]),
+        }));
+        setShuffledQuestions(shuffledQuestions);
+      }
+    }, [currentSubSubject]);
+    `,
+    answerOptions: [
+      {
+        text: "현재 코드는 `subject`를 고려하지 않아서, 같은 `subSubject`를 가진 문제들이 모두 표시되는 문제가 있다. 이를 해결하기 위해 필터링 조건에 `subject`를 추가하고, `useEffect`의 의존성 배열에 `currentSubject`를 추가해야 한다.",
+        isCorrect: true,
+      },
+      {
+        text: "`useEffect`의 의존성 배열에 `currentSubject`를 추가하면, `subject`가 바뀔 때마다 문제가 다시 로드되는 문제가 생긴다.",
+        isCorrect: false,
+      },
+      {
+        text: "`shuffleArray` 함수가 문제 데이터를 잘 섞지 못하는 문제가 있다. 이를 해결하기 위해 새로운 배열 셔플링 방법을 적용해야 한다.",
+        isCorrect: false,
+      },
+      {
+        text: "문제 데이터의 `subject`와 `subSubject`가 모두 일치하는 문제만 선택해야 하지만, 현재 코드는 이를 고려하지 않고 있다. 이를 해결하기 위해 `subject`와 `subSubject` 모두를 고려하는 필터링 로직을 추가해야 한다.",
+        isCorrect: false,
+      },
+    ],
+    answer:
+      "현재 코드는 `subject`를 고려하지 않아서, 같은 `subSubject`를 가진 문제들이 모두 표시되는 문제가 있다. 이를 해결하기 위해 필터링 조건에 `subject`를 추가하고, `useEffect`의 의존성 배열에 `currentSubject`를 추가해야 한다.",
+    explanation:
+      "현재 코드에서는 `subSubject`가 같은 문제들이 모두 표시되는 문제가 발생하고 있다. 이는 `filter` 함수에서 `subject`를 고려하지 않고 `subSubject`만을 고려하기 때문이다. 이를 해결하기 위해서는 `filter` 함수에서 `subject`와 `subSubject`가 동시에 일치하는 문제들만 선택하도록 수정해야 한다. 또한, `useEffect`의 의존성 배열에 `currentSubject`를 추가하여 `subject`가 변경될 때마다 문제들이 재로드되도록 설정해야 한다.",
+    subject: "typescript",
+    subSubject: "error",
+    quizType: "coding",
+  },
 
   // promise
 ];

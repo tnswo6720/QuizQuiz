@@ -467,6 +467,36 @@ export const CommonNotionGit = [
     subSubject: "github",
     quizType: "coding",
   },
+  {
+    type: "multiple-choice",
+    questionText:
+      "Git에서 특정 브랜치로 전환하거나, 파일의 특정 커밋 상태로 되돌리기 위해 사용하는 명령어는 무엇인가요?",
+    code: "",
+    answerOptions: [
+      {
+        text: "git checkout",
+        isCorrect: true,
+      },
+      {
+        text: "git fetch",
+        isCorrect: false,
+      },
+      {
+        text: "git push",
+        isCorrect: false,
+      },
+      {
+        text: "git pull",
+        isCorrect: false,
+      },
+    ],
+    answer: "git checkout",
+    explanation:
+      "git checkout 명령어는 특정 브랜치로 전환하거나, 파일의 특정 커밋 상태로 되돌리는 데 사용됩니다. 이 명령어를 사용하면 다른 브랜치로 쉽게 전환할 수 있고, 특정 커밋의 상태로 파일을 되돌릴 수 있습니다. 예를 들어, 'git checkout feature'라는 명령어를 실행하면 'feature'라는 이름의 브랜치로 전환할 수 있습니다. 또한, 'git checkout 5d7e0'과 같이 특정 커밋의 해시를 사용하여 해당 커밋 상태로 파일을 되돌릴 수 있습니다. 이는 브랜치 전환과 버전 관리에 중요한 기능입니다.",
+    subject: "common",
+    subSubject: "github",
+    quizType: "coding",
+  },
 ];
 
 // HTTP란?

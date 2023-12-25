@@ -55,7 +55,7 @@ export const cssCodeBasic = [
   {
     type: "fill-in-the-blank",
     questionText:
-      "CSS에서 태그 선택자를 사용하여 스타일을 적용하려면 어떻게 해야 하나요?",
+      "CSS에서 p 태그 선택자를 사용하여 스타일을 적용하려면 어떻게 해야 하나요?",
     code: `
       ______ {
         color: red;

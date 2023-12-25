@@ -439,4 +439,39 @@ export const javascriptNotionObject = [
     subSubject: "object",
     quizType: "coding",
   },
+  {
+    type: "multiple-choice",
+    questionText:
+      "자바스크립트의 JSON.parse 함수에 대한 문제입니다. 아래의 코드를 보고 질문에 답하십시오. let obj = JSON.parse(jsonData);의 값은 무엇인가요?",
+    code: `
+    let jsonData = {
+    "name":"John", "age":30, "city":"New York"};
+    let obj = JSON.parse(jsonData);',
+     } `,
+    answerOptions: [
+      {
+        text: "obj는 'John', 30, 'New York'을 값으로 가진 객체입니다.",
+        isCorrect: false,
+      },
+      {
+        text: "obj는 'jsonData' 문자열을 값으로 가진 객체입니다.",
+        isCorrect: false,
+      },
+      {
+        text: "obj는 name 속성에 'John', age 속성에 30, city 속성에 'New York'을 값으로 가진 객체입니다.",
+        isCorrect: true,
+      },
+      {
+        text: "obj는 빈 객체입니다.",
+        isCorrect: false,
+      },
+    ],
+    answer:
+      "obj는 name 속성에 'John', age 속성에 30, city 속성에 'New York'을 값으로 가진 객체입니다.",
+    explanation:
+      "JSON.parse 함수는 JSON 문자열을 JavaScript 객체로 변환합니다. 따라서, obj는 name 속성에 'John', age 속성에 30, city 속성에 'New York'을 값으로 가진 객체가 됩니다.",
+    subject: "javascript",
+    subSubject: "object",
+    quizType: "coding",
+  },
 ];

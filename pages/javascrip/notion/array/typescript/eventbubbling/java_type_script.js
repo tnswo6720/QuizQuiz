@@ -80,11 +80,11 @@ export const typescriptNotionEventBubbling = [
         const handleParentClick = () => {
           alert('Parent clicked');
         };
-    
+  
         const handleChildClick = () => {
           alert('Child clicked');
         };
-    
+  
         return (
           <div onClickCapture={handleParentClick}>
             <button onClick={handleChildClick}>Click me</button>
@@ -93,8 +93,14 @@ export const typescriptNotionEventBubbling = [
       }
     `,
     answerOptions: [
-      "Child clicked, 그리고 Parent clicked",
-      "Parent clicked, 그리고 Child clicked",
+      {
+        text: "Child clicked, 그리고 Parent clicked",
+        isCorrect: false,
+      },
+      {
+        text: "Parent clicked, 그리고 Child clicked",
+        isCorrect: true,
+      },
     ],
     answer: "Parent clicked, 그리고 Child clicked",
     explanation:
@@ -112,7 +118,7 @@ export const typescriptNotionEventBubbling = [
         const handleClick = (event) => {
           alert(event.currentTarget.id);
         };
-    
+  
         return (
           <div id="parentID">
             <button id="buttonID" onClick={handleClick}>Click me</button>
@@ -120,7 +126,24 @@ export const typescriptNotionEventBubbling = [
         );
       }
     `,
-    answerOptions: ["parentID", "buttonID", "undefined", "Click me"],
+    answerOptions: [
+      {
+        text: "parentID",
+        isCorrect: false,
+      },
+      {
+        text: "buttonID",
+        isCorrect: true,
+      },
+      {
+        text: "undefined",
+        isCorrect: false,
+      },
+      {
+        text: "Click me",
+        isCorrect: false,
+      },
+    ],
     answer: "buttonID",
     explanation:
       "이벤트 객체의 'currentTarget' 속성은 이벤트 핸들러가 연결된 요소를 가리킵니다. 따라서 'button' 태그의 onClick 이벤트 핸들러에서 'event.currentTarget.id'를 출력하면, 'button' 태그의 id인 'buttonID'가 출력됩니다.",

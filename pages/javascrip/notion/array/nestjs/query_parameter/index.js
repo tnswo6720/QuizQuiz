@@ -320,4 +320,174 @@ export const nestjsNotionQueryParameter = [
     subSubject: "queryparameter",
     quizType: "coding",
   },
+  {
+    type: "multiple-choice",
+    questionText: "아래 코드에서 `postPosts` 메소드는 어떤 동작을 수행하는가?",
+    code: `
+  @Post()
+  postPosts(
+    @Body('author') author: string,
+    @Body('title') title: string,
+    @Body('content') content: string,
+  ) {
+    const post: PostModel = {
+      id: posts[posts.length - 1].id + 1,
+      author,
+      title,
+      content,
+      likeCount: 0,
+      commentCount: 0,
+    };
+  
+    posts = [...posts, post];
+  
+    return post;
+  }
+    `,
+    answerOptions: [
+      {
+        text: "`posts` 배열에 새로운 게시물을 추가한다.",
+        isCorrect: true,
+      },
+      {
+        text: "`posts` 배열에서 특정 게시물을 삭제한다.",
+        isCorrect: false,
+      },
+      {
+        text: "`posts` 배열의 모든 게시물을 반환한다.",
+        isCorrect: false,
+      },
+      {
+        text: "`posts` 배열에서 특정 게시물을 수정한다.",
+        isCorrect: false,
+      },
+    ],
+    answer: "`posts` 배열에 새로운 게시물을 추가한다.",
+    explanation:
+      "`postPosts` 메소드는 클라이언트로부터 받은 `author`, `title`, `content` 정보를 바탕으로 새로운 게시물을 생성하고, 이를 `posts` 배열에 추가합니다. 이 메소드는 생성된 게시물을 반환합니다. 이는 HTTP POST 요청을 처리하는 로직을 구현한 것입니다.",
+    subject: "nestjs",
+    subSubject: "queryparameter",
+    quizType: "coding",
+  },
+  {
+    type: "multiple-choice",
+    questionText: "아래 코드에서 `putPost` 메소드가 수행하는 기능은 무엇인가?",
+    code: `
+  @Put(':id')
+  putPost(
+    @Param('id') id: string,
+    @Body('author') author?: string,
+    @Body('title') title?: string,
+    @Body('content') content?: string,
+  ) {
+    const post = posts.find((post) => post.id === +id);
+  
+    if (!post) {
+      throw new NotFoundException();
+    }
+  
+    if (author) {
+      post.author = author;
+    }
+  
+    if (title) {
+      post.title = title;
+    }
+  
+    if (content) {
+      post.content = content;
+    }
+  
+    posts = posts.map((prevPost) => (prevPost.id === +id ? post : prevPost));
+  
+    return post;
+  }
+    `,
+    answerOptions: [
+      {
+        text: "`posts` 배열에서 특정 게시물을 수정한다.",
+        isCorrect: true,
+      },
+      {
+        text: "`posts` 배열에 새로운 게시물을 추가한다.",
+        isCorrect: false,
+      },
+      {
+        text: "`posts` 배열에서 특정 게시물을 삭제한다.",
+        isCorrect: false,
+      },
+      {
+        text: "`posts` 배열의 모든 게시물을 반환한다.",
+        isCorrect: false,
+      },
+    ],
+    answer: "`posts` 배열에서 특정 게시물을 수정한다.",
+    explanation:
+      "`putPost` 메소드는 클라이언트로부터 받은 `id`, `author`, `title`, `content` 정보를 바탕으로 해당 `id`를 가진 게시물의 정보를 수정합니다. 이는 HTTP PUT 요청을 처리하는 로직을 구현한 것입니다.",
+    subject: "nestjs",
+    subSubject: "queryparameter",
+    quizType: "coding",
+  },
+  {
+    type: "multiple-choice",
+    questionText: "아래 코드의 기능은 무엇인가?",
+    code: `
+  posts = posts.map((prevPost) => (prevPost.id === +id ? post : prevPost));
+    `,
+    answerOptions: [
+      {
+        text: "모든 게시물의 `id`를 새로운 `id`로 변경한다.",
+        isCorrect: false,
+      },
+      {
+        text: "`id`가 일치하는 게시물을 새로운 게시물로 교체한다.",
+        isCorrect: true,
+      },
+      {
+        text: "`id`가 일치하지 않는 게시물을 삭제한다.",
+        isCorrect: false,
+      },
+      {
+        text: "`id`가 일치하는 게시물을 삭제한다.",
+        isCorrect: false,
+      },
+    ],
+    answer: "`id`가 일치하는 게시물을 새로운 게시물로 교체한다.",
+    explanation:
+      "주어진 코드는 `posts` 배열을 순회하면서 `id`가 일치하는 게시물을 찾습니다. 일치하는 게시물이 있다면, 그 게시물을 새로운 게시물(`post`)로 교체합니다. 따라서 이 코드는 특정 `id`를 가진 게시물을 수정하는 데 사용됩니다.",
+    subject: "nestjs",
+    subSubject: "queryparameter",
+    quizType: "coding",
+  },
+  {
+    type: "multiple-choice",
+    questionText:
+      "아래의 코드는 id에 해당되는 POST를 삭제하는 함수에 대한 내용입니다.\n\njavascript\n@Delete(':id')\ndeletePost(@Param('id') id: string) {\n  const post = posts.find((post) => post.id === +id);\n  if (!post) {\n    throw new NotFoundException();\n  }\n  posts = posts.filter((post) => post.id !== +id);\n  return id;\n}\n}\n\n이 함수에 대한 설명 중 가장 정확한 것은 무엇인가요?",
+    code: "@Delete(':id')\ndeletePost(@Param('id') id: string) {\n  const post = posts.find((post) => post.id === +id);\n  if (!post) {\n    throw new NotFoundException();\n  }\n  posts = posts.filter((post) => post.id !== +id);\n  return id;\n}\n}",
+    answerOptions: [
+      {
+        text: "deletePost 함수는 id를 인자로 받아, 해당 id의 post를 삭제하며, 삭제 후 해당 id를 반환합니다.",
+        isCorrect: true,
+      },
+      {
+        text: "deletePost 함수는 id를 인자로 받아, 해당 id의 post를 찾지만, 삭제하지는 않습니다.",
+        isCorrect: false,
+      },
+      {
+        text: "deletePost 함수는 id를 인자로 받아, 해당 id의 post를 찾아 삭제하지만, 반환값은 없습니다.",
+        isCorrect: false,
+      },
+      {
+        text: "deletePost 함수는 id를 인자로 받지 않으며, 모든 post를 삭제합니다.",
+        isCorrect: false,
+      },
+    ],
+    answer:
+      "deletePost 함수는 id를 인자로 받아, 해당 id의 post를 삭제하며, 삭제 후 해당 id를 반환합니다.",
+    explanation:
+      "deletePost 함수는 id를 인자로 받아 해당 id의 post를 찾습니다. 만약 post를 찾지 못하면 NotFoundException를 발생시킵니다. 찾은 post는 filter 메서드를 이용해 posts 배열에서 제거하며, 삭제 후 해당 id를 반환합니다.",
+    subject: "typescript",
+    subSubject: "queryparameter",
+    quizType: "coding",
+  },
 ];
