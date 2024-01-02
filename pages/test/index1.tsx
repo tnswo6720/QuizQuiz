@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Label, Input, TextArea, Button } from "./StyledComponets";
+import { Form, Label, Input, TextArea, Button } from "./StyledComponents";
 
 type Quiz = {
   type: string;

@@ -147,7 +147,7 @@ export const typescriptNotionLibrary = [
     ],
     answer: "'Rate' 컴포넌트의 'onChange' prop에 함수를 설정한다.",
     explanation:
-      "'Rate' 컴포넌트에서 사용자가 별점을 변경할 때마다 실행되는 함수는 'onChange' prop에 설정합니다.",
+      "'Rate' 컴포넌트에서 사용자가 별점을 변경할 때마다 실행되는 함수는 'onChange' prop에 설정합니다. Rate 컴포넌트에서는 사용자가 별점을 클릭하면 해당 별점 값이 onChange 함수에 전달되고, 그 값이 setValue 함수를 통해 value 상태 변수에 저장됩니다. 이를 통해 사용자가 선택한 별점 값이 동적으로 변경되면서 화면에 표시됩니다.",
     explanationCode: "",
     subject: "typescript",
     subSubject: "library",
@@ -347,7 +347,7 @@ export const typescriptNotionLibrary = [
     answer:
       "모달창의 상태를 관리하는 state를 만들고, 이 state를 기반으로 모달창을 열거나 닫는다.",
     explanation:
-      "React에서는 상태 관리를 통해 동적인 UI를 만듭니다. 모달창을 열고 닫는 것도 상태를 사용하여 제어할 수 있습니다. 이를 위해 useState hook을 사용하여 모달창의 열림/닫힘 상태를 관리합니다.",
+      "React에서는 상태 관리를 통해 동적인 UI를 만듭니다. 모달창을 열고 닫는 것도 상태를 사용하여 제어할 수 있습니다. 이를 위해 useState hook을 사용하여 모달창의 열림/닫힘 상태를 관리합니다. 모달창 열기 버튼에서 prev로 true와 false를 조절해서 false면 true가 되서 모달창이 열리고   모달창은 항상 열려있는 채로 OK나 Cancle을 누르면 onToggleModal이 false가 되서 모달창이 닫힙니다.",
     subject: "typescript",
     subSubject: "library",
     quizType: "coding",
@@ -422,30 +422,31 @@ export const typescriptNotionLibrary = [
     `,
     answerOptions: [
       {
-        text: "'App' 컴포넌트는 'ApolloSetting' 컴포넌트를 자식 컴포넌트로 사용합니다.",
+        text: "'ApolloSetting' 컴포넌트가 'App' 컴포넌트를 제어하고 있습니다.",
         isCorrect: false,
       },
       {
-        text: "'ApolloSetting' 컴포넌트는 'props.children'을 통해 자식 컴포넌트를 렌더링합니다.",
+        text: "'ApolloSetting' 컴포넌트는 'props.children'을 통해 'App' 컴포넌트를 렌더링합니다.",
         isCorrect: false,
       },
       {
-        text: "'App' 컴포넌트는 'ApolloSetting' 컴포넌트 안에서 렌더링됩니다.",
+        text: "'App' 컴포넌트의 내용이 'ApolloSetting' 컴포넌트 안에서 렌더링됩니다.",
         isCorrect: false,
       },
       {
-        text: "'ApolloSetting' 컴포넌트는 'App' 컴포넌트의 자식 컴포넌트로 사용됩니다.",
+        text: "'App' 컴포넌트는 'ApolloSetting' 컴포넌트 안에 위치하고 있지 않습니다.",
         isCorrect: true,
       },
     ],
     answer:
-      "'ApolloSetting' 컴포넌트는 'App' 컴포넌트의 자식 컴포넌트로 사용됩니다.",
+      "'App' 컴포넌트는 'ApolloSetting' 컴포넌트 안에 위치하고 있지 않습니다.",
     explanation:
-      "'ApolloSetting' 컴포넌트는 'App' 컴포넌트에서 사용되며, 'App' 컴포넌트의 내용은 'ApolloSetting' 컴포넌트의 자식 컴포넌트로서 렌더링됩니다.",
+      "'App' 컴포넌트는 'ApolloSetting' 컴포넌트 안에 위치하고 있으며, 이는 'App' 컴포넌트가 'ApolloSetting' 컴포넌트의 자식 컴포넌트로서 작동한다는 것을 의미합니다. 따라서 'App' 컴포넌트는 'ApolloSetting' 컴포넌트 안에 위치하고 있다고 보는 것이 올바른 설명입니다.",
     subject: "typescript",
     subSubject: "library",
     quizType: "coding",
   },
+
   {
     type: "multiple-choice",
     questionText:

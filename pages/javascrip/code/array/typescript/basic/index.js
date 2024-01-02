@@ -13,7 +13,7 @@ export const typescriptCodeBasic = [
     explanation:
       "'ccc' 변수는 숫자와 문자열을 모두 할당받을 수 있으므로, 빈 칸에는 'string | number'가 들어갑니다. 'string | number'는 'ccc'가 문자열 혹은 숫자 타입의 값을 가질 수 있음을 나타내는 유니언 타입입니다.",
     subject: "typescript",
-    subSubject: "basic",
+    subSubject: "basid",
     quizType: "coding",
   },
   {
@@ -26,7 +26,7 @@ export const typescriptCodeBasic = [
       "타입스크립트를 설치하기 위해 `yarn add typescript` 명령어를 사용합니다.",
     explanationCode: "yarn add typescript",
     subject: "typescript",
-    subSubject: "basic",
+    subSubject: "basid",
     quizType: "coding",
   },
 ];

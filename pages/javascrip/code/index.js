@@ -201,20 +201,29 @@ const Quiz5 = () => {
     setShowOptions(false); // 선택지 펼치기 상태 초기화
   };
 
-  // 상위 주제 또는 하위 주제가 변경될 때 문제 배열 섞기
+  // 상위 하위 문제 배열 섞기
   useEffect(() => {
     let filteredQuestions = Questions2.filter(
       (q) => q.subject === currentQuizType && q.subSubject === currentSubSubject
-    );
-
-    // 각 문제의 선택지를 섞는 과정 추가
-    filteredQuestions.forEach((question) => {
+    ).map((question) => {
       if (question.answerOptions) {
-        question.answerOptions = shuffleArray(question.answerOptions);
+        // 원본 데이터를 변경하지 않고, 새로운 객체를 생성하여 선택지를 섞습니다.
+        return {
+          ...question,
+          answerOptions: shuffleArray([...question.answerOptions]),
+        };
+      } else {
+        return question;
       }
     });
 
-    filteredQuestions = shuffleArray(filteredQuestions); // 문제 배열 섞기
+    // 중복 제거
+    filteredQuestions = filteredQuestions.reduce(
+      (unique, item) => (unique.includes(item) ? unique : [...unique, item]),
+      []
+    );
+
+    filteredQuestions = shuffleArray([...filteredQuestions]); // 문제 배열 섞기
     setShuffledQuestions(filteredQuestions);
   }, [currentQuizType, currentSubSubject]);
 

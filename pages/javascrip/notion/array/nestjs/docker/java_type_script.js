@@ -302,4 +302,52 @@ export const nestjsNotionDocker = [
     subSubject: "docker",
     quizType: "coding",
   },
+  {
+    type: "multiple-choice",
+    questionText:
+      "아래 도커 컴포즈 파일의 각 구성 요소에 대한 설명 중, 틀린 것은 무엇인가요?",
+    code: `
+    services:
+      postgres:
+        image: postgres:15
+        restart: always
+        volumes:
+          - ./postgres-data:/var/lib/postgres/data
+        ports:
+          - '5432:5432'
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+    `,
+    answerOptions: [
+      {
+        text: "'services'는 도커 컴포즈 파일에서 컨테이너화 할 서비스를 정의하는 키워드입니다.",
+        isCorrect: false,
+      },
+      {
+        text: "'image: postgres:15'는 MySQL 15 버전의 이미지를 사용하여 컨테이너를 생성한다는 것을 의미합니다.",
+        isCorrect: true,
+      },
+      {
+        text: "'volumes'는 호스트와 컨테이너 간에 데이터를 공유할 수 있도록 하는 설정입니다. 여기서는 호스트의 './postgres-data' 디렉토리와 컨테이너의 '/var/lib/postgres/data' 디렉토리가 연결되어 있습니다.",
+        isCorrect: false,
+      },
+      {
+        text: "'ports'는 컨테이너와 호스트 간의 네트워크 포트 매핑을 정의합니다. 여기서는 호스트의 5432번 포트와 컨테이너의 5432번 포트가 연결되어 있습니다.",
+        isCorrect: false,
+      },
+      {
+        text: "'environment'는 컨테이너 내부에서 사용할 환경 변수를 설정합니다. 여기서는 PostgreSQL의 사용자 이름, 비밀번호, 데이터베이스 이름을 설정하고 있습니다.",
+        isCorrect: false,
+      },
+    ],
+    answer:
+      "'image: postgres:15'는 MySQL 15 버전의 이미지를 사용하여 컨테이너를 생성한다는 것을 의미합니다.",
+    explanation:
+      "'image: postgres:15'는 PostgreSQL 15 버전의 이미지를 사용하여 컨테이너를 생성한다는 것을 의미하는데, MySQL을 PostgreSQL로 잘못 기입하였습니다. 도커 컴포즈는 여러 컨테이너를 한 번에 관리할 수 있도록 도와주는 도구로, YAML 형식의 파일을 통해 서비스를 정의하고 관리합니다. 이 파일 내에서는 각 서비스의 이미지, 볼륨, 포트, 환경 변수 등을 설정할 수 있습니다.",
+    subject: "docker",
+    subSubject: "docker-compose",
+    quizType: "coding",
+  },
 ];

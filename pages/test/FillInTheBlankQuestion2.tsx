@@ -1,14 +1,4 @@
-import React, { useState } from "react";
-
-import {
-  Button,
-  Container,
-  QuizCreationSection,
-  QuizPreviewSection,
-  Section,
-  SectionContent,
-  SectionTitle,
-} from "./StyledComponents";
+import React, { useState, useEffect } from "react";
 
 function QuizCreationPage() {
   const subjects = {
@@ -24,8 +14,13 @@ function QuizCreationPage() {
     answerOptions: Array(1).fill({ option: "", isCorrect: true }),
   });
 
-  const [correctAnswer, setCorrectAnswer] = useState("");
   const [step, setStep] = useState(1);
+
+  useEffect(() => {
+    let newOptions = [...quiz.answerOptions];
+    newOptions[0] = { ...newOptions[0], option: quiz.questionText };
+    setQuiz({ ...quiz, answerOptions: newOptions });
+  }, [quiz.questionText]);
 
   const handleChange = (e) => {
     setQuiz({ ...quiz, [e.target.name]: e.target.value });
@@ -43,8 +38,6 @@ function QuizCreationPage() {
         ? { ...option, isCorrect: true }
         : { ...option, isCorrect: false }
     );
-
-    setCorrectAnswer(newOptions[index].option);
     setQuiz({ ...quiz, answerOptions: newOptions });
   };
 
@@ -63,19 +56,12 @@ function QuizCreationPage() {
 
   const submitQuiz = () => {
     alert("문제를 생성하시겠습니까?");
-    setQuiz({
-      subject: "주제1",
-      subSubject: "",
-      questionText: "",
-      code: "",
-      answerOptions: Array(1).fill({ option: "", isCorrect: true }),
-    });
-    setCorrectAnswer("");
     setStep(1);
   };
+
   return (
-    <Container>
-      <QuizCreationSection>
+    <div style={{ display: "flex" }}>
+      <div>
         {step === 1 && (
           <div>
             <label>대주제:</label>
@@ -94,7 +80,7 @@ function QuizCreationPage() {
                 </option>
               ))}
             </select>
-            <Button onClick={() => setStep(2)}>다음</Button>
+            <button onClick={() => setStep(2)}>다음</button>
           </div>
         )}
         {step === 2 && (
@@ -103,7 +89,7 @@ function QuizCreationPage() {
             <textarea name="questionText" onChange={handleChange} />
             <label>코드:</label>
             <textarea name="code" onChange={handleChange} />
-            <Button onClick={() => setStep(3)}>다음</Button>
+            <button onClick={() => setStep(3)}>다음</button>
           </div>
         )}
         {step === 3 && (
@@ -114,10 +100,9 @@ function QuizCreationPage() {
                 <input
                   type="text"
                   value={option.option}
-                  onChange={(e) => {
-                    handleAnswerOptionsChange(index, e.target.value);
-                    if (option.isCorrect) setCorrectAnswer(e.target.value);
-                  }}
+                  onChange={(e) =>
+                    handleAnswerOptionsChange(index, e.target.value)
+                  }
                 />
                 <label>정답:</label>
                 <input
@@ -126,21 +111,21 @@ function QuizCreationPage() {
                   onChange={() => handleCorrectChange(index)}
                 />
                 {index > 0 && (
-                  <Button onClick={() => deleteOption(index)}>
+                  <button onClick={() => deleteOption(index)}>
                     선택지 삭제
-                  </Button>
+                  </button>
                 )}
               </div>
             ))}
-            <Button onClick={addOption}>선택지 추가</Button>
-            <Button onClick={() => setStep(4)}>다음</Button>
+            <button onClick={addOption}>선택지 추가</button>
+            <button onClick={() => setStep(4)}>다음</button>
           </div>
         )}
         {step === 4 && (
           <div>
             <label>해설:</label>
             <textarea name="explanation" onChange={handleChange} />
-            <Button onClick={() => setStep(5)}>다음</Button>
+            <button onClick={() => setStep(5)}>다음</button>
           </div>
         )}
         {step === 5 && (
@@ -158,59 +143,28 @@ function QuizCreationPage() {
                 <p>정답: {option.isCorrect ? "예" : "아니오"}</p>
               </div>
             ))}
-            <p>정답: {correctAnswer}</p>
             <p>해설: {quiz.explanation}</p>
-            <Button onClick={submitQuiz}>제출</Button>
+            <button onClick={submitQuiz}>제출</button>
           </div>
         )}
-      </QuizCreationSection>
-      {step < 5 && (
-        <QuizPreviewSection>
-          <h3>현재 문제 구성</h3>
-          <Section>
-            <SectionTitle>대주제</SectionTitle>
-            <SectionContent>주제2</SectionContent>
-          </Section>
-
-          <Section>
-            <SectionTitle>소주제</SectionTitle>
-            <SectionContent>소주제5</SectionContent>
-          </Section>
-
-          <Section>
-            <SectionContent>문제: {quiz.questionText}</SectionContent>
-          </Section>
-
-          <Section>
-            <SectionContent>코드: {quiz.code}</SectionContent>
-          </Section>
-
-          {quiz.answerOptions.map((option, index) => (
-            <div key={index}>
-              <Section>
-                <SectionContent>
-                  선택지 {index + 1}: {option.option}
-                </SectionContent>
-              </Section>
-
-              <Section>
-                <SectionContent>
-                  정답: {option.isCorrect ? "예" : "아니오"}
-                </SectionContent>
-              </Section>
-            </div>
-          ))}
-
-          <Section>
-            <SectionContent>해설: {quiz.explanation}</SectionContent>
-          </Section>
-
-          <Section>
-            <SectionContent>정답: {correctAnswer}</SectionContent>
-          </Section>
-        </QuizPreviewSection>
-      )}
-    </Container>
+      </div>
+      <div style={{ marginLeft: "50px" }}>
+        <h3>현재 문제 구성</h3>
+        <p>대주제: {quiz.subject}</p>
+        <p>소주제: {quiz.subSubject}</p>
+        <p>문제: {quiz.questionText}</p>
+        <p>코드: {quiz.code}</p>
+        {quiz.answerOptions.map((option, index) => (
+          <div key={index}>
+            <p>
+              선택지 {index + 1}: {option.option}
+            </p>
+            <p>정답: {option.isCorrect ? "예" : "아니오"}</p>
+          </div>
+        ))}
+        <p>해설: {quiz.explanation}</p>
+      </div>
+    </div>
   );
 }
 

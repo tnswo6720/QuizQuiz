@@ -36,6 +36,8 @@ import { cssNotionStyle } from "./css/style";
 import { typescriptNotionClass } from "./typescript/클래스와오픈API/java_type_script";
 import { nestjsNotionModule } from "./nestjs/모듈과제어의역전";
 import { cssNotionResponsive } from "./css/반응형";
+import { typescriptNotionHook } from "./typescript/훅";
+import { cssNotionFLEX } from "./css/디스플레이 플렉스";
 
 export const Questions1 = [
   // 질문 데이터...
@@ -46,6 +48,12 @@ export const Questions1 = [
   ...typescriptNotionEventBubbling,
   ...typescriptNotionlinterPrettier,
   ...typescriptNotionUtilityType,
+  ...typescriptNotionHook,
+  ...typescriptNotionInfiniteScroller,
+  ...typescriptNotionBoard,
+  ...typescriptNotionErrorSolution,
+  ...typescriptNotionPagination,
+
   ...javascriptNotionPromise,
   ...javascriptNotionFunction,
   ...javascriptNotionArray,
@@ -61,12 +69,7 @@ export const Questions1 = [
   ...nestjsNotionNotion,
   ...nestjsNotionQueryParameter,
   ...nestjsNotionModule,
-  ...typescriptNotionLibrary,
-  ...typescriptNotionBasic,
-  ...typescriptNotionBoard,
-  ...typescriptNotionPagination,
-  ...typescriptNotionInfiniteScroller,
-  ...typescriptNotionErrorSolution,
+
   ...typescriptNotionClass,
   ...CommonNotionBackend,
   ...CommonNotionGit,
@@ -77,6 +80,7 @@ export const Questions1 = [
   ...cssNotionStyle,
   ...cssNotionFont,
   ...cssNotionResponsive,
+  ...cssNotionFLEX,
   ...Notiontest,
   ...exam1,
 ];

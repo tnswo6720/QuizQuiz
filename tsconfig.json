@@ -21,6 +21,6 @@
     "**/*.tsx",
     "pages/quiz/index.js",
     "pages/typescript/code/total/index.js"
-  ],
+, "pages/test/deeptest/test.js"  ],
   "exclude": ["node_modules"]
 }

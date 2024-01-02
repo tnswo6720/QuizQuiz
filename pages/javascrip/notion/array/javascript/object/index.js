@@ -336,7 +336,7 @@ export const javascriptNotionObject = [
     answer: "car.move();",
     explanation:
       "JavaScript에서 객체의 메서드는 '객체명.메서드명()' 형태로 호출합니다. 따라서 'car' 객체의 'move' 메서드는 'car.move();'와 같이 호출합니다.",
-    subject: "JavaScript",
+    subject: "javascript",
     subSubject: "object",
     quizType: "coding",
   },
@@ -371,7 +371,7 @@ export const javascriptNotionObject = [
     answer: "bird.color = 'Green';",
     explanation:
       "JavaScript에서 객체의 속성은 '객체명.속성명' 형태로 접근하고 변경할 수 있습니다. 따라서 'bird' 객체의 'color' 속성 값은 'bird.color = 'Green';'와 같이 변경합니다.",
-    subject: "JavaScript",
+    subject: "javascript",
     subSubject: "object",
     quizType: "coding",
   },

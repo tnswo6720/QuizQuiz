@@ -499,6 +499,46 @@ console.log(typeof a, typeof b); // 'undefined' 'object'
     subSubject: "basic",
     quizType: "coding",
   },
+  {
+    type: "multiple-choice",
+    questionText:
+      "JavaScript의 'const' 키워드로 선언된 객체나 배열의 프로퍼티에 대한 설명 중, 올바른 것은 무엇인가요?",
+    code: `
+    const exampleObject = {
+      property: 'original'
+    };
+    
+    exampleObject.property = 'modified';
+
+    const exampleArray = [1, 2, 3];
+    
+    exampleArray[0] = 4;
+    `,
+    answerOptions: [
+      {
+        text: "'const'로 선언된 객체나 배열의 프로퍼티는 수정할 수 없습니다.",
+        isCorrect: false,
+      },
+      {
+        text: "'const'로 선언된 객체나 배열의 프로퍼티는 수정할 수 있습니다.",
+        isCorrect: true,
+      },
+      {
+        text: "'const'로 선언된 객체나 배열 자체를 새로운 객체나 배열로 바꿀 수 있습니다.",
+        isCorrect: false,
+      },
+      {
+        text: "'const' 키워드는 변수의 값을 변경할 수 없게 만드는 역할을 합니다.",
+        isCorrect: false,
+      },
+    ],
+    answer: "'const'로 선언된 객체나 배열의 프로퍼티는 수정할 수 있습니다.",
+    explanation:
+      "'const' 키워드는 변수를 재할당할 수 없게 만듭니다. 즉, 'const'로 선언된 변수는 다시 선언하거나 새로운 값을 할당할 수 없습니다. 하지만 'const'로 선언된 객체나 배열의 프로퍼티는 수정할 수 있습니다. 이는 'const'가 변수의 재할당을 막지만, 객체나 배열 내부의 값을 변경하는 것을 막지 않기 때문입니다.",
+    subject: "javascript",
+    subSubject: "basic",
+    quizType: "coding",
+  },
 
   // basic
   // basic

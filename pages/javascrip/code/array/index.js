@@ -1,3 +1,4 @@
+import { CommonCodeDatabase } from "./common/데이터베이스/index.js";
 import { cssCodeBasic } from "./css/basic/java_type_script";
 import { cssCodeBoxmodel } from "./css/boxmodel/java_type_script";
 import { cssCodelayout } from "./css/layout/index.js";
@@ -8,6 +9,7 @@ import { javascriptCodeBasic } from "./javascript/basic/java_type_script";
 import { javascriptCodeEvent } from "./javascript/event/index.js";
 // import { javascriptCodeFunction } from "./javascript/function/java_type_script";
 import { javascriptCodeObject } from "./javascript/object/index.js";
+import { javascriptCodeDom } from "./javascript/돔 조작/index.js";
 import { nestjsCodeController } from "./nestjs/controller/java_type_script";
 import { nestjsCodeQueryParameter } from "./nestjs/query-parameter/java_type_script";
 import { nestjsCodeTypeorm } from "./nestjs/typeorm/qindex";
@@ -26,11 +28,12 @@ export const Questions2 = [
 
   ...javascriptCodeObject,
   ...javascriptCodeArray,
+  ...javascriptCodeDom,
   ...typescriptCodeBasic,
   ...typescriptCodeRouting,
   ...typescriptCodeSetState,
   ...typescriptCodeUtilitytype,
-  ...typescriptCodeBasic,
+
   ...typescriptCodeMap,
   ...typescriptCodeTypescriptBoard,
   ...typescriptCodePagination,
@@ -42,6 +45,7 @@ export const Questions2 = [
   ...cssCodeSelector,
   ...cssCodePropertyValue,
   ...cssCodeBoxmodel,
+  ...CommonCodeDatabase,
   ...nestjsCodeController,
   ...nestjsCodeQueryParameter,
 ];
