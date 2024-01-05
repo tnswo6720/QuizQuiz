@@ -188,4 +188,39 @@ export const cssNotionFLEX = [
     subSubject: "flexbox",
     quizType: "coding",
   },
+  {
+    type: "multiple-choice",
+    questionText:
+      "아래의 CSS 코드를 보고, 'background' 속성에 대해 올바르게 설명한 것은 무엇인가요?",
+    code: `
+    .box {
+      background: url('image.jpg') repeat-x 50% 50% / 200px 100px;
+    }
+    `,
+    answerOptions: [
+      {
+        text: "'.box' 클래스의 배경 이미지는 중앙에 위치하며, 가로 방향으로만 반복되고, 너비가 200px, 높이가 100px로 설정된다.",
+        isCorrect: false,
+      },
+      {
+        text: "'.box' 클래스의 배경 이미지는 중앙에 위치하며, 세로 방향으로만 반복되고, 너비가 200px, 높이가 100px로 설정된다.",
+        isCorrect: false,
+      },
+      {
+        text: "'.box' 클래스의 배경 이미지는 중앙에 위치하며, 가로 방향으로만 반복되고, 너비가 100px, 높이가 200px로 설정된다.",
+        isCorrect: false,
+      },
+      {
+        text: "'.box' 클래스의 배경 이미지는 중앙에 위치하며, 가로 방향으로만 반복되며, 너비가 200px, 높이가 100px로 설정된다.",
+        isCorrect: true,
+      },
+    ],
+    answer:
+      "'.box' 클래스의 배경 이미지는 중앙에 위치하며, 가로 방향으로만 반복되며, 너비가 200px, 높이가 100px로 설정된다.",
+    explanation:
+      "'background' 속성은 배경 속성을 한 번에 설정할 수 있습니다. 'url('image.jpg') repeat-x 50% 50% / 200px 100px' 값은 배경 이미지를 중앙에 위치시키고, 가로 방향으로만 반복하며, 너비를 200px, 높이를 100px로 설정하도록 합니다.",
+    subject: "css",
+    subSubject: "Background",
+    quizType: "coding",
+  },
 ];

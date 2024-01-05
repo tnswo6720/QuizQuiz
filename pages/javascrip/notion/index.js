@@ -71,6 +71,7 @@ const Quiz6 = () => {
       );
       const shuffledQuestions = shuffleArray([...quizQuestions]).map((q) => ({
         ...q,
+        // 아래 부분을 추가해줍니다.
         answerOptions: shuffleArray([...q.answerOptions]),
       }));
       setShuffledQuestions(shuffledQuestions);
@@ -121,6 +122,11 @@ const Quiz6 = () => {
     setIsSubmitted(false);
     setIsCorrect(null);
   };
+
+  useEffect(() => {
+    // currentSubject나 currentSubSubject가 변경될 때마다 이 함수가 실행됩니다.
+    setUserAnswer("");
+  }, [currentSubject, currentSubSubject]);
 
   return (
     <Wrapper

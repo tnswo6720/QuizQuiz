@@ -214,7 +214,35 @@ export const nestjsCodeQueryParameter = [
     explanation:
       "NestJS에서 경로 변수를 추출하기 위해서는 `@Param()` 데코레이터를 사용합니다. 이 데코레이터는 라우트 핸들러 메서드의 인자로 적용되어, URL 경로의 파라미터를 메서드 파라미터로 바인딩합니다. 예를 들어, `@Get(':id')`는 'id'라는 이름의 라우트 파라미터를 정의하고, `@Param('id')`는 이 값을 `userId`라는 메서드 파라미터로 가져옵니다.",
     subject: "nestjs",
-    subSubject: "routing",
+    subSubject: "query-parameter",
+    quizType: "coding",
+  },
+  {
+    type: "fill-in-the-blank",
+    questionText:
+      "NestJS에서 특정 라우트 경로에 대한 요청을 처리하는 메서드를 정의하려면 어떤 데코레이터를 사용해야 하나요? 그리고, 'users' 경로로 GET 요청을 처리하는 메서드를 만들고자 할 때, 해당 메서드에 적용해야 할 데코레이터와 메서드 이름을 적어주세요.",
+    code: `
+      import { Controller, _____ } from '@nestjs/common';
+  
+      @Controller()
+      export class AppController {
+        @_____('users')
+        _____ getUsers() {
+          return 'This action returns all users';
+        }
+      }
+    `,
+    answerOptions: [
+      ["Get", "Get", "getUsers"],
+      ["Route", "Route('users')", "findAllUsers"],
+      ["Post", "Get", "findAll"],
+      ["Get", "Post", "getUsers"],
+    ],
+    answer: ["Get", "Get", "getUsers"],
+    explanation:
+      "NestJS에서 HTTP 요청 메서드에 따라 라우트를 처리하기 위한 데코레이터로는 '@Get()', '@Post()', '@Put()', '@Delete()', '@Patch()' 등이 있습니다. 'users' 경로로 GET 요청을 처리하려면 '@Get()' 데코레이터를 사용하고, 'getUsers'라는 이름의 메서드를 정의하여 해당 데코레이터를 메서드 위에 적용합니다. 따라서 '@Get('users') getUsers()'는 'users' 경로에 대한 GET 요청을 처리하는 메서드를 정의합니다.",
+    subject: "nestjs",
+    subSubject: "query-parameter",
     quizType: "coding",
   },
 ];

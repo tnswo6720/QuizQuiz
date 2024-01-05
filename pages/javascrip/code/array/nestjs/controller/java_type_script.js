@@ -95,7 +95,12 @@ export const nestjsCodeController = [
         return posts.find((post) => post.id === +id);
       }
     `,
-    answerOptions: ["@Body('id')", "@Param('id')", "@Query('id')", "@Headers('id')"],
+    answerOptions: [
+      "@Body('id')",
+      "@Param('id')",
+      "@Query('id')",
+      "@Headers('id')",
+    ],
     answer: "@Param('id')",
     explanation:
       "URL의 파라미터를 가져오는 작업은 '@Param()' 데코레이터를 통해 이루어집니다.",
@@ -139,6 +144,26 @@ export const nestjsCodeController = [
     answer: ["'post'"],
     explanation:
       "NestJS에서는 '@Get()' 데코레이터를 이용해 특정 경로(path)에 대한 Get 요청을 처리할 수 있습니다. 이 경우, 'post' 경로에 대한 요청을 처리하는 'getPost()' 메서드가 정의되어 있습니다.",
+    subject: "nestjs",
+    subSubject: "controller",
+    quizType: "coding",
+  },
+  {
+    type: "fill-in-the-blank",
+    questionText:
+      "NestJS에서 새로운 컨트롤러를 만들기 위해 사용하는 CLI(command-line interface) 명령어는 무엇인가요? 그리고, 'products'라는 이름의 컨트롤러를 생성할 때 사용하는 전체 명령어를 작성하세요.",
+    code: `
+      nest g ______ ______
+    `,
+    answerOptions: [
+      ["controller", "products"],
+      ["service", "products"],
+      ["module", "products"],
+      ["component", "products"],
+    ],
+    answer: ["controller", "products"],
+    explanation:
+      "NestJS CLI를 사용하여 새로운 컨트롤러를 생성할 때는 'nest g controller' 명령어를 사용합니다. 이 명령어는 NestJS 프로젝트에 새로운 컨트롤러 파일을 생성해주며, 구조를 자동으로 설정해줍니다. 'products'라는 이름의 컨트롤러를 만들기 위해서는 'nest g controller products' 명령어를 실행합니다. 여기서 'g'는 'generate'의 축약형이며, 'controller'는 생성할 리소스의 타입을, 'products'는 생성할 컨트롤러의 이름을 나타냅니다.",
     subject: "nestjs",
     subSubject: "controller",
     quizType: "coding",

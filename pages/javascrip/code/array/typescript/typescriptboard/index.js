@@ -142,4 +142,29 @@ export const typescriptCodeTypescriptBoard = [
     subSubject: "typescriptboard",
     quizType: "coding",
   },
+  {
+    type: "fill-in-the-blank",
+    questionText:
+      "TypeScript를 사용하여 게시판 애플리케이션을 만들 때, 게시물을 나타내는 객체의 타입을 정의하려고 합니다. 각 게시물은 제목(title), 내용(content), 작성자(author), 그리고 조회수(views)를 속성으로 가져야 합니다. 이 속성들은 각각 문자열, 문자열, 문자열, 숫자 타입이어야 합니다. 적절한 인터페이스를 작성해주세요.",
+    code: `
+      interface Post {
+        title: _____;
+        content: _____;
+        author: _____;
+        views: _____;
+      }
+    `,
+    answerOptions: [
+      ["string", "string", "string", "number"],
+      ["String", "String", "String", "Number"],
+      ["text", "text", "text", "int"],
+      ["string", "string", "string", "int"],
+    ],
+    answer: ["string, string, string, number"],
+    explanation:
+      "TypeScript에서 객체의 구조를 정의할 때 인터페이스를 사용합니다. 'Post' 인터페이스는 게시물의 구조를 정의하며, 'title', 'content', 'author' 속성은 문자열 타입('string')을 가져야 하고, 'views' 속성은 숫자 타입('number')을 가져야 합니다. 따라서 인터페이스는 각 속성의 타입을 'title: string;', 'content: string;', 'author: string;', 'views: number;'로 지정하여 정의합니다.",
+    subject: "typescript",
+    subSubject: "typescriptboard",
+    quizType: "coding",
+  },
 ];

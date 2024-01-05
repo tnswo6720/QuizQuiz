@@ -40,6 +40,7 @@ import { cssNotionResponsive } from "./css/반응형";
 import { typescriptNotionHook } from "./typescript/훅";
 import { cssNotionFLEX } from "./css/디스플레이 플렉스";
 import { cssNotionNew } from "./css/CSS3의 신기능";
+import { cssNotionBackgroundColor } from "./css/배경색과 색상코드";
 
 export const Questions1 = [
   // 질문 데이터...
@@ -84,6 +85,7 @@ export const Questions1 = [
   ...cssNotionResponsive,
   ...cssNotionFLEX,
   ...cssNotionNew,
+  ...cssNotionBackgroundColor,
   ...Notiontest,
   ...exam1,
 ];

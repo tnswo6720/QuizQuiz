@@ -29,4 +29,25 @@ export const typescriptCodeBasic = [
     subSubject: "basid",
     quizType: "coding",
   },
+  {
+    type: "fill-in-the-blank",
+    questionText:
+      "TypeScript에서 변수에 명시적인 타입을 지정하려면 어떻게 해야 하나요? 예를 들어, 숫자 타입의 변수 'count'와 문자열 타입의 변수 'name'을 선언하려면 각각 어떤 코드를 작성해야 할까요?",
+    code: `
+      let count: _____ = 0;
+      let name: _____ = 'Alice';
+    `,
+    answerOptions: [
+      ["number", "string"],
+      ["Number", "String"],
+      ["int", "str"],
+      ["numeric", "text"],
+    ],
+    answer: ["number, string"],
+    explanation:
+      "TypeScript에서 변수에 타입을 지정할 때는 변수명 뒤에 콜론(:)을 붙이고 타입을 명시합니다. 예를 들어 'let count: number = 0;'는 'count'라는 이름의 변수에 'number' 타입을 지정하고 초기값으로 0을 할당합니다. 'let name: string = 'Alice';'는 'name'이라는 변수에 'string' 타입을 지정하고 초기값으로 'Alice'를 할당합니다. 이렇게 타입을 명시적으로 지정하면 TypeScript 컴파일러는 해당 변수에 할당되는 값이 지정된 타입과 일치하는지 검사합니다.",
+    subject: "typescript",
+    subSubject: "basic",
+    quizType: "coding",
+  },
 ];

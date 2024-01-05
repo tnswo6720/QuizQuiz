@@ -299,4 +299,22 @@ export const javascriptCodeBasic = [
     subSubject: "basic",
     quizType: "coding",
   },
+  {
+    type: "fill-in-the-blank",
+    questionText:
+      "JavaScript에서 배열의 모든 요소를 반복하며 각 요소에 대해 함수를 실행하려면 어떤 배열 메서드를 사용해야 하나요? 아래 코드에서 빈칸을 채워 배열의 각 숫자에 2를 곱하는 함수를 완성하세요.",
+    code: `
+      let numbers = [1, 2, 3, 4, 5];
+      numbers._____(function(number) {
+        console.log(number * 2);
+      });
+    `,
+    answerOptions: [["forEach"], ["map"], ["filter"], ["reduce"]],
+    answer: ["forEach"],
+    explanation:
+      "JavaScript의 'forEach' 메서드는 배열의 각 요소에 대해 주어진 함수를 실행하는 데 사용됩니다. 이 메서드는 배열을 변경하지 않고 각 요소에 대해 콜백 함수를 한 번씩 실행합니다. 'numbers.forEach(function(number) { console.log(number * 2); });' 코드는 'numbers' 배열의 각 요소에 대해 콜백 함수를 실행하며, 각 숫자에 2를 곱한 결과를 콘솔에 출력합니다.",
+    subject: "javascript",
+    subSubject: "basic",
+    quizType: "coding",
+  },
 ];
