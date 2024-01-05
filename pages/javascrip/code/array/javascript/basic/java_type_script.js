@@ -1,22 +1,6 @@
 // questions1.js
 export const javascriptCodeBasic = [
   // 질문 데이터...
-  {
-    type: "fill-in-the-blank",
-    questionText:
-      "자바스크립트에서 변하지 않는 값을 선언하는 키워드는 무엇인가요?",
-    code: `
-      const pi = 3.14159;
-      console.log(______);
-    `,
-    answerOptions: ["var", "let", "const", "function"],
-    answer: "const",
-    explanation:
-      "'const' 키워드는 변하지 않는(즉, 읽기 전용) 값을 선언하는 데 사용됩니다.",
-    subject: "javascript",
-    subSubject: "basic",
-    quizType: "coding",
-  },
 
   {
     type: "fill-in-the-blank",
@@ -35,44 +19,7 @@ export const javascriptCodeBasic = [
     subSubject: "basic",
     quizType: "coding",
   },
-  {
-    type: "fill-in-the-blank",
-    questionText:
-      "자바스크립트에서 조건에 따른 흐름 제어를 위한 키워드는 무엇인가요?",
-    code: `
-    let a = 5;
-    let b = 10;
 
-    if (a < b) {
-      console.log('a is less than b');
-    } else {
-      console.log('a is not less than b');
-    }
-  `,
-    answerOptions: ["for", "while", "if", "switch"],
-    answer: "if",
-    explanation:
-      "'if' 키워드는 특정 조건이 참인지 여부에 따라 코드 블록의 실행을 제어하는 데 사용됩니다.",
-    subject: "javascript",
-    subSubject: "basic",
-    quizType: "coding",
-  },
-  {
-    type: "fill-in-the-blank",
-    questionText:
-      "자바스크립트에서 변수를 선언하면서 동시에 값을 초기화하는 키워드는 무엇인가요?",
-    code: `
-      ______ name = 'John Doe';
-      console.log(name);
-    `,
-    answerOptions: ["var", "const", "function", "if"],
-    answer: "var",
-    explanation:
-      "'var' 키워드는 변수를 선언하고 동시에 값을 초기화하는데 사용됩니다.",
-    subject: "javascript",
-    subSubject: "basic",
-    quizType: "coding",
-  },
   {
     type: "fill-in-the-blank",
     questionText: "자바스크립트에서 두 수를 더하는 연산자는 무엇인가요?",
@@ -198,16 +145,16 @@ export const javascriptCodeBasic = [
     code: `
       // 변수 선언
       let name = ______;
-  
+
       // 상수 선언
       const maxAge = ______;
-  
+
       // 데이터 타입: 숫자
       let age = 18;
-  
+
       // 연산자 사용
       age = age + 2;
-  
+
       // 제어문: if
       if (age > maxAge) {
         console.log(______);
@@ -245,7 +192,7 @@ export const javascriptCodeBasic = [
     code: `
       // 변수 선언
       let count = 0;
-  
+
       // 제어문: for
       for (let i = 0; i < 10; i++) {
         // 연산자 사용
@@ -267,7 +214,7 @@ export const javascriptCodeBasic = [
     code: `
       // 변수 선언
       let number = 15;
-  
+
       // 제어문: if
       if (number ______ 10) {
         console.log(______);
@@ -302,9 +249,52 @@ export const javascriptCodeBasic = [
       ["const", "'Hello, World!'"],
       ["let", "Hello, World!"],
     ],
-    answer: ["let", "'Hello, World!'"],
+    answer: ["let, 'Hello, World!'"],
     explanation:
       "JavaScript에서 'let' 키워드를 사용하여 변수를 선언하고 초기화할 수 있습니다. 문자열을 초기화할 때는 따옴표('') 또는 쌍따옴표(\")를 사용해야 합니다.",
+    subject: "javascript",
+    subSubject: "basic",
+    quizType: "coding",
+  },
+  {
+    type: "fill-in-the-blank",
+    questionText:
+      "JavaScript에서 변경 가능한 변수를 선언하려면 'let' 키워드를 사용하고, 변경 불가능한 상수를 선언하려면 'const' 키워드를 사용합니다. 변수 'myVariable'를 선언하고 초깃값으로 50을 할당하려면 어떤 키워드를 사용해야 하며, 상수 'myConstant'에 25를 할당하려면 어떻게 해야 할까요?",
+    code: `
+      ______ myVariable = 50;
+      ______ myConstant = 25;
+    `,
+    answerOptions: [
+      ["let", "const"],
+      ["const", "let"],
+      ["var", "let"],
+      ["let", "var"],
+    ],
+    answer: ["let, const"],
+    explanation:
+      "JavaScript에서 'let' 키워드는 변경될 수 있는 변수를 선언할 때 사용됩니다. 'const' 키워드는 값이 변하지 않는 상수를 선언할 때 사용되며, 한 번 할당된 값은 변경할 수 없습니다. 'let myVariable = 50;'는 'myVariable'이라는 변수를 선언하고 50을 할당합니다. 'const myConstant = 25;'는 'myConstant'라는 상수를 선언하고 25를 할당합니다. 상수는 선언과 동시에 값을 할당해야 하며, 이후에는 그 값을 변경할 수 없습니다.",
+    subject: "javascript",
+    subSubject: "basic",
+    quizType: "coding",
+  },
+  {
+    type: "fill-in-the-blank",
+    questionText:
+      "JavaScript에서 매개변수로 두 숫자를 받아 합을 반환하는 함수를 작성하려고 합니다. 이 함수를 'addNumbers'라고 명명하고, 두 매개변수를 'num1'과 'num2'라고 할 때, 적절한 함수 선언은 어떻게 되나요?",
+    code: `
+      function ______(______, ______) {
+        return ______ + ______;
+      }
+    `,
+    answerOptions: [
+      ["addNumbers", "num1", "num2", "num1", "num2"],
+      ["sum", "x", "y", "x", "y"],
+      ["add", "value1", "value2", "value1", "value2"],
+      ["combine", "first", "second", "first", "second"],
+    ],
+    answer: ["addNumbers, num1, num2, num1, num2"],
+    explanation:
+      "JavaScript에서 함수를 선언할 때 'function' 키워드를 사용하고, 그 뒤에 함수의 이름을 명시합니다. 함수의 매개변수는 소괄호 안에 정의하며, 함수의 본문은 중괄호 내에 작성합니다. 'function addNumbers(num1, num2) { return num1 + num2; }'는 'num1'과 'num2' 두 매개변수를 받아 그 합을 반환하는 'addNumbers'라는 이름의 함수를 정의합니다.",
     subject: "javascript",
     subSubject: "basic",
     quizType: "coding",

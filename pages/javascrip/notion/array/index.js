@@ -33,11 +33,13 @@ import { cssNotionbasic } from "./css/basic";
 import { cssNotionFont } from "./css/font";
 import { cssNotionpropertyvalue } from "./css/property-value";
 import { cssNotionStyle } from "./css/style";
+
 import { typescriptNotionClass } from "./typescript/클래스와오픈API/java_type_script";
 import { nestjsNotionModule } from "./nestjs/모듈과제어의역전";
 import { cssNotionResponsive } from "./css/반응형";
 import { typescriptNotionHook } from "./typescript/훅";
 import { cssNotionFLEX } from "./css/디스플레이 플렉스";
+import { cssNotionNew } from "./css/CSS3의 신기능";
 
 export const Questions1 = [
   // 질문 데이터...
@@ -81,6 +83,7 @@ export const Questions1 = [
   ...cssNotionFont,
   ...cssNotionResponsive,
   ...cssNotionFLEX,
+  ...cssNotionNew,
   ...Notiontest,
   ...exam1,
 ];

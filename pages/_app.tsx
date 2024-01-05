@@ -9,12 +9,11 @@ import "react-quill/dist/quill.snow.css"; // 여기에 추가
 export default function App({ Component, pageProps }: AppProps): JSX.Element {
   return (
     <ApolloSetting>
-      <>
-        <Global styles={globalStyles} />
-        <Layout>
-          <Component />
-        </Layout>
-      </>
+      {/* Fragment를 사용하여 여러 자식 요소들을 하나로 묶습니다. */}
+      <Global styles={globalStyles} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </ApolloSetting>
   );
 }

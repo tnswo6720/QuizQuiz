@@ -4,6 +4,7 @@ import { cssCodeBoxmodel } from "./css/boxmodel/java_type_script";
 import { cssCodelayout } from "./css/layout/index.js";
 import { cssCodePropertyValue } from "./css/property-value/java_type_script";
 import { cssCodeSelector } from "./css/selector/java_type_script";
+import { cssCodeResponsive } from "./css/반응형/index.js";
 import { javascriptCodeArray } from "./javascript/array/java_type_script";
 import { javascriptCodeBasic } from "./javascript/basic/java_type_script";
 import { javascriptCodeEvent } from "./javascript/event/index.js";
@@ -45,6 +46,7 @@ export const Questions2 = [
   ...cssCodeSelector,
   ...cssCodePropertyValue,
   ...cssCodeBoxmodel,
+  ...cssCodeResponsive,
   ...CommonCodeDatabase,
   ...nestjsCodeController,
   ...nestjsCodeQueryParameter,

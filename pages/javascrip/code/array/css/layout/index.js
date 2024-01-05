@@ -164,7 +164,7 @@ export const cssCodelayout = [
     code: `
       .container {
         display: flex;
-        _____: _____;
+        ______: ______;
       }
     `,
     answerOptions: [
@@ -178,30 +178,6 @@ export const cssCodelayout = [
       "CSS Flexbox에서 아이템들을 가로 축에서 오른쪽부터 왼쪽으로 정렬하려면 'flex-direction' 속성을 'row-reverse'로 설정합니다. 이렇게 하면 아이템들이 컨테이너의 오른쪽부터 왼쪽으로 배열됩니다.",
     subject: "css",
     subSubject: "layout",
-    quizType: "coding",
-  },
-  {
-    type: "fill-in-the-blank",
-    questionText:
-      "반응형 웹 디자인에서 화면 크기가 600px 이하일 때 특정 스타일을 적용하려면, 아래의 빈칸을 채워주세요.",
-    code: `
-      @media _____ _____ (_____ : _____) {
-        body {
-          background-color: lightblue;
-        }
-      }
-    `,
-    answerOptions: [
-      ["only screen", "and", "max-width", "600px"],
-      ["only print", "and", "max-width", "600px"],
-      ["only screen", "and", "min-width", "600px"],
-      ["only screen", "and", "width", "600px"],
-    ],
-    answer: ["only screen, and, max-width, 600px"],
-    explanation:
-      "반응형 웹 디자인에서 화면 크기가 600px 이하일 때 특정 스타일을 적용하려면 '@media only screen and (max-width: 600px)'를 사용합니다. 이는 화면 크기가 600px 이하일 때 body의 배경색을 lightblue로 변경하라는 의미입니다.",
-    subject: "css",
-    subSubject: "responsive",
     quizType: "coding",
   },
 ];

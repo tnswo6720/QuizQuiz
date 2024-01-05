@@ -12,7 +12,7 @@ export const nestjsCodeQueryParameter = [
       @Get(':id')
       getPost(@Param('id') id: string) {
         const post = posts.find((post) => post.id === +id);
-        if (______) { // 여기에 무엇을 써야할까요?
+        if (______) { 
           throw new NotFoundException();
         }
         return post;
@@ -113,7 +113,7 @@ export const nestjsCodeQueryParameter = [
     code: `
       @Get()
       getPosts() {
-        return _______; // 여기에 무엇을 써야할까요?
+        return ______; 
       }
     `,
     answerOptions: [
@@ -145,6 +145,76 @@ export const nestjsCodeQueryParameter = [
       "`@Get()` 데코레이터는 Nest.js에서 HTTP GET 요청을 처리하는 데 사용됩니다. 따라서 `GET /posts` 라우트를 구현하려면 `@Get()` 데코레이터를 사용해야 합니다.",
     subject: "nestjs",
     subSubject: "query-parameter",
+    quizType: "coding",
+  },
+  {
+    type: "fill-in-the-blank",
+    questionText:
+      "NestJS에서 HTTP GET 요청의 쿼리 파라미터를 가져오기 위해 컨트롤러 메서드에 어떤 데코레이터를 사용해야 하나요? 그리고, 'search'라는 쿼리 파라미터의 값을 얻으려면 어떻게 해야 할까요?",
+    code: `
+      import { Controller, Get, Query } from '@nestjs/common';
+  
+      @Controller('items')
+      export class ItemsController {
+        @Get()
+        findAll(@_____('search') searchQuery: string): string {
+          return \`Searching for items with query: \${searchQuery}\`;
+        }
+      }
+    `,
+    answerOptions: [["QueryParam"], ["Query"], ["GetQuery"], ["RequestQuery"]],
+    answer: ["Query"],
+    explanation:
+      "NestJS에서 특정 HTTP 요청의 쿼리 파라미터를 가져오기 위해 `@Query()` 데코레이터를 사용합니다. 이 데코레이터는 컨트롤러의 핸들러 메서드 인자에 적용되며, 인자로 전달된 특정 쿼리 파라미터의 값을 가져옵니다. 예를 들어, `@Query('search')`는 요청의 쿼리 스트링에서 'search' 파라미터의 값을 `searchQuery`라는 메서드 파라미터로 바인딩합니다.",
+    subject: "nestjs",
+    subSubject: "query-parameter",
+    quizType: "coding",
+  },
+  {
+    type: "fill-in-the-blank",
+    questionText:
+      "NestJS에서 여러 쿼리 파라미터를 객체로 가져오고 싶을 때, 컨트롤러 메서드에서 어떤 데코레이터를 사용하고, 어떻게 접근해야 할까요?",
+    code: `
+      import { Controller, Get, Query } from '@nestjs/common';
+  
+      @Controller('products')
+      export class ProductsController {
+        @Get()
+        findProducts(@______ queries: any): string {
+          const { page, limit } = queries;
+          return \`Page: \${page}, Limit: \${limit}\`;
+        }
+      }
+    `,
+    answerOptions: [["Query"], ["Queries"], ["QueryParams"], ["GetQuery"]],
+    answer: ["Query"],
+    explanation:
+      "NestJS에서 `@Query()` 데코레이터는 요청의 쿼리 스트링에서 모든 파라미터를 객체로 가져오는 데 사용될 수 있습니다. 데코레이터를 파라미터 없이 사용하면, 해당 메서드 파라미터는 요청의 모든 쿼리 파라미터를 포함하는 객체가 됩니다. 이 객체에서 필요한 속성을 구조 분해 할당을 통해 추출할 수 있습니다. 예를 들어, `const { page, limit } = queries;`는 'page'와 'limit' 두 쿼리 파라미터의 값을 추출합니다.",
+    subject: "nestjs",
+    subSubject: "query-parameter",
+    quizType: "coding",
+  },
+  {
+    type: "fill-in-the-blank",
+    questionText:
+      "NestJS에서 특정 경로의 파라미터를 추출하는 데 사용하는 데코레이터는 무엇이며, 'id' 파라미터를 추출하려면 어떻게 해야 할까요?",
+    code: `
+      import { Controller, Get, _____ } from '@nestjs/common';
+  
+      @Controller('users')
+      export class UsersController {
+        @Get(':id')
+        findUser(@_____('id') userId: string): string {
+          return \`User ID: \${userId}\`;
+        }
+      }
+    `,
+    answerOptions: [["Param"], ["RouteParam"], ["PathParam"], ["UrlParam"]],
+    answer: ["Param"],
+    explanation:
+      "NestJS에서 경로 변수를 추출하기 위해서는 `@Param()` 데코레이터를 사용합니다. 이 데코레이터는 라우트 핸들러 메서드의 인자로 적용되어, URL 경로의 파라미터를 메서드 파라미터로 바인딩합니다. 예를 들어, `@Get(':id')`는 'id'라는 이름의 라우트 파라미터를 정의하고, `@Param('id')`는 이 값을 `userId`라는 메서드 파라미터로 가져옵니다.",
+    subject: "nestjs",
+    subSubject: "routing",
     quizType: "coding",
   },
 ];

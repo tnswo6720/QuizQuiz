@@ -1,125 +1,63 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
+import dynamic from "next/dynamic";
+import {
+  Container,
+  TitleInput,
+  QuillEditorContainer,
+  SubmitButton,
+} from "./styledQuill"; // 스타일을 임포트합니다.
 
-function PostCreateForm() {
-  const [title, setTitle] = useState("");
-  const [videoUrl, setVideoUrl] = useState(""); // 유튜브 영상 URL 상태
-  const contentRef = useRef(null); // contenteditable을 위한 ref
+// SSR을 사용하지 않는 dynamic import 설정
+const ReactQuill = dynamic(import("react-quill"), { ssr: false });
 
-  const handleTitleChange = (e) => {
-    setTitle(e.target.value);
-  };
+// Quill 에디터 툴바 옵션
+const modules = {
+  toolbar: [
+    ["bold", "italic", "underline", "strike"],
+    ["blockquote", "code-block"],
+    [{ header: 1 }, { header: 2 }],
+    [{ list: "ordered" }, { list: "bullet" }],
+    [{ size: ["small", false, "large", "huge"] }],
+    [
+      { align: "" },
+      { align: "center" },
+      { align: "right" },
+      { align: "justify" },
+    ],
+    ["link", "image"],
+  ],
+};
 
-  // 이미지 파일을 읽어서 contenteditable div에 이미지 태그로 삽입합니다.
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        // 현재 커서 위치에 이미지 태그를 삽입합니다.
-        insertImageInContentEditable(reader.result);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
-  const insertImageInContentEditable = (imageUrl) => {
-    const imgTag = `<img src="${imageUrl}" alt="이미지" style="max-width:100%;"/>`;
-    contentRef.current.innerHTML += imgTag;
-  };
-
-  // 유튜브 영상 URL을 입력받는 핸들러
-  const handleVideoUrlChange = (e) => {
-    setVideoUrl(e.target.value);
-  };
-
-  // 유튜브 영상을 contentEditable에 삽입하는 함수
-  const insertVideoInContentEditable = () => {
-    const videoId = extractVideoID(videoUrl);
-    if (videoId) {
-      const iframeTag = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-      contentRef.current.innerHTML += iframeTag;
-    }
-    setVideoUrl(""); // URL 입력 필드 초기화
-  };
-
-  // 유튜브 URL에서 비디오 ID 추출하는 함수
-  const extractVideoID = (url) => {
-    const regExp =
-      /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-    const match = url.match(regExp);
-
-    if (match && match[2].length === 11) {
-      return match[2];
-    }
-    return null;
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const content = contentRef.current.innerHTML; // contenteditable div의 내용을 가져옵니다.
-    const formData = new FormData();
-    formData.append("title", title);
-    formData.append("content", content);
-
-    // 폼 데이터를 서버로 전송하는 로직을 추가합니다.
-    // ...
-
-    // 폼 제출 후 초기화
-    setTitle("");
-    contentRef.current.innerHTML = ""; // contenteditable div를 비웁니다.
-    setVideoUrl("");
-  };
-
+export default function NoticeForm(): JSX.Element {
+  const [title, setTitle] = useState(""); // 제목 상태 관리
+  const [content, setContent] = useState(""); // 내용 상태 관리
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="title">제목:</label>
-        <input
+    <Container>
+      <h2>공지사항 작성</h2>
+      <label>
+        제목:
+        <TitleInput
           type="text"
-          id="title"
           value={title}
-          onChange={handleTitleChange}
-          required
+          onChange={(e) => setTitle(e.target.value)}
         />
-      </div>
-      <div>
-        <label htmlFor="content">내용:</label>
-        <div
-          ref={contentRef}
-          contentEditable
-          style={{
-            border: "1px solid gray",
-            minHeight: "100px",
-            padding: "5px",
-          }}
-        ></div>
-      </div>
-      <div>
-        <label htmlFor="image">이미지 첨부:</label>
-        <input
-          type="file"
-          id="image"
-          onChange={handleImageChange}
-          accept="image/*"
+      </label>
+      <QuillEditorContainer>
+        <ReactQuill
+          theme="snow"
+          value={content}
+          onChange={setContent}
+          modules={modules}
+          className="quill" // 스타일 지정을 위한 클래스명 추가
         />
-      </div>
-      <div>
-        <label htmlFor="video">유튜브 영상 URL:</label>
-        <input
-          type="text"
-          id="video"
-          value={videoUrl}
-          onChange={handleVideoUrlChange}
-          placeholder="유튜브 영상 URL을 입력하세요"
-        />
-        <button type="button" onClick={insertVideoInContentEditable}>
-          영상 추가
-        </button>
-      </div>
-      <button type="submit">게시글 작성</button>
-    </form>
+      </QuillEditorContainer>
+      <SubmitButton
+        onClick={() => {
+          console.log(title, content); // 제출 로직을 구현해야 함
+        }}
+      >
+        공지사항 등록하기
+      </SubmitButton>
+    </Container>
   );
 }
-
-export default PostCreateForm;

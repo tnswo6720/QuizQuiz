@@ -102,4 +102,25 @@ export const cssCodeBoxmodel = [
     subSubject: "box model",
     quizType: "coding",
   },
+  {
+    type: "fill-in-the-blank",
+    questionText:
+      "CSS 박스 모델에서 각 요소는 마진, 테두리, 패딩, 그리고 내용으로 구성됩니다. 이 네 가지 중 하나를 제외한 나머지 세 요소의 크기를 고정값으로 설정했다고 가정할 때, 해당 요소의 총 너비를 계산하는 방법을 설명하세요. 빈칸에 들어갈 적절한 단어를 선택하십시오.",
+    code: `
+      .box {
+        width: 300px;
+        padding: 20px;
+        border: 5px solid black;
+        margin: _____;
+        /* 총 너비 = 내용의 'width' + 좌우 'padding'의 합 + 좌우 'border'의 합 + 좌우 'margin'의 합 */
+      }
+    `,
+    answerOptions: [["auto"], ["0px"], ["15px"], ["20px"]],
+    answer: ["auto"],
+    explanation:
+      "CSS에서 박스 모델의 총 너비는 내용(content)의 'width'와 좌우 'padding', 'border', 그리고 'margin'의 합으로 계산됩니다. 여기서 'margin'을 'auto'로 설정하면, 브라우저는 사용 가능한 공간에 따라 'margin'을 자동으로 조절합니다. 고정된 'width', 'padding', 'border' 값을 가진 박스의 'margin'이 'auto'일 경우, 총 너비는 고정값의 합과 남은 공간에 따라 결정됩니다. 이는 중앙 정렬 같은 레이아웃을 구성할 때 유용합니다.",
+    subject: "css",
+    subSubject: "box model",
+    quizType: "coding",
+  },
 ];
